@@ -3,7 +3,7 @@ function checkEnergy(energy){
 		alert("Your energy has run dry. Game over.")
 	}
 	else{
-		return;
+		return 0;
 	}
 	
 	

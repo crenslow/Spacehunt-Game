@@ -5,7 +5,7 @@ function winthegame(currX,currY, kolaX, kolaY ){
 		alert("Congrats, you found the Koca-Kola recipe and won the game!");
 	}
 	else{
-		return;
+		return 0;
 	}
 	
 }
