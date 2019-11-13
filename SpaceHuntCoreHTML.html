@@ -35,6 +35,8 @@
 
 <script src="SpaceCraftMovement.js"></script>
 
+<script src= "winthegame.js"></script>
+
 <script src="MapDefinition.js"></script>
 
 </head>
@@ -42,7 +44,7 @@
 <body>
 <h1>SpaceHunt</h1>
 <form name=UI>
-STATUS
+STATUS <input type=text name=Status size=4>
 <p>Current Location: 
 X <input type=text name=xValue size=4>
 Y <input type=text name=yValue size=4>
@@ -54,11 +56,15 @@ Y <input type=text name=yValue size=4>
 MAKE A MOVE
 <p>Distance <input type=text name=distance size=4>
 <p>
-<input type=button value="0" onclick=moveSpacecraft(0,distance)>
-<input type=button value="90" onclick=moveSpacecraft(90,distance)>
-<input type=button value="180" onclick=moveSpacecraft(180,distance)>
-<input type=button value="270" onclick=moveSpacecraft(270,distance)>
+<input type=button value="North" onclick=moveSpacecraft(0,distance)>
+<input type=button value="South" onclick=moveSpacecraft(90,distance)>
+<input type=button value="East" onclick=moveSpacecraft(180,distance)>
+<input type=button value="West" onclick=moveSpacecraft(270,distance)>
 
+<<<<<<< HEAD:SpaceHunt Core HTML.html
+=======
+
+>>>>>>> ef438bec1a561907a5eb458672d575c2c7825538:SpaceHuntCoreHTML.html
 </form>
 
 </body>
