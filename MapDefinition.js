@@ -14,7 +14,7 @@ var OldSpice = { x : 64, y : 64 };
 
 var artifacts = { //artifacts here are "bodies on the board that the OldSpice can collide with"
                   //including planets, asteroids, etc.
-    //parameters  
+    //parameters with default coordinates
     
     Pentium_1 : { x : 4, y : 64 },
     Pentium_2 : { x : 11, y : 11 },
@@ -46,6 +46,15 @@ var artifacts = { //artifacts here are "bodies on the board that the OldSpice ca
 
 };
 
-console.log( artifacts.collision(OldSpice) );
-console.log(OldSpice.x);
-console.log( artifacts.Pentium_1.x );
+//tests
+console.log( "Pentium 1: (" + artifacts.Pentium_1.x + "," + artifacts.Pentium_1.y + ")");
+console.log( "Pentium 2: (" + artifacts.Pentium_2.x + "," + artifacts.Pentium_2.y + ")");
+console.log( "Pentium 3: (" + artifacts.Pentium_3.x + "," + artifacts.Pentium_3.y + ")");
+console.log( "Pentium 4: (" + artifacts.Pentium_4.x + "," + artifacts.Pentium_4.y + ")");
+console.log( "Pentium 5: (" + artifacts.Pentium_5.x + "," + artifacts.Pentium_5.y + ")");
+console.log( "Pentium 6: (" + artifacts.Pentium_6.x + "," + artifacts.Pentium_6.y + ")");
+console.log( "Pentium 7: (" + artifacts.Pentium_7.x + "," + artifacts.Pentium_7.y + ")");
+
+console.log( "Ryzen: (" + artifacts.Ryzen.x + "," + artifacts.Ryzen.y + ")");
+console.log( "Xeon: (" + artifacts.Xeon.x + "," + artifacts.Xeon.y + ")");
+console.log( "Celeron: (" + artifacts.Celeron.x + "," + artifacts.Celeron.y + ")");
