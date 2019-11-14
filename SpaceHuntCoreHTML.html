@@ -55,12 +55,27 @@ Y <input type=text name=yValue size=4>
 <hr>
 MAKE A MOVE
 <p>Distance <input type=text name=distance size=4>
-<p>
-<input type=button value="North" onclick=moveSpacecraft(0,distance)>
-<input type=button value="South" onclick=moveSpacecraft(90,distance)>
-<input type=button value="East" onclick=moveSpacecraft(180,distance)>
-<input type=button value="West" onclick=moveSpacecraft(270,distance)>
 
+<table>
+<tr>
+<td></td> 
+<td><input type=button value="North" onclick=moveSpacecraft(0,distance)></td> 
+<td></td>
+</tr>
+
+<tr>
+<td><input type=button value="West" onclick=moveSpacecraft(270,distance)></td>
+<td></td>
+<td><input type=button value="East" onclick=moveSpacecraft(180,distance)></td>
+</tr>
+
+<tr>
+<td></td>
+<td><input type=button value="South" onclick=moveSpacecraft(90,distance)></td> 
+<td></td>
+</tr>
+
+</table>
 </form>
 
 </body>
