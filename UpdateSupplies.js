@@ -1,10 +1,10 @@
 <!-- //function to update supplies after movement -->
 
 
-function UpdateSupplies(distance){
+function UpdateSupplies(supplies){
 
+	supplies -= 2;
 
-
-
+	return supplies;
 
 }
