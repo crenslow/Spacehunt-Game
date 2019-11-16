@@ -1,1 +1,81 @@
-< !-- // basic styles for everything; NOT IMPLEMENTED YET -->
+< !-- // basic styles for everything; NOT DONE IMPLEMENTING -->
+// basic styles for everything
+
+// file
+html, body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+// class: play screen container
+.play-container {
+    display: inherit;                           // adapt to screen size
+    width: 100%;
+    height: 100%;
+    background: url(../img/spacebg.jpg);
+    background-size: cover;
+}
+
+// class: side panels; messages and location of planets
+.information-panel {
+    display: inherit;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #b2c2bd;
+    opacity: 70%;
+    width: 30%;
+    height: 100%;
+}
+
+// class: side panels; information print out
+.information-panel {
+    overflow: auto;
+    margin: 10px 5px;
+    height: 100%;
+}
+
+// class: coordinates that have already been visited
+.visited-coordinates {
+    padding: 1rem 0;
+    font-size: .8rem;
+}
+
+// class: data logging container
+.logdata-container {
+    display: inherit;
+    flex-direction: inherit;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+// id: data logging id
+#logdata {
+    padding-top: 10%;
+    text-align: inherit;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+// id: saved games; titles
+#savedgametitle {
+    margin-bottom: -7px; 
+}
+
+// id: list of saved games
+#savedgames {
+    margin: 0 auto; 
+}
+
+// id: game name
+#game-name {
+    width: 100%; 
+}
