@@ -1,1 +1,51 @@
+// NOT IMPLEMENTED YET
+// information for all of the game specifications
 
+// Classes: Degrees; what degrees OldSpice can move
+.deg0 {
+    -webkit-transform: rotate(90deg);
+}
+
+.deg30 {
+    -webkit-transform: rotate(60deg);
+}
+
+.deg60 {
+    -webkit-transform: rotate(30deg);
+}
+
+.deg90 {
+    -webkit-transform: rotate(0deg);
+}
+
+.deg120 {
+    -webkit-transform: rotate(-30deg);
+}
+
+.deg150 {
+    -webkit-transform: rotate(-60deg);
+}
+
+.deg180 {
+    -webkit-transform: rotate(-90deg);
+}
+
+.deg210 {
+    -webkit-transform: rotate(-120deg);
+}
+
+.deg240 {
+    -webkit-transform: rotate(-150deg);
+}
+
+.deg270 {
+    -webkit-transform: rotate(-180deg);
+}
+
+.deg300 {
+    -webkit-transform: rotate(-210deg);
+}
+
+.deg330 {
+    -webkit-transform: rotate(-240deg);
+}
