@@ -1,1 +1,66 @@
+// basic setup for the gameplay map. includes the map outline, rows, cells, objects
 
+// class: graphics for the map outline
+.mapoutline {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    outline: 60px solid #dc143c;            // crimson outline
+    background: transparent;
+    transition: all 1s ease-in-out;
+}
+
+// class: padding and coloring for outline, row, and cell
+.mapoutline .maprow .mapcell {
+    padding: 0px;
+    border: 1px solid #4c3b71;              // purple border
+}
+
+// class: width and height for outline, row, cell, and object
+.mapoutline .maprow .mapcell .mapobject {
+    width: 50px;
+    height: 50px;
+}
+
+// class: displaying of object (before) graphics
+.mapobject.showobject:before {
+    display: block;
+    content: attr(alt);
+    position: relative;
+    top: -22px;
+    color: #fff;
+    background: #fff;
+    width: fit-content;
+    font-size: .8rem;
+    font-weight: bold;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+// id: outline container
+#outline-container {
+    overflow: hidden; 
+    position: relative; 
+}
+
+// id: map wrapper function
+#map-wrap {
+    position: absolute; 
+    top: 50%
+    left: 50%
+    width: 60px; 
+    height: 60px; 
+    transform: translate(-50%, -50%); 
+}
+
+// id: map wrapper function for the OldSpice animation
+// this needs a z-index because OldSpice will rotate 
+// according to the player's movement actions
+#map-wrap .spaceShip-ic {
+    position: relative; 
+    width: 60px; 
+    height: 50px; 
+    z-index: 10; 
+}
