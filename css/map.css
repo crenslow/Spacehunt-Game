@@ -1,66 +1,64 @@
-// basic setup for the gameplay map. includes the map outline, rows, cells, objects
+<!-- // map graphics -->
 
-// class: graphics for the map outline
-.mapoutline {
+// id: grid container
+#grid-container {
+    overflow: hidden;
+    position: relative;
+}
+
+// id: wrapper for map
+#map-wrapper {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    width: 50px;
+    height: 60px;
+    transform: translate(-50%, -50%);
+}
+
+// id: wrapper for map and ship
+#map-wrapper .ship-ic {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    z-index: 10;
+}
+
+// id: map table
+.map-table {
     margin: 0;
     padding: 0;
     position: absolute;
     bottom: 0;
     left: 0;
-    outline: 60px solid #dc143c;            // crimson outline
+    outline: 25px solid #3d3d3d;
     background: transparent;
-    transition: all 1s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
-// class: padding and coloring for outline, row, and cell
-.mapoutline .maprow .mapcell {
+// id: map table, row, and cell
+.map-table .map-row .map-cell {
     padding: 0px;
-    border: 1px solid #4c3b71;              // purple border
+    border: 1px solid #2752d6;
 }
 
-// class: width and height for outline, row, cell, and object
-.mapoutline .maprow .mapcell .mapobject {
+// id: map table, row, cell, and object
+.map-table .map-row .map-cell .map-obj {
     width: 50px;
     height: 50px;
 }
 
-// class: displaying of object (before) graphics
-.mapobject.showobject:before {
+// id: map display
+.map-obj.showed-obj:before {
     display: block;
     content: attr(alt);
     position: relative;
-    top: -22px;
-    color: #fff;
-    background: #fff;
+    top: -20px;
+    color: #000000;
+    background: #000000;
     width: fit-content;
-    font-size: .8rem;
-    font-weight: bold;
+    font-size: .5rem;
+    font-weight: normal;
     padding: 0 5px;
     border-radius: 5px;
-}
-
-// id: outline container
-#outline-container {
-    overflow: hidden; 
-    position: relative; 
-}
-
-// id: map wrapper function
-#map-wrap {
-    position: absolute; 
-    top: 50%
-    left: 50%
-    width: 60px; 
-    height: 60px; 
-    transform: translate(-50%, -50%); 
-}
-
-// id: map wrapper function for the OldSpice animation
-// this needs a z-index because OldSpice will rotate 
-// according to the player's movement actions
-#map-wrap .spaceShip-ic {
-    position: relative; 
-    width: 60px; 
-    height: 50px; 
-    z-index: 10; 
 }
