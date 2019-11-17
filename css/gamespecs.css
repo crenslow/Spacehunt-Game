@@ -1,5 +1,4 @@
-// NOT IMPLEMENTED YET; need to figure out alignment and images
-// information for all of the game specifications
+<!-- // NOT IMPLEMENTED YET; need to figure out alignment and images information for all of the game specifications -->
 
 // Classes: Degrees; what degrees OldSpice can move
 .deg0 {
@@ -50,6 +49,7 @@
     -webkit-transform: rotate(-240deg);
 }
 
+// class: asteroid graphics
 .asteroids {
     background-image: url(" ”);
     background-size: contain;
@@ -58,6 +58,7 @@
     width:100%;   
 }
 
+// class: boundaries of the map grid graphics
 .boundaries {
     background-color: ;
     background-size: contain;
@@ -66,6 +67,7 @@
     width:100%;
 }
 
+// class: meteors: meteor shower graphics
 .meteors {
     background-image: url(" ”);
     background-size: contain;
@@ -74,6 +76,7 @@
     width:100%; 
 }
 
+// class: musk testla graphics
 .muskteslas {
     background-image: url(" ”);
     background-size: contain;
@@ -82,8 +85,9 @@
     width:100%;
 }
 
+// class: old spice graphics
 .OldSpice {
-    background-image: url(" ”);
+    background-image: url(../img/oldspice.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     height:100%;
@@ -92,6 +96,7 @@
     z-index: 10;
 }
 
+// class: planets graphics
 .planets {
     background-image: url(" ”);
     background-size: contain;
