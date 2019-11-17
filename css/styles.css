@@ -1,55 +1,104 @@
-< !-- // basic styles for everything; NOT DONE IMPLEMENTING -->
-// basic styles for everything
+/* styles for every aspect of the game page document */
 
-// file
+/*document styles*/
 html, body {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
-    font-size: 16px;
+    background-color: #000000;
 }
 
-// class: play screen container
-.play-container {
-    display: inherit;                           // adapt to screen size
+@font-face { 
+    font-family: 'Quadrit'; 
+    src: url('../css/Quadrit.ttf'); 
+}
+
+* { 
+    font-family: Quadrit;
+    font-size: 15px;
+    color: #fff;
+}
+
+/*container for top half of page*/
+.main-container {
+    display: inherit;
     width: 100%;
     height: 100%;
-    background: url(../img/spacebg.jpg);
+    background: url(../img/spacebackground.jpg);
     background-size: cover;
 }
 
-// class: side panels; messages and location of planets
-.information-panel {
+/*class to target top side panels*/
+.data-panel {
     display: inherit;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: #b2c2bd;
-    opacity: 70%;
+    background-color: #5d6c7a;
+    opacity: 90%;
     width: 30%;
     height: 100%;
 }
 
-// class: side panels; information print out
-.information-panel {
-    overflow: auto;
-    margin: 10px 5px;
+/* knownlocations section styles*/
+#knownlocations {
     height: 100%;
 }
 
-// class: coordinates that have already been visited
-.visited-coordinates {
-    padding: 1rem 0;
-    font-size: .8rem;
+/* displaying with header 4 type */
+.display-4 {
+    font-family: "Quadrit";
+    font-weight: normal;
+    font-size: 4rem;  
 }
 
-// class: data logging container
-.logdata-container {
+/* side display panels */
+.data-panel .knownlocations-list-wrapper {
+    overflow: auto;
+    margin: 10px 2px;
+    height: 100%;
+}
+
+/* knownlocations title*/
+.data-title {
+    margin: 20px 0 15px 0;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* data panel */
+.data-panel .knownlocations-list-wrapper::-webkit-scrollbar,
+#message-list::-webkit-scrollbar {
+    width: 5px;
+}
+.data-panel .knownlocations-list-wrapper::-webkit-scrollbar-track,
+#message-list::-webkit-scrollbar-track {
+    background: #595858;
+}
+.data-panel .knownlocations-list-wrapper::-webkit-scrollbar-thumb,
+#message-list::-webkit-scrollbar-thumb {
+    background: #004a99;;
+}
+.data-panel .knownlocations-list-wrapper::-webkit-scrollbar-thumb:hover,
+#message-list::-webkit-scrollbar-thumb:hover {
+    background: #333333;
+}
+
+/* known locations */
+.knownlocations-list-wrapper .knownlocations-obj-coordinate {
+    margin-left: 10px;
+}
+
+/* list */
+.list-group-item {
+    background-color: #dbdbdb;
+}
+
+/* data log container */
+.data-log-container {
     display: inherit;
     flex-direction: inherit;
     justify-content: center;
@@ -57,25 +106,268 @@ html, body {
     height: 100%;
 }
 
-// id: data logging id
-#logdata {
+/* data log */
+#data-log {
     padding-top: 10%;
     text-align: inherit;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 
-// id: saved games; titles
-#savedgametitle {
-    margin-bottom: -7px; 
+/* individual data log of past coordinates */
+.log {
+    padding: 1rem 0;
+    font-size: .9rem;
 }
 
-// id: list of saved games
-#savedgames {
-    margin: 0 auto; 
+/* saved game title */
+#savedGameListTitle{
+   margin-bottom: -8px;
 }
 
-// id: game name
-#game-name {
-    width: 100%; 
+/* saved game list */
+#savedGameList{
+    margin: 0 auto;
+}
+
+/* individual game name */
+#game-name{
+    width: 100%;
+}
+
+/* ship wrapper function */
+.ship-wrapper {
+    position: relative;
+    height: 100%;
+    transition: .2s all cubic-bezier(0.04, 0.8, 0.65, 1.7);
+    transform: scale(1);
+    z-index: 10;
+}
+
+/* ship wrapper function to hide ship */
+.ship-wrapper.hidden {
+    transform: scale(0);
+    transition: .2s all cubic-bezier(0.48, -0.44, 0.91, 0.01);
+}
+
+/* heading */
+#heading-container {
+    position: absolute;
+    top: -25px;
+}
+
+/* heading */
+#heading {
+    font-size: 1rem;
+    background-color: #000000;
+    border-radius: 5px;
+}
+
+/* heading spans */
+.heading-span {
+    display: inline-block;
+}
+
+/* heading of game play page */
+.heading-container {
+    display: inherit;
+    justify-content: center;
+}
+
+/* game play container */
+#main-screen-container {
+    display: inherit;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* ship name */
+#ship-name {
+    font-family: "Press Start 2P";
+    font-weight: bolder;
+    font-size: 3.5rem;
+    color: black;
+}
+
+/* sensors */
+.sensor {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #c76a2c;
+    transform: scale(0,0);
+    transition: .1s transform cubic-bezier(0, 1, 1, 1);
+    z-index: 5;
+}
+
+/* map container */
+#map-container {
+    height: 50%;
+    width: 95%;
+    overflow: hidden;
+}
+
+/* map grid container id */
+#grid-container {
+    display: grid;
+    grid-gap: 1px;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    background-size: cover;
+}
+
+/* class for individual map grid tiles */
+.grid-block {
+    display: flex;
+    z-index: 500;
+    background: black;
+    border: 5px black;
+}
+
+/* if for message board */
+#message-board {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* id for message board container */
+#message-board-container {
+    width: 92%;
+    height: 35%;
+    background-color: #202238;
+}
+
+/* id for message board list */
+#message-list {
+    height: 90%;
+    width: 100%;
+    text-align: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    margin: 0;
+}
+
+/* class for single message in the message board */
+.message {
+    padding: .5rem .5rem;
+    margin: .2rem 0;
+    background-color: #ffffffb8;
+    width: 100%;
+    text-align: start;
+    border-radius: 5px;
+}
+
+/* container for data log */
+.data-log-container {
+    display: inherit;
+    flex-direction: inherit;
+    justify-content: center;
+    text-align: center;
+}
+
+/* class for heading spans */
+.heading-span {
+    display: inline-block;
+}
+
+/* container class for current heading */
+.heading-container {
+    display: inherit;
+    justify-content: center;
+}
+
+/* class for map, control panel, and status box containers */
+.status-control-containers {
+    display: inherit;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    width: 100%;
+    height: 38%;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+/* the game saving button */
+.data-title .btn-game-save {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000;
+}
+
+/* the game saving button; on and off; color varies */
+.data-title .btn-game-save:not(:disabled):not(.disabled):active {
+    color: #000;
+}
+
+/* control container */
+#controls {
+    align-items: center;
+}
+
+/* input fields container */
+.control-fields {
+    display: inherit;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+/* target movement form inputs */
+#movement-form-fields {
+    width: 100%;
+}
+
+/* target div container for E/W input buttons */
+#east-west-container {
+    display: flex;
+    justify-content: space-around;
+    margin: .5rem 0;
+    width: 100%;
+}
+
+/* id for ship movement number input */
+#movement-magnitude {
+    width: 20%;
+}
+
+/* id for sensor container, holds grid-container */
+#sensor-container {
+    justify-content: center;
+    align-items: center;
+}
+
+/* id to target scan input button */
+#sensor-scan {
+    width: 40%;
+}
+
+/* id for container holding ship status ul */
+#status-container {
+    color: #fff;
+}
+
+/* id for ul displaying ship status */
+#status-list {
+    height: 100%;
+    width: 100%;
+    display: inherit;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: left;
+    margin-left: 2rem;
+    font-size: 1rem;
 }
