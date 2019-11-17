@@ -1,0 +1,64 @@
+<!-- // map graphics -->
+
+// id: grid container
+#grid-container {
+    overflow: hidden;
+    position: relative;
+}
+
+// id: wrapper for map
+#map-wrapper {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    width: 50px;
+    height: 60px;
+    transform: translate(-50%, -50%);
+}
+
+// id: wrapper for map and ship
+#map-wrapper .ship-ic {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    z-index: 10;
+}
+
+// id: map table
+.map-table {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    outline: 25px solid #3d3d3d;
+    background: transparent;
+    transition: all 0.5s ease-in-out;
+}
+
+// id: map table, row, and cell
+.map-table .map-row .map-cell {
+    padding: 0px;
+    border: 1px solid #2752d6;
+}
+
+// id: map table, row, cell, and object
+.map-table .map-row .map-cell .map-obj {
+    width: 50px;
+    height: 50px;
+}
+
+// id: map display
+.map-obj.showed-obj:before {
+    display: block;
+    content: attr(alt);
+    position: relative;
+    top: -20px;
+    color: #000000;
+    background: #000000;
+    width: fit-content;
+    font-size: .5rem;
+    font-weight: normal;
+    padding: 0 5px;
+    border-radius: 5px;
+}
