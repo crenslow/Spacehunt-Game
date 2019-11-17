@@ -51,7 +51,7 @@
 
 // class: asteroid graphics
 .asteroids {
-    background-image: url(" ”);
+    background-image: url();
     background-size: contain;
     background-repeat: no-repeat;
     height:100%;
@@ -69,7 +69,7 @@
 
 // class: meteors: meteor shower graphics
 .meteors {
-    background-image: url(" ”);
+    background-image: url();
     background-size: contain;
     background-repeat: no-repeat;
     height:100%;
@@ -78,7 +78,7 @@
 
 // class: musk testla graphics
 .muskteslas {
-    background-image: url(" ”);
+    background-image: url();
     background-size: contain;
     background-repeat: no-repeat;
     height:100%;
@@ -98,7 +98,7 @@
 
 // class: planets graphics
 .planets {
-    background-image: url(" ”);
+    background-image: url();
     background-size: contain;
     background-repeat: no-repeat;
     height:100%;
