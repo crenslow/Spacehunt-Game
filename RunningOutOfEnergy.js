@@ -1,5 +1,5 @@
 function checkEnergy(energy){
-	if(energy <= 0){
+	if(energy < 1){
 		alert("Your energy has run dry. Game over.")
 	}
 	else{
