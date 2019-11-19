@@ -71,7 +71,7 @@ html, body {
 }
 .data-panel .knownlocations-list-wrapper::-webkit-scrollbar-track,
 #message-list::-webkit-scrollbar-track {
-    background: #595858;
+    background: #00000;
 }
 .data-panel .knownlocations-list-wrapper::-webkit-scrollbar-thumb,
 #message-list::-webkit-scrollbar-thumb {
