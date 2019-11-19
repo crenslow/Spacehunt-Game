@@ -1,9 +1,7 @@
-/* class: setup game */
 .setup-game {
     transition: all .3s ease-out;
 }
 
-/* class: setup game */
 .setup-game {
     position: fixed;
     width: 100%;
@@ -15,25 +13,20 @@
     visibility: visible;
     z-index: 10;
 }
-
-/* class: hide game menu */
 .setup-game.hide {
     opacity: 0;
     visibility: hidden;
 }
 
-/* class: setup button */
 .setup-btn-ls {
     max-width: 500px;
     margin: 0 auto;
 }
 
-/* class: button size */
 .btn-block+.btn-block {
     margin-top: 50px;
 }
 
-/* class: modal window (main window for game play) */
 .modal {
     display: none;
     position: fixed;
@@ -45,15 +38,13 @@
     overflow: auto;
 }
   
-/* class: modal window content */
 .modal-content {
     background-color: black;
     margin: 10% auto;
     padding: 20px;
     width: 60%;
 }
-
-/* class: player's name */
+/* this is the text box for the player's name */
 .playerNameField {
     background: #8695a3;
     text-align: inherit;
@@ -62,7 +53,6 @@
 
 }
 
-/* class: block for inputting the name */
 .playerNameBlock{
     background: #000000;
     text-align: inherit;
@@ -70,7 +60,6 @@
     overflow-x: hidden;
 }
 
-/* class: list of saved games */
 .savedGameList{
     background: #000000;
     text-align: inherit;
@@ -78,25 +67,21 @@
     overflow-x: hidden;
 }
 
-/* class: setup button */
 .setup-btn {
     padding: 1rem 2rem;
     margin-top: 50px;
 }
 
-/* class: set up game and start button */
 .setup-game .game-start-btn {
     padding: 1rem 2rem;
     margin-top: 50px;
 }
-
-/* class: continue old game button */
 .game-cont-btn{
     padding: 1rem 2rem;
     margin-top: 50px;
 }
 
-/* class: main game screen */
+/* the main game tag */
 .main-game {
     display: flex;
     flex-direction: column;
