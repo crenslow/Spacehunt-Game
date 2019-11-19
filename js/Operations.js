@@ -1,35 +1,3 @@
-// go North
-function submitNorthHeading() {
-    let direction_value = 90;
-    let magnitude_value = parseInt( document.getElementById("movement-magnitude").value);
-    submitHeading(direction_value, magnitude_value);
-}
-
-// go East
-function submitEastHeading() {
-    let direction_value = 0;
-    let magnitude_value = parseInt(document.getElementById("movement-magnitude").value);
-    submitHeading(direction_value, magnitude_value);
-}
-
-// go South
-function submitSouthHeading() {
-    let direction_value = 270;
-    let magnitude_value = parseInt(document.getElementById( "movement-magnitude").value);
-    submitHeading(direction_value, magnitude_value);
-}
-
-// go West
-function submitWestHeading() {
-    let direction_value = 180;
-    let magnitude_value = parseInt(document.getElementById( "movement-magnitude" ).value);
-    submitHeading(direction_value, magnitude_value);
-}
-
-function submitHeading(direction_value, magnitude_value) {
-    window.oldSpice.move(magnitude_value, direction_value );
-}
-
 // template obtained from event listener tutorial
 // allows the user to use their keyboard and mouseclicks to move
 window.addEventListener("keydown", event => {
@@ -66,11 +34,15 @@ function savedGameDisplay(savedGameMode) {
 }
 
 function updateHeading() {
-
+	document.getElementById("heading").innerHTML = window.oldSpice.x + ', ' + window.oldSpice.y;
 }
 
-function updateLevels() {
+function updateLevels() { /*This function updates the display statistics for
+credits, energy, and supplies to ship's current value.*/
 
+	 document.getElementById("creditValue").innerHTML = window.oldSpice.credit;
+	 document.getElementById("energyValue").innerHTML = window.oldSpice.energy;
+	 document.getElementById("supplyValue").innerHTML = window.oldSpice.supplies;
 }
 
 function createNewLog() {

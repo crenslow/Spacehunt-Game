@@ -26,7 +26,8 @@ window.gameData = {
     shipCredit: 1000,
     shipEngineLv: 1,
     shipDamaged: false,
-    shipNormalPlay: 1,
+    shipNormalPlay: true,
+    randomWormhole: false,
 };
 
 window.onload = function() {

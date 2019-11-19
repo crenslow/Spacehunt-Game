@@ -16,16 +16,21 @@ class Ship {
         this.messageBoard = document.querySelectorAll( "#message-board" )[0];
     }
     
-    move(distance, degrees) {
-        let radians = degrees * ( Math.PI / 180 ),
-            mapsize = window.gameMap.size,
-            oldX = this.x,
-            oldY = this.y,
-            midwayAsteroid;
-
-        this.x += Math.round( distance * Math.cos( radians ) );
-        this.y += Math.round( distance * Math.sin( radians ) );
-
+    move(direction, distance) {	/*This function moves the ship in one of the four
+    cardinal directions (by inputting N, S, E, or W in the direction argument) a
+    number of units equal to distance, and decreases the ship's energy and supply
+    levels. If the edge of the map is hit, the ship warps to the other edge of
+    the map and stops moving. It consumes 2% supplies no matter what and consumes
+    a different amount of energy depending on the ship's engine: 10 * distance for
+    a basic engine, 5 * distance for a medium engine, and 1 * distance for an
+    advanced engine. (It consumes 5 times the amount of energy if the ship is
+    damaged) */
+    
+        if (direction == 'N') this.y += eval(distance);
+        else if (direction == 'W') this.x -= eval(distance);
+        else if (direction == 'E') this.x += eval(distance);
+        else this.y -= eval(distance);
+        
         this.supplies -= 2;
 
         switch ( this.engineLv ) {
@@ -40,31 +45,30 @@ class Ship {
                 break;
         }
 
-        // update screen new heading and levels before checking game ove or collision
-        // so user can see current status before game over
+		let max = window.gameData.mapsize;
+		if (!window.gameData.randomWormhole) {
+			if (this.y >= max) this.y = 0;
+			else if (this.y < 0) this.y = eval(max-1);
+			else if (this.x >= max) this.x = 0;
+			else if (this.x < 0) this.x = (max - 1);
+		}
+		else {
+			
+		}
+
         updateHeading();
         updateLevels();
 
-        this.updateShipHeading(degrees);
         window.gameMap.move(this.x, this.y);
 
+		/*I (Josh) am temporarily putting this block of code in comments to
+		discuss it during tomorrow's meeting (11/19/19)
         setTimeout(function () {
-            if ((window.oldSpice.energy <= 0 && window.oldSpice.normalPlay)) {
+           if ((this.energy <= 0 && this.normalPlay)) {
                 gameObj.GameOver("Your ship has run out of energy and is now adrift in space!");
             }
-            else if (window.oldSpice.supplies <= 0 && window.oldSpice.normalPlay) {
+            else if (this.supplies <= 0 && this.normalPlay) {
                 gameObj.GameOver("Your crew has run out of supplies and have died!" );
-            }
-            else if (window.oldSpice.x >= mapsize || window.oldSpice.y >= mapsize || window.oldSpice.x < 0 || window.oldSpice.y < 0) {
-                window.boundary.Collide();
-                updateHeading();
-                updateLevels();
-                window.oldSpice.hide();
-                setTimeout(() => {
-                    window.gameMap.move(window.oldSpice.x, window.oldSpice.y, (( s ) => {
-                        return () => { s.show(); };
-                    } )(window.oldSpice));
-                }, 200 );
             }
 
             // check out any objects events
@@ -73,7 +77,7 @@ class Ship {
                 updateHeading();
                 updateLevels();
             }
-        }, 1000 );
+        }, 1000 ); */
     }
 
     hide() {

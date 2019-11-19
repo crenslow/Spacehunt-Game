@@ -53,7 +53,7 @@
                             <div id="map-wrapper">
                                 <div id="ship-wrapper" class="ship-wrapper">
                                     <div id="heading-container">
-                                        <span id="heading" class="heading-span badge badge-primary badge-pill">0, 0</span>
+                                        <span id="heading" class="heading-span badge badge-primary badge-pill"></span>
                                     </div>
                                     <div class="old-spice deg0"></div>
                                     <div id="sensor" class="sensor"></div>
@@ -81,13 +81,13 @@
                         <h4 class="data-title" style="margin: 0 0">Control Center</h4>
                         <form class="control-fields">
                             <fieldset id="movement-form-fields">
-                                <input id="north-input" class="btn btn-secondary" value="N" type="button" onclick="submitNorthHeading()" />
+                                <input id="north-input" class="btn btn-secondary" value="N" type="button" onclick="window.oldSpice.move('N', getElementById('movement-magnitude').value)"/>
                                 <div id="east-west-container">
-                                    <input id="west-input" class="btn btn-secondary" value="W" type="button" onclick="submitWestHeading()" />
+                                    <input id="west-input" class="btn btn-secondary" value="W" type="button" onclick="window.oldSpice.move('W', getElementById('movement-magnitude').value)" />
                                     <input id="movement-magnitude" min="1" max="10" type="number" value="1" />
-                                    <input id="east-input" class="btn btn-secondary" value="E" type="button" onclick="submitEastHeading()" />
+                                    <input id="east-input" class="btn btn-secondary" value="E" type="button" onclick="window.oldSpice.move('E', getElementById('movement-magnitude').value)" />
                                 </div>
-                                <input id="south-input" class="btn btn-secondary" value="S" type="button" onclick="submitSouthHeading()" />
+                                <input id="south-input" class="btn btn-secondary" value="S" type="button" onclick="window.oldSpice.move('S', getElementById('movement-magnitude').value)" />
                             </fieldset>
                         </form>
                         <input id="sensor-scan" class="btn btn-secondary" type="button" value="Scan">
@@ -95,11 +95,11 @@
                     
                     <div id="status-container" class="status-control-containers">
                         <ul id="status-list">
-                            <li>Credits: <span id="creditValue" class="credit-value badge badge-primary badge-pill">0</span></li>
-                            <li>Energy: <span id="energyValue" class="energy-value badge badge-primary badge-pill">0</span></li>
-                            <li>Damage: <span id="damageValue" class="damage-value badge badge-primary badge-pill">0</span></li>
-                            <li>Supplies: <span id="supplyValue" class="supply-value badge badge-primary badge-pill">0</span></li>
-                            <li>Engine: <span id="engineLevel" class="engine-level badge badge-primary badge-pill">0</span></li>
+                            <li>Credits: <span id="creditValue" class="credit-value badge badge-primary badge-pill"></span></li>
+                            <li>Energy: <span id="energyValue" class="energy-value badge badge-primary badge-pill"></span></li>
+                            <li>Damage: <span id="damageValue" class="damage-value badge badge-primary badge-pill">Undamaged</span></li>
+                            <li>Supplies: <span id="supplyValue" class="supply-value badge badge-primary badge-pill"></span><span class="supply-value badge badge-primary badge-pill">%</span></li>
+                            <li>Engine: <span id="engineLevel" class="engine-level badge badge-primary badge-pill">Basic</span></li>
                             <li>Sensor: <span id="sensorLevel" class="sensor-level badge badge-primary badge-pill">0</span></li>
                         </ul>
                     </div>
