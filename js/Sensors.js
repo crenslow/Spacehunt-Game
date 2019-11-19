@@ -2,7 +2,7 @@
 
 {
 
-	supplies = supplies-2;
+	shipSupplies = shipSupplies-2;
 
 	len sensorText = document.getElementById("sensor_message").textContext
 
