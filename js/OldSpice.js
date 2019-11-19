@@ -58,7 +58,12 @@ class Ship {
 
         updateHeading();
         updateLevels();
-
+	if(this.supplies < 1){
+		gameObj.GameOver("Your supplies have run dry.");	
+	}
+	if(this.energy < 1){
+		gameObj.GameOver("Your energy has run out.");
+        }
         window.gameMap.move(this.x, this.y);
 		
 		/*I (Josh) am temporarily putting this block of code in comments to
@@ -109,21 +114,7 @@ class Ship {
         }
     }
 
-    //Returns a string with the resource lacking or return “OK” if the levels are not empty
-    checkLevels() {
-        if ( this.credits < 1 ) {
-            return "Credits depleted.";
-        }
-        else if ( this.energy < 1 && normalPlay ) {
-            return "Energy depleted, game over!";
-        }
-        else if ( this.supplies < 1 && normalPlay ) {
-            return "Supplies depleted, game over!";
-        }
-        else {
-            return "Levels are sufficient.";
-        }
-    }
+	
 
     logLevels () {
        
