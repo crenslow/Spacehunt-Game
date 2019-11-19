@@ -5,6 +5,12 @@
 function Freighter(energy,supplies)
 {
 	energy = energy + 10;
-                   supplies = supplies + 10;
-	return energy,supplies;
+	supplies = supplies + 10;
+	return {a1:energy,b1:supplies};
 }
+
+<!-- call fucntion -->
+//var obj = Freighter(energy,supplies)
+//energy = obj.a1;
+//supplies = obj.b1;
+//energy and supplies is global variable
