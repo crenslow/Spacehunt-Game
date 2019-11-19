@@ -33,6 +33,8 @@
     <button type="button" class="btn">
     </body>
     <script>
+        if(!artifacts)
+    artifacts = writeArtifactsToFile();
         artifacts = readArtifactsFromFile();
         setSelectArtifactOptions();
         loadArtifactValuesOnChange();

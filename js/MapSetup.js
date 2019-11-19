@@ -10,11 +10,20 @@ class GameMap {
 
     /* not yet implemented */
     add(object, x, y) {
-        return true;
+        if(object == null)
+            return false;
+        else
+        {
+            this.map[x][y] = object;
+            return true;
+        }
     }
 
     /* not yet implemented */
     remove(x, y) {
+        if(!this.hasObject(x,y))
+            return false;
+        this.map[x][y] = null;
         return true;
     }
 
@@ -51,8 +60,14 @@ class GameMap {
                 mapCell.className = 'map-cell';
                 mapCell.setAttribute('id', 'c' + col + '-' + row);
                 mapObj.className = 'map-obj';
+                if(this.hasObject(col, row))
+                {
+                    mapCell.innerHTML = this.map[col][row];
+                }
+                //mapCell.innerHTML = mapCell.id;
                 mapCell.appendChild(mapObj);
                 mapRow.appendChild(mapCell);
+                
 
             }
             this.mapContainer.appendChild(mapRow);
