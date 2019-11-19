@@ -1,4 +1,4 @@
-  function Sensors(ship,supplies, sensors_tpye, gameMap)
+  function Sensors(ship,sensors_tpye, gameMap)
 
 {
 
