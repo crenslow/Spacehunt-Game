@@ -74,88 +74,12 @@ function PopulateMap(gameMap) {
 
 /* populates a saved map with the state it was left in */
 function PopulateSavedMap ( gameMap, savedMap ) {
-/*
-    // load planets
-    if(savedMap.celeron)
-        generateCeleronAtLocation(gameMap, savedMap.celeron.x, savedMap.celeron.y);
-    else
-        generateCeleronAtLocation(gameMap, savedMap.celeronX, savedMap.celeronY);
-    if(savedMap.xeon)
-        generateXeonAtLocation(gameMap, savedMap.xeon.x, savedMap.xeon.y);
-    else
-        generateXeonAtLocation(gameMap, savedMap.xeonX, savedMap.xeonY);
-    if(savedMap.ryzen)
-        generateRyzenAtLocation(gameMap, savedMap.ryzen.x, savedMap.ryzen.y);
-    else
-        generateRyzenAtLocation(gameMap, savedMap.ryzenX, savedMap.ryzenY);
 
-    generateEniacAtLocation(gameMap, savedMap.eniac.x, savedMap.eniac.y);
-    generateBadMaxAtLocation(gameMap, savedMap.badMax[0], savedMap.badMax[1]);
-    generateRecipeAtLoation(gameMap, savedMap.recipe[0], savedMap.recipe[1]);
-
-
-    // load celestial objects
-    for ( const coords of savedMap.asteroid ) {
-        if(coords[0]) {
-            let objCoordx = coords[0];
-            let objCoordy = coords[1];
-
-            generateCelestialObjects(gameMap, 4, objCoordx, objCoordy);
-        }
-    }
-    for ( let coords of savedMap.abFreighter ) {
-        if(coords[0]) {
-            let objCoordx = coords[0];
-            let objCoordy = coords[1];
-
-            generateCelestialObjects(gameMap, 5, objCoordx, objCoordy);
-        }
-    }
-    for ( let coords of savedMap.meteorShower ) {
-        if(coords[0]) {
-            let objCoordx = coords[0];
-            let objCoordy = coords[1];
-
-            generateCelestialObjects(gameMap, 6, objCoordx, objCoordy);
-        }
-    }
-    */
 }
 
 /* generate celetial objects */
 function generateCelestialObjects ( gameMap, type, celestX, celestY ) {
-    /*
-    switch ( type ) {
-        case 0:
-            mapObj = new SpaceStation( [new MuskTesla( 100, 1000 ), new RepairDepot, new MiniMart()] );
-            break;
-
-        case 1:
-            mapObj = new SpaceStation( [new MuskTesla( 100, 1000 ), new RepairDepot()] );
-            break;
-
-        case 2:
-            mapObj = new SpaceStation( [new MuskTesla( 100, 1000 ), new MiniMart()] );
-            break;
-
-        case 3:
-            mapObj = new SpaceStation( [new MuskTesla( 100, 1000 )] );
-            break;
-
-        case 4:
-            mapObj = new Asteroid();
-            break;
-
-        case 5:
-            mapObj = new AbFreighter();
-            break;
-
-        case 6:
-            mapObj = new MeteorShower();
-            break;
-    }
-    updateLogs( gameMap, mapObj, celestX, celestY );
-    */
+   
 }
 
 /* save the current state of the game */
