@@ -1,3 +1,5 @@
+/*11/19/19 update: the following keyboard functionality is incomplete since I
+changed the movement function, so I'm putting it in comments for now. -Josh
 // template obtained from event listener tutorial
 // allows the user to use their keyboard and mouseclicks to move
 window.addEventListener("keydown", event => {
@@ -9,13 +11,13 @@ window.addEventListener("keydown", event => {
     // will only move the ship if it is within the bounds of the map
     if (window.oldSpice != undefined && distance > 0 && distance < gameData.mapsize) {
         if (keyPressed === 38 || event.key === 'w') {
-            submitHeading(90, distance);
+            submitHeading(distance, 'N');
         } else if (keyPressed === 37 || event.key === 'a') {
-            submitHeading(180, distance);
+            submitHeading(distance, 'W');
         } else if (keyPressed === 40 || event.key === 's') {
-            submitHeading(270, distance);
+            submitHeading(distance, 'S');
         } else if (keyPressed === 39 || event.key === 'd') {
-            submitHeading(0, distance);
+            submitHeading(distance, 'E');
         } else if (keyPressed === 32) {
             oldSpice.scan();
         } else if (keyPressed === 49 || keyPressed === 50 ||
@@ -27,7 +29,7 @@ window.addEventListener("keydown", event => {
         }
     }
 } );
-
+*/
 
 function savedGameDisplay(savedGameMode) {
     

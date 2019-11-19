@@ -52,7 +52,7 @@ class Ship {
 			else if (this.x >= max) this.x = 0;
 			else if (this.x < 0) this.x = (max - 1);
 		}
-		else {
+		else { //This will be for when we integrate random wormhole behavior
 			
 		}
 
@@ -60,7 +60,7 @@ class Ship {
         updateLevels();
 
         window.gameMap.move(this.x, this.y);
-
+		
 		/*I (Josh) am temporarily putting this block of code in comments to
 		discuss it during tomorrow's meeting (11/19/19)
         setTimeout(function () {
