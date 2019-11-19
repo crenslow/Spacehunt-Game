@@ -1,12 +1,12 @@
 <!-- SH-6 Sensors High-->
 <!-- I want to see what located at nearby Celectial Points,so I Know where things are -->
 
-<!-- IN PROGRESS>
+<!-- IN PROGRESS -->
 
 function Sensors(currX,currY,supplies, sensors_tpye, Celestial_Map)
 {
 	alert("you deploys sensors for current cp");
-	supplies = supplies-2?
+	supplies = supplies-2；
 	if(sensors_type == 1)  <!-- basic -->
 	{
 		var i;
@@ -16,6 +16,7 @@ function Sensors(currX,currY,supplies, sensors_tpye, Celestial_Map)
 				if(i==celestialX && j==celestialY){
 					//check if (celestialX,celestialY) in Celestial_map
 					//add all new (celestialX,celestialY) in Celestial Map
+					//display current CP
 				}
 				else
 					break;
@@ -59,6 +60,7 @@ function Sensors(currX,currY,supplies, sensors_tpye, Celestial_Map)
 
 					//check if (celestialX,celestialY) in Celestial_map
 					//add all new (celestialX,celestialY) in Celestial Map
+					//display current CP
 				}
 				else 
 					break;
@@ -67,7 +69,8 @@ function Sensors(currX,currY,supplies, sensors_tpye, Celestial_Map)
 	}
 }
 
-//how to get celestialX,celestialY form map
-//how to check in celestial map
+//how to get all celestialX,celestialY form map   (read file??)
+//how to check if in celestial map and add to the Celestial map
+
 //consider different direction
 //every direction search 5 ,like a circle
