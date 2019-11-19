@@ -74,7 +74,7 @@
 }
 
 .muskteslas {
-    background-image: url(musk.jpg);
+    background-image: url(../img/musk.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     height:100%;
