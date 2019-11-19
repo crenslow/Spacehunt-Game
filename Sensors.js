@@ -10,22 +10,25 @@ function Sensors(currX,currY,supplies, sensors_tpye, Celestial_Map)
 
 	if(sensors_type == 1)  <!-- basic -->
 	{
-		if(currX+2>=celestialX && CurrX-2<=celestialX && currY+2>=celestialY &&currY-2<=celestialY)
-		{
-			//check if (celestialX,celestialY) in Celestial_map
-			//add all new (celestialX,celestialY) in Celestial_Map
-		}
+		for X in range(currX-2,currX+2):
+			for Y in range(currY-2,currY+2):
+				if (X == celestialX && Y == celestialY):
+					//check if (celestialX,celestialY) in Celestial_map
+					//add all new (celestialX,celestialY) in Celestial Map
 
 	}
+
 	else if(sensors_tpye == 2) <!-- enhanced -->
 	{
-		if(currX+5>=celestialX && CurrX-5<=celestialX && currY+5>=celestialY &&currY-5<=celestialY)
-		{
-			//check if (celestialX,celestialY) in Celestial_map
-			//add all new (celestialX,celestialY) in Celestial_Map
-		}
+		for X in range(currX-5,currX+5):
+			for Y in range(currY-5,currY+5):
+				if (X == celestialX && Y == celestialY):
+					//check if (celestialX,celestialY) in Celestial_map
+					//add all new (celestialX,celestialY) in Celestial Map		
 	}
 }
 
 //how to get celestialX,celestialY form map
 //how to check in celestial map
+//consider different direction(if direction is 30,45,60 degree have one node shouldn't be search)
+//every direction search 5 ,like a circle

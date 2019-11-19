@@ -2,7 +2,7 @@
 class GameMap {
     constructor(size) {
         this.size = size;
-        this.map = new Array( size );
+        this.map = new Array(size);
         for (var i = 0; i < size; ++i) {     
             this.map[i] = new Array(size);
         }
@@ -19,60 +19,59 @@ class GameMap {
     }
 
     /* contents of cell at (x, y) */
-    contents ( x, y ) {
+    contents(x, y) {
         let max = this.map.length;
-        if ( x >= max || y >= max || x < 0 || y < 0 ) return null;
+        if (x >= max || y >= max || x < 0 || y < 0) return null;
         return this.map[x][y];
     }
    
     /* does the cell have any objects check */
-    hasObject ( x, y ) {
+    hasObject(x, y) {
         let max = this.map.length;
-        if ( x >= max || y >= max || x < 0 || y < 0 ) return false;
-        return Boolean( this.map[x][y] );
+        if (x >= max || y >= max || x < 0 || y < 0) return false;
+        return Boolean(this.map[x][y]);
     }
     
     /* build 128 x 128 map */
-    renderMap ( shipX, shipY ) {
-        var outer = document.querySelector( '#map-wrapper' );
+    renderMap( shipX, shipY) {
+        var outer = document.querySelector('#map-wrapper');
 
-        this.mapContainer = document.createElement( 'table' );
+        this.mapContainer = document.createElement('table');
 
-        outer.appendChild( this.mapContainer );
+        outer.appendChild(this.mapContainer);
         this.mapContainer.className = 'map-table table table-bordered';
 
-        for ( var row = ( this.size - 1 ); row >= 0; --row ) {
-            var mapRow = document.createElement( "tr" );
+        for (var row = (this.size - 1); row >= 0; --row) {
+            var mapRow = document.createElement("tr");
             mapRow.className = 'map-row';
-            mapRow.setAttribute( 'id', 'row-' + row );
-            for ( var col = 0; col < this.size; ++col ) {
-                var mapCell = document.createElement( 'td' ),
-                    mapObj = document.createElement( 'div' );
+            mapRow.setAttribute('id', 'row-' + row);
+            for (var col = 0; col < this.size; ++col) {
+                var mapCell = document.createElement('td'),
+                    mapObj = document.createElement('div');
                 mapCell.className = 'map-cell';
-                mapCell.setAttribute( 'id', 'c' + col + '-' + row );
+                mapCell.setAttribute('id', 'c' + col + '-' + row);
                 mapObj.className = 'map-obj';
-                mapCell.appendChild( mapObj );
-                mapRow.appendChild( mapCell );
+                mapCell.appendChild(mapObj);
+                mapRow.appendChild(mapCell);
 
             }
-            this.mapContainer.appendChild( mapRow );
+            this.mapContainer.appendChild(mapRow);
         }
-
-        if ( shipX != undefined ) {
-            this.move( shipX, shipY, null, true );
+        if (shipX != undefined) {
+            this.move(shipX, shipY, null, true);
         }
     }
 
    /* map moves with the ship */
-    move ( x, y, callB, noAnimate ) {
-        if ( !this.mapCellSize ) {
-            this.mapCellSize = document.querySelector( '#c0-0' ).offsetWidth;
+    move(x, y, callB, noAnimate) {
+        if (!this.mapCellSize) {
+            this.mapCellSize = document.querySelector('#c0-0').offsetWidth;
         }
 
         var targetX = -1 * x * this.mapCellSize,
             targetY = 1 * y * this.mapCellSize;
 
-        if ( noAnimate || noAnimate == 1 ) { // without animate
+        if (noAnimate || noAnimate == 1) { 
             this.mapContainer.style.transition = 'none'
         }
         else {
@@ -81,7 +80,7 @@ class GameMap {
 
         this.mapContainer.style.transform = 'translate(' + targetX + 'px,' + targetY + 'px)';
 
-        if ( typeof callB == 'function' ) {
+        if (typeof callB == 'function') {
             setTimeout( () => {
                 callB();
             }, 1000 );
