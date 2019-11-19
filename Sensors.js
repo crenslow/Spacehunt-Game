@@ -1,13 +1,31 @@
-<!-- SH-6 Sensors High-->
-<!-- I want to see what located at nearby Celectial Points,so I Know where things are -->
+//<!-- SH-6 Sensors High-->
+//<!-- I want to see what located at nearby Celectial Points,so I Know where things are -->
 
-<!-- IN PROGRESS>
+//<!-- IN PROGRESS>
+function Sensors2(Ship, Celestial_Map)
+{
+    let sensorText = document.getElementById("sensor_message").textContent;
+    sensorText = null;
+    for(obj in Celestial_Map)
+    {
+        if (distance(Ship, Celestial_Map[obj]) < 100)
+        {
+            sensorText += Celestial_Map[obj].name;
+        }
+    }
+}
 
+
+function distance(obj1, obj2)
+{
+    let dist_sq = Math.abs(obj1.x - obj2.x) + Math.abs(obj1.y - obj2.y);
+    return Math.sqrt(dist_sq);
+}
 function Sensors(currX,currY,supplies, sensors_tpye, Celestial_Map)
 {
 	alert("you deploys sensors for current cp");
-	supplies = supplies-2?
-	if(sensors_type == 1)  <!-- basic -->
+	supplies = supplies-2;
+	if(sensors_type == 1)//  <!-- basic -->
 	{
 		var i;
 		var j;
@@ -24,7 +42,7 @@ function Sensors(currX,currY,supplies, sensors_tpye, Celestial_Map)
 
 	}
 
-	else if(sensors_tpye == 2) <!-- enhanced -->
+	else if(sensors_tpye == 2)// <!-- enhanced -->
 	{
 		var i;
 		var j;
