@@ -1,60 +1,117 @@
-/*
-    MapDefinition.js - Team GG
-
-    This file defines the map object, which contains locations of 
+/* MapDefinition.js - Team GG This file defines the map object, which contains locations of 
     celestial locations in and around the pentium system.
     TODO: positions are currently placeholders
     TODO: add methods: 
     TODO: add asteroids, space stations
 */
-
-var maxX = 128;
-var maxY = 128;
+var MIN_X = 1;
+var MIN_Y = 1;
+var MAX_X = 128;
+var MAX_Y = 128;
 var OldSpice = { x : 64, y : 64 };
 
-var artifacts = { //artifacts here are "bodies on the board that the OldSpice can collide with"
-                  //including planets, asteroids, etc.
+var artifacts = { 
+    //artifacts here are "bodies on the board that the OldSpice can collide with"
+    //including planets, asteroids, etc.
     //parameters with default coordinates
     
-    Pentium_1 : { x : 4, y : 64 },
-    Pentium_2 : { x : 11, y : 11 },
-    Pentium_3 : { x : 11, y : 11 },
-    Pentium_4 : { x : 11, y : 11 }, 
-    Pentium_5 : { x : 11, y : 11 },
-    Pentium_6 : { x : 11, y : 11 },
-    Pentium_7 : { x : 11, y : 11 },
+    "Pentium 1" : { name : "Pentium 1", x : 4, y : 64 },
+    "Pentium 2" : { name : "Pentium 2", x : 11, y : 11 },
+    "Pentium 3" : { name : "Pentium 3", x : 11, y : 11 },
+    "Pentium 4" : { name : "Pentium 4", x : 11, y : 11 }, 
+    "Pentium 5" : { name : "Pentium 5", x : 11, y : 11 },
+    "Pentium 6" : { name : "Pentium 6", x : 11, y : 11 },
+    "Pentium 7" : { name : "Pentium 7", x : 11, y : 11 },
 
-    Ryzen :     { x : 64, y : 64 },
-    Xeon :      { x : 82, y : 82 },
-    Celeron :   { x : 12, y : 12 },
+    "Ryzen" :     { name : "Ryzen", x : 64, y : 64 },
+    "Xeon" :      { name : "Zeon",  x : 82, y : 82 },
+    "Celeron" :   { name : "Celeron", x : 12, y : 12 },
     
-    // Methods:
-
-    // Returns the first object in artifacts with x,y coords matching spaceObj
-    collision( spaceObj )
-    {
-        for(A in artifacts)
-        {
-            if(spaceObj.x == artifacts[A].x && spaceObj.y == artifacts[A].y)
-                return A;
-        }
-        return false;
-    }
+    
 
     //method to add asteroids
     //t
 
 };
+//functions
+
+function writeArtifactsToFile()
+{
+    var artifactsJSON = JSON.stringify(artifacts);
+    localStorage.setItem("testJSON", artifactsJSON);
+}
+
+function readArtifactsFromFile()
+{
+    var art_JSON = localStorage.getItem("testJSON");
+    return JSON.parse(art_JSON);
+}
+function collision( spaceObj )
+{
+    //checks through list of artifacts to see if spaceObj collides (shares x,y values)
+    //with any celestial artifacts
+    for(A in artifacts)
+    {
+
+        if(spaceObj.x == artifacts[A].x && spaceObj.y == artifacts[A].y)
+            return A;
+    }
+    return false;
+}
+
+function setSelectArtifactOptions()
+{
+
+    var to_select = document.getElementById("selectArtifact");
+
+
+    for(var A in artifacts)
+    {
+        var art = artifacts[A];
+        var el = document.createElement("option");
+        el.textContent = art.name;
+        el.value = art.name;
+        to_select.appendChild(el);
+    }
+}
+function sanitizeIntValues( someInt )
+{
+    if(someInt < MIN_X)
+        someInt = MIN_X;
+    if(someInt > MAX_X)
+        someInt = MAX_X;
+
+    return someInt;
+
+}
+function changeArtifactProperties()
+{
+    var to_update = document.getElementById("selectArtifact").value;
+    artifacts[to_update].x = sanitizeIntValues(document.getElementById("selectX").value);
+    artifacts[to_update].y = sanitizeIntValues(document.getElementById("selectY").value);
+    console.log(artifacts[to_update]);
+
+}
+
+function loadArtifactValuesOnChange()
+{
+    var to_update = document.getElementById("selectArtifact").value;
+    console.log(to_update);
+    console.log(artifacts[to_update]);
+    var x = document.getElementById("selectX");
+    x.value = artifacts[to_update].x;
+    var y = document.getElementById("selectY");
+    y.value = artifacts[to_update].y;
+ 
+}
 
 //tests
-console.log( "Pentium 1: (" + artifacts.Pentium_1.x + "," + artifacts.Pentium_1.y + ")");
-console.log( "Pentium 2: (" + artifacts.Pentium_2.x + "," + artifacts.Pentium_2.y + ")");
-console.log( "Pentium 3: (" + artifacts.Pentium_3.x + "," + artifacts.Pentium_3.y + ")");
-console.log( "Pentium 4: (" + artifacts.Pentium_4.x + "," + artifacts.Pentium_4.y + ")");
-console.log( "Pentium 5: (" + artifacts.Pentium_5.x + "," + artifacts.Pentium_5.y + ")");
-console.log( "Pentium 6: (" + artifacts.Pentium_6.x + "," + artifacts.Pentium_6.y + ")");
-console.log( "Pentium 7: (" + artifacts.Pentium_7.x + "," + artifacts.Pentium_7.y + ")");
 
-console.log( "Ryzen: (" + artifacts.Ryzen.x + "," + artifacts.Ryzen.y + ")");
-console.log( "Xeon: (" + artifacts.Xeon.x + "," + artifacts.Xeon.y + ")");
-console.log( "Celeron: (" + artifacts.Celeron.x + "," + artifacts.Celeron.y + ")");
+for(A in artifacts)
+{
+    console.log( artifacts[A].name + ": (" + artifacts[A].x + "," + artifacts[A].y + ")");
+}
+
+colided_obj = collision(OldSpice);
+
+console.log("Oldspice collides with " + colided_obj);
