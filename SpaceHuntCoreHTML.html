@@ -77,7 +77,14 @@ MAKE A MOVE
 
 </table>
 </form>
-
+<form name=sensors onsubmit="Sensors(OldSpice, artifacts)">
+    <input type=textContent id=sensor_message>
+    <input type=submit value="Scan">
+</form>
 </body>
-
+    <script>
+        if(localStorage.getItem("testJSON") === null)
+    artifacts = writeArtifactsToFile();
+        artifacts = readArtifactsFromFile();
+    </script>         
 </html>

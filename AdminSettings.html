@@ -30,9 +30,10 @@
     y : <input type=number id=selectY min=MIN_Y max=MAX_y onchange="changeArtifactProperties()">
     </p>
     <p><input type=submit Value="Save Map Changes"></p>
-    <button type="button" class="btn">
     </body>
     <script>
+        if(localStorage.getItem("testJSON") === null)
+    artifacts = writeArtifactsToFile();
         artifacts = readArtifactsFromFile();
         setSelectArtifactOptions();
         loadArtifactValuesOnChange();
