@@ -82,7 +82,7 @@
 }
 
 .OldSpice {
-    background: url(../img/oldspice.jpg);
+    background-image: url(../img/oldspice.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     height:100%;
