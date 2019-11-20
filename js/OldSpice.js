@@ -58,12 +58,19 @@ class Ship {
 
         updateHeading();
         updateLevels();
-	if(this.supplies < 1){
-		gameObj.GameOver("Your supplies have run dry.");	
-	}
-	if(this.energy < 1){
-		gameObj.GameOver("Your energy has run out.");
+		//BadMax Encounter chance
+		var BadMaxret = BadMax(this.supplies, this.credit);
+		this.supplies = BadMaxret[0];
+		this.credit = BadMaxret[1];
+		
+		//Check game over conditions
+		if(this.supplies < 1){
+			gameObj.GameOver("Your supplies have run dry.");	
+		}
+		if(this.energy < 1){
+			gameObj.GameOver("Your energy has run out.");
         }
+		
         window.gameMap.move(this.x, this.y);
 		
 		/*I (Josh) am temporarily putting this block of code in comments to
@@ -84,7 +91,7 @@ class Ship {
             }
         }, 1000 ); */
     }
-
+	
     hide() {
     
     }
@@ -93,9 +100,6 @@ class Ship {
      
     }
 
-    updateShipHeading(degree) {
-     
-    }
 
     scan() {
       
