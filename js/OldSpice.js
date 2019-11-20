@@ -58,17 +58,17 @@ class Ship {
 
         updateHeading();
         updateLevels();
-		//BadMax Encounter chance
-		var BadMaxret = BadMax(this.supplies, this.credit);
-		this.supplies = BadMaxret[0];
-		this.credit = BadMaxret[1];
+	//BadMax Encounter chance
+	var BadMaxret = BadMax(this.supplies, this.credit);
+	this.supplies = BadMaxret[0];
+	this.credit = BadMaxret[1];
 		
 		//Check game over conditions
-		if(this.supplies < 1){
-			gameObj.GameOver("Your supplies have run dry.");	
-		}
-		if(this.energy < 1){
-			gameObj.GameOver("Your energy has run out.");
+	if(this.supplies < 1){
+		gameObj.GameOver("Your supplies have run dry.");	
+	}
+	if(this.energy < 1){
+		gameObj.GameOver("Your energy has run out.");
         }
 		
         window.gameMap.move(this.x, this.y);
