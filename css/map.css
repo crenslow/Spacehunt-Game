@@ -1,8 +1,10 @@
+/* Grid container deals with the boundaries of the map grid. Containers are typically used to create boxed elements */
 #grid-container {
     overflow: hidden;
     position: relative;
 }
 
+/* Boxes the map grid */
 #map-wrapper {
     position: absolute;
     top: 70%;
@@ -12,6 +14,8 @@
     transform: translate(-50%, -50%);
 }
 
+/* the map wrapper and ship-ic (ic stands for ideographic count; used for the ship display font take the same 
+position, width, height, and z-index. z-indexes are used for objects that have animation */
 #map-wrapper .ship-ic {
     position: relative;
     width: 60px;
@@ -19,6 +23,8 @@
     z-index: 10;
 }
 
+/* the map table is dealing with the map grid border. transition time is from the homepage to 
+the game play screen */
 .map-table {
     margin: 0;
     padding: 0;
@@ -30,16 +36,21 @@
     transition: all 0.5s ease-in-out;
 }
 
+
+/* deals with the color and padding of the grid lines */
 .map-table .map-row .map-cell {
     padding: 0px;
     border: 1px solid #2752d6;
 }
 
+/* deals with the width and height of the map table, rows, cells, and objects to be placed
+in the map */
 .map-table .map-row .map-cell .map-obj {
     width: 50px;
     height: 50px;
 }
 
+/* deals with adding and removing celestial artifacts from the map */
 .map-obj.showed-obj:before {
     display: block;
     content: attr(alt);
