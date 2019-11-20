@@ -1,6 +1,8 @@
 /* Add items to the map */
 
 function PopulateMap(gameMap) {
+    // to be reimplemented
+    /*
     generateCeleron(gameMap);
     generateXeon(gameMap);
     generateRyzen(gameMap);
@@ -70,6 +72,7 @@ function PopulateMap(gameMap) {
             generateCelestialObjects(gameMap, stationType, objCoordx, objCoordy);
         }
     }
+    */
 }
 
 /* populates a saved map with the state it was left in */
@@ -77,7 +80,7 @@ function PopulateSavedMap ( gameMap, savedMap ) {
 
 }
 
-/* generate celetial objects */
+/* generates celestial objects */
 function generateCelestialObjects ( gameMap, type, celestX, celestY ) {
    
 }
@@ -90,13 +93,18 @@ function updateLogs ( gameMap, mapObj, objCoordX, objCoordY ) {
 }
 
 // * CELERON *
+// generate celeron at a random x and y position, call the
+// generateCeleronAtLocation function to actually place Celeron 
+// on the map
 function generateCeleron( gameMap ) {
     let randomCelX = Math.ceil(Math.random() * (gameMap.size));
     let randomCelY = Math.ceil(Math.random() * (gameMap.size));
     generateCeleronAtLocation(gameMap, randomCelX, randomCelY);
 }
 
+// places Celeron on the map
 function generateCeleronAtLocation(gameMap, celeronCoordX, celeronCoordY) {
+    // if the location has nothing, add Celeron to the map
     mapObj = new Celeron();
     if (gameData.celeronX || gameData.celeronX === 0)
         celeronCoordX = gameData.celeronX;
@@ -109,10 +117,14 @@ function generateCeleronAtLocation(gameMap, celeronCoordX, celeronCoordY) {
 }
 
 // * ENIAC *
+// generate eniac at a random x and y position, call the
+// generateEniacAtLocation function to actually place eniac 
+// on the map
 function generateEniac ( gameMap ) {
     generateEniacAtLocation(gameMap, 0, 0);
 }
 
+// places Eniac on the map
 function generateEniacAtLocation(gameMap, eniacCoordX, eniacCoordY) {
     mapObj = new Eniac();
     mapObj.x = eniacCoordX;
@@ -121,12 +133,16 @@ function generateEniacAtLocation(gameMap, eniacCoordX, eniacCoordY) {
 }
 
 // * XEON *
+// generate xeon at a random x and y position, call the
+// generateXeonAtLocation function to actually place Xeon 
+// on the map
 function generateXeon(gameMap) {
     let randomXeonX = Math.ceil(Math.random() * (gameMap.size));
     let randomXeonY = Math.ceil(Math.random() * (gameMap.size));
     generateXeonAtLocation(gameMap, randomXeonX, randomXeonY)
 }
 
+// places Xeon on the map
 function generateXeonAtLocation(gameMap, xeonCoordX, xeonCoordY) {
     mapObj = new Xeon();
     if ( gameData.xeonX || gameData.xeonX === 0 )
@@ -140,12 +156,16 @@ function generateXeonAtLocation(gameMap, xeonCoordX, xeonCoordY) {
 }
 
 // * RYZEN *
+// generate ryzen at a random x and y position, call the
+// generateRyzenAtLocation function to actually place Ryzen 
+// on the map
 function generateRyzen ( gameMap ) {
     let randomRyzenX = Math.ceil(Math.random() * (gameMap.size));
     let randomRyzenY = Math.ceil(Math.random() * (gameMap.size));
     generateRyzenAtLocation(gameMap, randomRyzenX, randomRyzenY)
 }
 
+// places Ryzen on the map
 function generateRyzenAtLocation(gameMap, ryzenCoordX, ryzenCoordY) {
     mapObj = new Ryzen();
     if(gameData.ryzenX || gameData.ryzenX === 0)
@@ -159,19 +179,23 @@ function generateRyzenAtLocation(gameMap, ryzenCoordX, ryzenCoordY) {
 }
 
 // RECIPE; generate recipe at a random location
+// not implemented yet, but essentially follows the same idea as generating the planets
 function generateRecipe ( gameMap ) {
    
 }
 
+// not implemented yet, but essentially follows the same idea as generating the planets
 function generateRecipeAtLoation(gameMap, recipeCoordX, recipeCoordY){
 
 }
 
 // BAD MAX; generate Bad Max at a random location 
+// not implemented yet, but essentially follows the same idea as generating the planets
 function generateBadMax ( gameMap ) {
    
 }
 
+// not implemented yet, but essentially follows the same idea as generating the planets
 function generateBadMaxAtLocation(gameMap, badMaxCoordX, badMaxCoordY){
 
 }

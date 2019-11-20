@@ -1,4 +1,5 @@
-const nameInput = document.querySelector( '#playerName' );
+// saves the player's name
+const nameInput = document.querySelector('#playerName');
 
 // MAIN VARIABLES; (globals, in a sense)
 window.gameData = {
@@ -30,6 +31,7 @@ window.gameData = {
     randomWormhole: false,
 };
 
+// when the window intially opens, this is what happens
 window.onload = function() {
     // populate the map
     populateSavedGameList();
@@ -71,7 +73,7 @@ function initGame () {
         window.oldSpice = new Ship(0, 0, 1000, 100, 1000, 1, false, true);
     }
 
-    // setup game effect
+    // setup + save game
     gameSetSave();
 
     // render map
@@ -87,39 +89,41 @@ function initGame () {
     ctrecipe.tick();
 }
 
-// continues a saved game
+// continues a saved game; Sprint 2
 function contGame () {
    
 }
 
-// set up the game; save the game
+// set up the game; save the game; could be discarded; Sprint 2
 function gameSetSave () {
 
 }
 
-// add planet locations
+// add planet locations to the left panel on the main game playing page
 function gazePopulate ( obj, objX, objY, isToSave ) {
    
 }
 
-// add planet locations to the saved game
+// add planet locations to the saved game; adds to the list which is to 
+// be displayed on the left panel on the main game playing page
 function populateSavedGaze ( gaze ) {
     
 }
 
-// save the message board
+// save the message board; used to save alerts for the game to be played
+// at a later time
 function saveMessageBoard(newMessage) {
     let msgIndex = window.gameData.msgs.length;
     window.gameData.msgs[msgIndex] = newMessage;
 }
 
-// populates message board
+// populates message board; shows the alerts that are generated
 function populateMessageBoard(savedMessages) {
     for (const msg of savedMessages)
         addMessage(msg);
 }
 
-// shows saved games
+// shows saved games on the main menu screen
 function populateSavedGameList () {
 
 }

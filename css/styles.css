@@ -1,4 +1,4 @@
-/*document styles*/
+/* main document styles */
 html, body {
     align-items: center;
     width: 100%;
@@ -8,6 +8,7 @@ html, body {
     background-color: #000000;
 }
 
+/* the font that everything is currently in */
 @font-face { 
     font-family: 'Quadrit'; 
     src: url('../css/Quadrit.ttf'); 
@@ -19,7 +20,8 @@ html, body {
     color: #fff;
 }
 
-/*container for top half of page*/
+/* container for the game play screen page and how the space landscape 
+background is formatted and aligned */
 .main-container {
     display: inherit;
     width: 100%;
@@ -28,7 +30,7 @@ html, body {
     background-size: cover;
 }
 
-/*class to target top side panels*/
+/* class to target top side panels; the color for the side panels */
 .data-panel {
     display: inherit;
     flex-direction: column;
@@ -40,24 +42,26 @@ html, body {
     height: 100%;
 }
 
-/* knownlocations section styles*/
+/* known locations section styles (the left panel); the gazetteer (saved locations) */
 #knownlocations {
     height: 100%;
 }
 
+/* display 4 uses heading 4 to display; heading 4 seems to be the right size for font for now */
 .display-4 {
     font-family: "Quadrit";
     font-weight: normal;
     font-size: 4rem;  
 }
 
+/* deals with the data panel sizing */
 .data-panel .knownlocations-list-wrapper {
     overflow: auto;
     margin: 10px 2px;
     height: 100%;
 }
 
-/* knownlocations title*/
+/* deals with the known locations title */
 .data-title {
     margin: 20px 0 15px 0;
     color: #fff;
@@ -65,6 +69,7 @@ html, body {
     font-size: 1.5rem;
 }
 
+/* deals with the data panels; how a user can interact with it */
 .data-panel .knownlocations-list-wrapper::-webkit-scrollbar,
 #message-list::-webkit-scrollbar {
     width: 5px;
@@ -82,15 +87,17 @@ html, body {
     background: #333333;
 }
 
+/* deals with formatting for the known (saved) locations; left panel */
 .knownlocations-list-wrapper .knownlocations-obj-coordinate {
     margin-left: 10px;
 }
 
+/* might not be in use */
 .list-group-item {
     background-color: #dbdbdb;
 }
 
-/*container class for data log*/
+/* container class for data log; makes the display fit to the screen */
 .data-log-container {
     display: inherit;
     flex-direction: inherit;
@@ -99,7 +106,8 @@ html, body {
     height: 100%;
 }
 
-/*id for ul containing data logs (niu)*/
+/* used for the graphics for logging data; might not be needed, but we
+shall see */
 #data-log {
     padding-top: 10%;
     text-align: inherit;
@@ -107,24 +115,28 @@ html, body {
     overflow-x: hidden;
 }
 
-/*individual data log of past coordinates*/
+/* individual data log of past coordinates */
 .log {
     padding: 1rem 0;
     font-size: .9rem;
 }
 
+/* how the saved game titles are formatted on the main screen page */
 #savedGameListTitle{
    margin-bottom: -8px;
 }
 
+/* how the saved game list is formatted on the main screen page */
 #savedGameList{
     margin: 0 auto;
 }
 
+/* saves the game name; might not be needed */ 
 #game-name{
     width: 100%;
 }
 
+/* used to deal with the animations for the spaceship */
 .ship-wrapper {
     position: relative;
     height: 100%;
@@ -132,34 +144,38 @@ html, body {
     transform: scale(1);
     z-index: 10;
 }
+
+/* how the spaceship is actually animated to move in different directions */
 .ship-wrapper.hidden {
     transform: scale(0);
     transition: .2s all cubic-bezier(0.48, -0.44, 0.91, 0.01);
 }
 
+/* headings position */
 #heading-container {
     position: absolute;
     top: -25px;
 }
 
+/* headings graphics */
 #heading {
     font-size: 1rem;
     background-color: #000000;
     border-radius: 5px;
 }
 
-/*class to target heading spans*/
+/* class to target heading spans; how much space the heading gets */
 .heading-span {
     display: inline-block;
 }
 
-/*container class for current heading*/
+/* container class for current heading */
 .heading-container {
     display: inherit;
     justify-content: center;
 }
 
-/*center screen container*/
+/* center screen container; where the game is being played */
 #main-screen-container {
     display: inherit;
     flex-direction: column;
@@ -169,7 +185,8 @@ html, body {
     height: 100%;
 }
 
-/*id to target ship name h2*/
+/* id to target ship name; may not be used if the ship name doesn't
+have to be displayed, but we shall see */
 #ship-name {
     font-family: 'Quadrit';
     font-weight: bolder;
@@ -177,6 +194,8 @@ html, body {
     color: black;
 }
 
+/* used for the sensor display; essentially, when the user clicks the 
+"sensor" button, this should display a "scan" on the screen in the area */
 .sensor {
     width: 100%;
     height: 100%;
@@ -189,14 +208,14 @@ html, body {
     z-index: 5;
 }
 
-/*container for map*/
+/* container for map; how much space the map takes up on the screen */
 #map-container {
     height: 50%;
     width: 95%;
     overflow: hidden;
 }
 
-/*id for map grid container*/
+/* id for map grid container; this is what makes the grid a grid */
 #grid-container {
     display: grid;
     grid-gap: 1px;
@@ -206,7 +225,8 @@ html, body {
     background-size: cover;
 }
 
-/*class for individual map grid tiles*/
+/* class for individual map grid cells; what can be done 
+in the cell */
 .grid-block {
     display: flex;
     z-index: 500;
@@ -214,6 +234,7 @@ html, body {
     border: 5px black;
 }
 
+/* alerts display */
 #message-board {
     display: flex;
     height: 100%;
@@ -223,14 +244,15 @@ html, body {
     justify-content: space-between;
 }
 
-/*id for targeting message board*/
+/*id for targeting message board; for when we're displaying messages
+to the user when they encounter a celestial artifact or BadMax, etc. */
 #message-board-container {
     width: 92%;
     height: 35%;
     background-color: #202238;
 }
 
-/*id for message board ul*/
+/* id for message board list */
 #message-list {
     height: 90%;
     width: 100%;
@@ -241,7 +263,8 @@ html, body {
     margin: 0;
 }
 
-/*class for message board li elements*/
+/* class for message board list elements; deals with 
+indiviual messages (alerts) */
 .message {
     padding: .5rem .5rem;
     margin: .2rem 0;
@@ -251,7 +274,7 @@ html, body {
     border-radius: 5px;
 }
 
-/*container class for data log*/
+/* container class for data log */
 .data-log-container {
     display: inherit;
     flex-direction: inherit;
@@ -259,18 +282,18 @@ html, body {
     text-align: center;
 }
 
-/*class to target heading spans*/
+/* class to target heading spans */
 .heading-span {
     display: inline-block;
 }
 
-/*container class for current heading*/
+/* container class for current heading */
 .heading-container {
     display: inherit;
     justify-content: center;
 }
 
-/*class for map, control panel, and status box containers*/
+/* class for map, control panel, and status box containers */
 .status-control-containers {
     display: inherit;
     flex-direction: column;
@@ -282,23 +305,24 @@ html, body {
     overflow: hidden;
 }
 
-/*the game saving button */
+/* the game saving button */
 .data-title .btn-game-save {
     font-size: 1.2em;
     font-weight: bold;
     color: #000;
 }
 
+/* shows is the game saved or not; may not be needed */
 .data-title .btn-game-save:not(:disabled):not(.disabled):active {
     color: #000;
 }
 
-/*control container specific*/
+/* control container specific */
 #controls {
     align-items: center;
 }
 
-/*to target input fields container*/
+/* to target input fields container */
 .control-fields {
     display: inherit;
     flex-direction: column;
@@ -308,12 +332,12 @@ html, body {
     width: 100%;
 }
 
-/*id to target movement form inputs*/
+/* id to target movement form inputs */
 #movement-form-fields {
     width: 100%;
 }
 
-/*id to target div container for east/west input buttons*/
+/* id to target div container for east/west input buttons; may not be needed anymore */
 #east-west-container {
     display: flex;
     justify-content: space-around;
@@ -321,28 +345,28 @@ html, body {
     margin: .5rem 0;
 }
 
-/*id for ship movement number input*/
+/* id for ship movement number input */
 #movement-magnitude {
     width: 20%;
 }
 
-/*id for sensor container, holds grid-container*/
+/*id for sensor container, lets the scanner actually do its job */
 #sensor-container {
     justify-content: center;
     align-items: center;
 }
 
-/*id to target scan input button*/
+/* id to target scan input button */
 #sensor-scan {
     width: 40%;
 }
 
-/*id for container holding ship status ul*/
+/* id for container holding ship status */
 #status-container {
     color: #fff;
 }
 
-/*id for ul displaying ship status*/
+/* id for displaying ship status */
 #status-list {
     height: 100%;
     width: 100%;

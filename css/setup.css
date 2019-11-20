@@ -1,7 +1,10 @@
+/* how long it takes to load the main game play screen after transitioning from the 
+main menu to the main game play screen */
 .setup-game {
     transition: all .3s ease-out;
 }
 
+/* where the main game play screen is set up on the screen */
 .setup-game {
     position: fixed;
     width: 100%;
@@ -13,20 +16,28 @@
     visibility: visible;
     z-index: 10;
 }
+
+/* deals with the transition */
 .setup-game.hide {
     opacity: 0;
     visibility: hidden;
 }
 
+/* deals with the settings buttons on the main menu screen; 
+ls is for list elements; Sprint 2*/
 .setup-btn-ls {
     max-width: 500px;
     margin: 0 auto;
 }
 
+/* deals with the buttons on the screen */
 .btn-block+.btn-block {
     margin-top: 50px;
 }
 
+/* modal windows are graphical control elements that deals with 
+the main game window; includes main menu screen and game play 
+screen */
 .modal {
     display: none;
     position: fixed;
@@ -38,13 +49,17 @@
     overflow: auto;
 }
   
+/* background color of the modal window and associated padding 
+and width */
 .modal-content {
     background-color: black;
     margin: 10% auto;
     padding: 20px;
     width: 60%;
 }
-/* this is the text box for the player's name */
+
+/* this is the text field for the player's name for the player to 
+save the game; Sprint 2*/
 .playerNameField {
     background: #8695a3;
     text-align: inherit;
@@ -53,6 +68,8 @@
 
 }
 
+/* this is the text box for the player's name for the player to 
+save the game; Sprint 2 */
 .playerNameBlock{
     background: #000000;
     text-align: inherit;
@@ -60,6 +77,7 @@
     overflow-x: hidden;
 }
 
+/* shows the list of saved games */
 .savedGameList{
     background: #000000;
     text-align: inherit;
@@ -67,21 +85,26 @@
     overflow-x: hidden;
 }
 
+/* deals with the settings button on the main menu page */
 .setup-btn {
     padding: 1rem 2rem;
     margin-top: 50px;
 }
 
+/* settings and play button margin and padding */
 .setup-game .game-start-btn {
     padding: 1rem 2rem;
     margin-top: 50px;
 }
+
+/* continue button margin and padding; could be combined with the 
+above settings and play button settings */
 .game-cont-btn{
     padding: 1rem 2rem;
     margin-top: 50px;
 }
 
-/* the main game tag */
+/* the main game displays; where the screen is, what sizing it is */
 .main-game {
     display: flex;
     flex-direction: column;

@@ -8,7 +8,7 @@ class GameMap {
         }
     }
 
-    /* not yet implemented */
+    // adding celestial objects + other objects to the game map
     add(object, x, y) {
         if(object == null)
             return false;
@@ -19,7 +19,8 @@ class GameMap {
         }
     }
 
-    /* not yet implemented */
+    // removes celestial objects + other objects once encountered
+    // on the game map
     remove(x, y) {
         if(!this.hasObject(x,y))
             return false;
@@ -43,13 +44,14 @@ class GameMap {
     
     /* build 128 x 128 map */
     renderMap( shipX, shipY) {
+        // creates the map outlines
         var outer = document.querySelector('#map-wrapper');
-
         this.mapContainer = document.createElement('table');
-
         outer.appendChild(this.mapContainer);
         this.mapContainer.className = 'map-table table table-bordered';
 
+        // creates the map elements/cells
+        // format/outline found on a tutorial online
         for (var row = (this.size - 1); row >= 0; --row) {
             var mapRow = document.createElement("tr");
             mapRow.className = 'map-row';
@@ -66,9 +68,7 @@ class GameMap {
                 }
                 //mapCell.innerHTML = mapCell.id;
                 mapCell.appendChild(mapObj);
-                mapRow.appendChild(mapCell);
-                
-
+                mapRow.appendChild(mapCell);            
             }
             this.mapContainer.appendChild(mapRow);
         }
@@ -77,7 +77,8 @@ class GameMap {
         }
     }
 
-   /* map moves with the ship */
+   /* map moves with the ship; that way we don't have a tiny ship and a big map 
+   taking up the whoel screen; tutorial also found online */
     move(x, y, callB, noAnimate) {
         if (!this.mapCellSize) {
             this.mapCellSize = document.querySelector('#c0-0').offsetWidth;
@@ -102,7 +103,7 @@ class GameMap {
         }
     }
 
-    /* not implemented yet, check for asteroid function maybe? */
+    /* not implemented yet, check for asteroid function maybe?; most likely will be discarded */
     checkAsteroidOnWay ( startX, startY, endX, endY ) {
         return true;
     }
