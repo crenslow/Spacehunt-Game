@@ -2,7 +2,7 @@
 
 function PopulateMap(gameMap) {
     // to be reimplemented
-    /*
+    
     generateCeleron(gameMap);
     generateXeon(gameMap);
     generateRyzen(gameMap);
@@ -72,7 +72,7 @@ function PopulateMap(gameMap) {
             generateCelestialObjects(gameMap, stationType, objCoordx, objCoordy);
         }
     }
-    */
+    
 }
 
 /* populates a saved map with the state it was left in */
