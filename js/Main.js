@@ -76,14 +76,15 @@ function initGame () {
     // setup + save game
     gameSetSave();
 
-    // render map
-    window.gameMap.renderMap(window.oldSpice.x, window.oldSpice.y);
-
     // update screen data
     updateHeading();
     updateLevels();
     
     PopulateMap(window.gameMap);
+
+    // render map
+    window.gameMap.renderMap(window.oldSpice.x, window.oldSpice.y);
+
 
     ctrecipe.tickObjects.push(function() { HitObj(window.oldSpice.x, window.oldSpice.y); } );
     ctrecipe.tick();
