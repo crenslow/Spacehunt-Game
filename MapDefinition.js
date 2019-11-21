@@ -35,15 +35,15 @@ var artifacts = {
 };
 //functions
 
-function writeArtifactsToFile()
+function writeArtifactsToFile( filename )
 {
     var artifactsJSON = JSON.stringify(artifacts);
-    localStorage.setItem("testJSON", artifactsJSON);
+    localStorage.setItem(filename, artifactsJSON);
 }
 
-function readArtifactsFromFile()
+function readArtifactsFromFile( filename )
 {
-    var art_JSON = localStorage.getItem("testJSON");
+    var art_JSON = localStorage.getItem(filename);
     return JSON.parse(art_JSON);
 }
 function collision( spaceObj )
