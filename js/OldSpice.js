@@ -55,14 +55,14 @@ class Ship {
 		else { //This will be for when we integrate random wormhole behavior
 			
 		}
+	var BadMaxret = BadMax(this.supplies, this.credit);
+	this.supplies = BadMaxret[0];
+	this.credit = BadMaxret[1];
 
         updateHeading();
         updateLevels();
 	//BadMax Encounter chance
-	var BadMaxret = BadMax(this.supplies, this.credit);
-	this.supplies = BadMaxret[0];
-	this.credit = BadMaxret[1];
-		
+			
 		//Check game over conditions
 	if(this.supplies < 1){
 		gameObj.GameOver("Your supplies have run dry.");	
