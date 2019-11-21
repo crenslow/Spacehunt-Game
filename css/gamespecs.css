@@ -1,100 +1,51 @@
-<!-- // NOT IMPLEMENTED YET; need to figure out alignment and images information for all of the game specifications -->
-
-// Classes: Degrees; what degrees OldSpice can move
-.deg0 {
-    -webkit-transform: rotate(90deg);
-}
-
-.deg30 {
-    -webkit-transform: rotate(60deg);
-}
-
-.deg60 {
-    -webkit-transform: rotate(30deg);
-}
-
-.deg90 {
-    -webkit-transform: rotate(0deg);
-}
-
-.deg120 {
-    -webkit-transform: rotate(-30deg);
-}
-
-.deg150 {
-    -webkit-transform: rotate(-60deg);
-}
-
-.deg180 {
-    -webkit-transform: rotate(-90deg);
-}
-
-.deg210 {
-    -webkit-transform: rotate(-120deg);
-}
-
-.deg240 {
-    -webkit-transform: rotate(-150deg);
-}
-
-.deg270 {
-    -webkit-transform: rotate(-180deg);
-}
-
-.deg300 {
-    -webkit-transform: rotate(-210deg);
-}
-
-.deg330 {
-    -webkit-transform: rotate(-240deg);
-}
-
-.asteroids {
-    background-image: url(img/asteroid.jpg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    height:100%;
-    width:100%;   
-}
-
-.boundaries {
-    background-color: white;
+.Asteroid {
+    background-image: url("../img/asteroid.png");
     background-size: contain;
     background-repeat: no-repeat;
     height:100%;
     width:100%;
 }
 
-.meteors {
-    background-image: url(img/meteor.jpg);
+.old-spice {
+    background-image: url("../img/oldspice.png");
     background-size: contain;
     background-repeat: no-repeat;
-    height:100%;
-    width:100%; 
+    height:80%;
+    width:100%;
+    position: relative;
+    z-index: 10;
 }
 
-.muskteslas {
-    background-image: url(img/musk.jpg);
+.MuskTeslaStation{
+    background-image: url("../img/musktesla.png");
     background-size: contain;
     background-repeat: no-repeat;
     height:100%;
     width:100%;
 }
 
-.OldSpice {
-    background-image: url(img/oldspice.jpg);
+.MeteorShower {
+    background-image: url("../img/meteor.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+}
+
+.Planet {
+    background-image: url("../img/planet.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+}
+
+.AbFreighter {
+    background-image: url("../img/freighter.png");
     background-size: contain;
     background-repeat: no-repeat;
     height:100%;
     width:100%;
     position: relative;
     z-index: 10;
-}
-
-.planets {
-    background-image: url(img/planet.jpg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    height:100%;
-    width:100%;
 }
