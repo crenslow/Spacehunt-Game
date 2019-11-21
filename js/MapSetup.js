@@ -62,11 +62,11 @@ class GameMap {
                 mapCell.className = 'map-cell';
                 mapCell.setAttribute('id', 'c' + col + '-' + row);
                 mapObj.className = 'map-obj';
-                if(this.hasObject(col, row))
-                {
-                    mapCell.innerHTML = this.map[col][row];
+                if (this.contents(col, row)) {
+                    mapObj.innerHTML = this.contents(col, row).name;
                 }
-                //mapCell.innerHTML = mapCell.id;
+                //}
+                
                 mapCell.appendChild(mapObj);
                 mapRow.appendChild(mapCell);            
             }
