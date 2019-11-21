@@ -1,8 +1,8 @@
 //BadMax implementation
 function BadMax(supplies, credits){
 		//1 in 10 chance to encounter on a move
-	var checkEncounter = Math.floor(Math.random() * 10);
-	if(checkEncounter == 9){
+	var checkEncounter = Math.floor(Math.random() * 50);
+	if(checkEncounter == 49){
 			//if encounter, choose event to happen 20% blown up, 30% Boards, 50% fight off
 		var Event = Math.floor(Math.random() * 100);
 		if(Event < 20){
