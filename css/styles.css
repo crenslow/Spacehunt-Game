@@ -5,6 +5,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    display: flex;
     background-color: #000000;
 }
 
@@ -57,7 +58,7 @@ background is formatted and aligned */
 /* deals with the data panel sizing */
 .data-panel .knownlocations-list-wrapper {
     overflow: auto;
-    margin: 10px 2px;
+    margin: 10px 5px;
     height: 100%;
 }
 
