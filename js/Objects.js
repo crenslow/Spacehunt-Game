@@ -251,31 +251,53 @@ KokaKolaRecipe.prototype.Collide = function() {
     gameMap.remove(oldSpice.x, oldSpice.y); // remove the recipe from the map because user has obtained it
 }
 
-// GAME OF CHANCE VAR
-var playGameOfChance;
+var playGameOfChance; // if the user wants to play the game of chance or not
 
-// SPACE STATION
-function SpaceStation ( attachedStations ) {
-   
+// stationsType variable because there are multiple stations
+function SpaceStation(stationsType) {
+  this.stations = stationsType; 
+  // go through the list of station types
+  for(i = 0; i < this.stations.length; ++i) {
+    this.objType += this.stations[i].type; 
+  }
 }
 
-SpaceStation.prototype = new MapObject( "Station", 0 );
+SpaceStation.prototype = new MapObject("Station", 0);
 
-SpaceStation.prototype.Collide = function () {
-   
+SpaceStation.prototype.Collide = function() {
+  val i; 
+  for(i = 0; i < this.stations.length; ++i) {
+     if(this.stations[i].promptUser()) { 
+      this.stations[i].purchase();
+     }
+  }
+  gameOfChance();
 }
-
-function CheckBalance ( price ) {
-   
+  
+// make sure the user has enough to buy the item
+function CheckBalance(price) {
+   if(price > oldSpice.credit)
+     return false;
+   else
+     return true;
 }
 
 function gameOfChance () {
-   
+   if(playGameOfChance) {
+     var playChance = Math.floor(Math.random() * Math.floor(4));
+     if(playChance < 2) {
+       if(confirm("Do you want to play a game of chance?")){
+         PlayGameofChance();
+       }
+     }
 }
 
 // WINNINGS 
 function PlayGameOfChance () {
-   
+   var winnings = Math.floor(Math.random() * Math.floor(100));
+   oldSpice.credit += winnings;
+   alert("You've won " + winnings + " credits!");
+   updateLevels();  // update the ship level details to the user
 }
 
 // MUSKTESTA
@@ -290,6 +312,19 @@ MuskTesla.prototype.MenuPrompt = function () {
 MuskTesla.prototype.Purchase = function () {
    
 }
+  
+// REPAIR DEPOT
+function RepairDepot () {
+   
+}
+
+RepairDepot.prototype.MenuPrompt = function () {
+  
+}
+
+RepairDepot.prototype.Purchase = function () {
+  
+} 
 
 // MINI MART
 function MiniMart () {
@@ -303,16 +338,3 @@ MiniMart.prototype.MenuPrompt = function () {
 MiniMart.prototype.Purchase = function () {
    
 }
-
-// REPAIR DEPOT
-function RepairDepot () {
-   
-}
-
-RepairDepot.prototype.MenuPrompt = function () {
-  
-}
-
-RepairDepot.prototype.Purchase = function () {
-  
-} 
