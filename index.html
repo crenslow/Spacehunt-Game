@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
-    <title>Space Hunt</title>
+    <head>
+        <title>Space Hunt</title>
+        
+        <style>
+            body {
+                background-color: #000000
+            }
+        </style>
+    </head>
     
     <body>
         <div class="setup-game jumbotron">
@@ -9,33 +17,37 @@
 
             <div id="playerNameField" class="input-group input-group-lg mb-3 setup-btn-ls">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Player Name: </span>
+                    <span class="input-group-text" id="basic-addon1">Save Game As: </span>
                 </div>
                 <input id="playerName" type="text" class="form-control" placeholder="" required>
             </div>
             
             <div id="savedGameListBlock"></div>
 
-            <div id="devLoadModal" class="modal"></div>
+            <div id="devLoadModal" class="modal">
+            </div>
             <div class="setup-btn-ls">
                 <button class="btn btn-primary btn-lg game-start-btn btn-block" id="startButton">Play</button>
                 <button class="btn btn-primary btn-lg setup-btn btn-block" id="setupButton" onclick=developerModeInit()>Settings</button>
                 <button class="btn btn-primary btn-lg game-cont-btn btn-block" id="continueButton" onclick="">Load Existing Game</button>
             </div>
+
         </div>
 
         <div class="main-game">
             <div class="main-container">
                 <div class="data-panel">
-                    <div id="gazetteer" class="gazetteer data-log-container">
-                        <div id="gazetteer-list-wrapper" class="gazetteer-list-wrapper">
-                            <ul class="list-group gazetteer-list">
+                    <div id="knownlocations" class="knownlocations data-log-container">
+                        <h1 class="data-title">Planet Locations</h1>
+                        <div id="knownlocations-list-wrapper" class="knownlocations-list-wrapper">
+                            <ul class="list-group knownlocations-list">
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <div id="main-screen-container">
+                    
                     <div id="map-container">
                         <div id="grid-container">
                             <div id="map-wrapper">
@@ -60,11 +72,13 @@
                 </div>
 
                 <div class="data-panel">
+
                     <div class="data-title">
                         <button id="game-save" type="button" class="btn btn-success btn-game-save">SAVE GAME</button>
                     </div>
                     
                     <div id="controls" class="status-control-containers">
+                        <h4 class="data-title" style="margin: 0 0">Control Center</h4>
                         <form class="control-fields">
                             <fieldset id="movement-form-fields">
                                 <input id="north-input" class="btn btn-secondary" value="N" type="button" onclick="window.oldSpice.move('N', getElementById('movement-magnitude').value)"/>
