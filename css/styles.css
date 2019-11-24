@@ -1,15 +1,16 @@
 /* main document styles */
 html, body {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
-    display: flex;
-    background-color: #000000;
+    font-family: sans-serif;
+    font-size: 15px;
 }
 
-/* the font that everything is currently in */
 @font-face { 
     font-family: 'Quadrit'; 
     src: url('../css/Quadrit.ttf'); 
@@ -18,7 +19,7 @@ html, body {
 * { 
     font-family: Quadrit;
     font-size: 15px;
-    color: #6a7782;
+    color: #ffffff;
 }
 
 /* container for the game play screen page and how the space landscape 
@@ -27,7 +28,7 @@ background is formatted and aligned */
     display: inherit;
     width: 100%;
     height: 100%;
-    background: url(../img/spacebackground.jpg);
+    background: url(../img/space.jpg);
     background-size: cover;
 }
 
@@ -37,15 +38,20 @@ background is formatted and aligned */
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: #000000;
-    opacity: 90%;
+    background: url(../img/side.jpg);
+    background-size: cover;
     width: 30%;
     height: 100%;
 }
 
 /* known locations section styles (the left panel); the gazetteer (saved locations) */
-#knownlocations {
+#gazetteer {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     height: 100%;
+    background: url(../img/side.jpg);
+    background-size: cover;
 }
 
 /* display 4 uses heading 4 to display; heading 4 seems to be the right size for font for now */
@@ -53,10 +59,11 @@ background is formatted and aligned */
     font-family: "Quadrit";
     font-weight: normal;
     font-size: 4rem;  
+    color: #ffffff;
 }
 
 /* deals with the data panel sizing */
-.data-panel .knownlocations-list-wrapper {
+.data-panel .gazetteer-list-wrapper {
     overflow: auto;
     margin: 10px 5px;
     height: 100%;
@@ -68,6 +75,7 @@ background is formatted and aligned */
     color: #fff;
     font-weight: bold;
     font-size: 1.5rem;
+    font-family: sans-serif;
 }
 
 /* deals with the data panels; how a user can interact with it */
@@ -243,6 +251,8 @@ in the cell */
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    background: url(../img/control.png);
+    background-size: cover
 }
 
 /*id for targeting message board; for when we're displaying messages
@@ -255,7 +265,7 @@ to the user when they encounter a celestial artifact or BadMax, etc. */
 
 /* id for message board list */
 #message-list {
-    height: 90%;
+    height: 80%;
     width: 100%;
     text-align: center;
     overflow-y: auto;
@@ -269,7 +279,7 @@ indiviual messages (alerts) */
 .message {
     padding: .5rem .5rem;
     margin: .2rem 0;
-    background-color: #000000;
+    background-color: #ffffffb8;
     width: 100%;
     text-align: start;
     border-radius: 5px;
@@ -308,7 +318,7 @@ indiviual messages (alerts) */
 
 /* the game saving button */
 .data-title .btn-game-save {
-    font-size: 1.2em;
+    font-size: 0.8em;
     font-weight: bold;
     color: #000;
 }
@@ -348,7 +358,7 @@ indiviual messages (alerts) */
 
 /* id for ship movement number input */
 #movement-magnitude {
-    width: 20%;
+    width: 35%;
 }
 
 /*id for sensor container, lets the scanner actually do its job */
