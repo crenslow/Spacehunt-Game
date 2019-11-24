@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Space Hunt</title>
-        
-        <style>
-            body {
-                background-color: #000000
-            }
-        </style>
-    </head>
+     <title>Space Hunt</title>
     
     <body>
         <div class="setup-game jumbotron">
@@ -37,23 +29,22 @@
         <div class="main-game">
             <div class="main-container">
                 <div class="data-panel">
-                    <div id="knownlocations" class="knownlocations data-log-container">
-                        <h1 class="data-title">Planet Locations</h1>
-                        <div id="knownlocations-list-wrapper" class="knownlocations-list-wrapper">
-                            <ul class="list-group knownlocations-list">
+                    <div id="gazetteer" class="gazetteer data-log-container">
+                        
+                        <div id="gazetteer-list-wrapper" class="gazetteer-list-wrapper">
+                            <ul class="list-group gazetteer-list">
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <div id="main-screen-container">
-                    
+                 <div id="main-screen-container">
                     <div id="map-container">
                         <div id="grid-container">
                             <div id="map-wrapper">
                                 <div id="ship-wrapper" class="ship-wrapper">
                                     <div id="heading-container">
-                                        <span id="heading" class="heading-span badge badge-primary badge-pill"></span>
+                                        <span id="heading" class="heading-span badge badge-primary badge-pill">0, 0</span>
                                     </div>
                                     <div class="old-spice deg0"></div>
                                     <div id="sensor" class="sensor"></div>
@@ -72,13 +63,12 @@
                 </div>
 
                 <div class="data-panel">
-
                     <div class="data-title">
-                        <button id="game-save" type="button" class="btn btn-success btn-game-save">SAVE GAME</button>
+                        <button id="game-save" type="button" class="btn btn-success btn-game-save">SAVE
+                            GAME</button>
                     </div>
                     
-                    <div id="controls" class="status-control-containers">
-                        <h4 class="data-title" style="margin: 0 0">Control Center</h4>
+                     <div id="controls" class="status-control-containers">
                         <form class="control-fields">
                             <fieldset id="movement-form-fields">
                                 <input id="north-input" class="btn btn-secondary" value="N" type="button" onclick="window.oldSpice.move('N', getElementById('movement-magnitude').value)"/>
