@@ -26,7 +26,7 @@ main menu to the main game play screen */
 /* deals with the settings buttons on the main menu screen; 
 ls is for list elements; Sprint 2*/
 .setup-btn-ls {
-    max-width: 500px;
+    max-width: 400px;
     margin: 0 auto;
 }
 
@@ -52,7 +52,7 @@ screen */
 /* background color of the modal window and associated padding 
 and width */
 .modal-content {
-    background-color: black;
+    background-color: white;
     margin: 10% auto;
     padding: 20px;
     width: 60%;
@@ -61,7 +61,7 @@ and width */
 /* this is the text field for the player's name for the player to 
 save the game; Sprint 2*/
 .playerNameField {
-    background: #8695a3;
+    background: #E9ECEF;
     text-align: inherit;
     overflow-y: scroll;
     overflow-x: hidden;
