@@ -7,9 +7,9 @@
 /* Boxes the map grid */
 #map-wrapper {
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
-    width: 50px;
+    width: 60px;
     height: 60px;
     transform: translate(-50%, -50%);
 }
@@ -33,7 +33,7 @@ the game play screen */
     left: 0;
     outline: 25px solid #3d3d3d;
     background: transparent;
-    transition: all 0.5s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
 
@@ -55,12 +55,12 @@ in the map */
     display: block;
     content: attr(alt);
     position: relative;
-    top: -20px;
-    color: #000000;
-    background: #000000;
+    top: -22px;
+    color: #fff;
+    background: #ffffff59;
     width: fit-content;
-    font-size: .5rem;
-    font-weight: normal;
+    font-size: .8rem;
+    font-weight: bold;
     padding: 0 5px;
     border-radius: 5px;
 }
