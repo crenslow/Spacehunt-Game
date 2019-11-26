@@ -1,4 +1,4 @@
-/*
+
 class Sensor {
     constructor( ship, map ) {
         this.ship = ship;           //ship
@@ -143,4 +143,3 @@ class Sensor {
 	  }		
      }
  }
-*/
