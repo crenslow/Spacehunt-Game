@@ -3,6 +3,36 @@ const nameInput = document.querySelector('#playerName');
 
 // MAIN VARIABLES; (globals, in a sense)
 window.gameData = {
+    mapSize: 128,
+    celeron: null,
+    xeon: null,
+    ryzen: null,
+    eniac: null,
+    badMax: new Array( 2 ),
+    recipe: new Array( 2 ),
+    stationTRM: [],
+    stationTR: [],
+    stationTM: [],
+    stationT: [],
+    abFreighter: [],
+    asteroid: [],
+    meteorShower: [],
+    asteroidRandom: true,
+    meteorRandom: true,
+    freighterRandom: true,
+    stationRandom: true,
+    gaze: { length: 0 },
+    msgs: [],
+    savedGamed: false,
+    shipX: 0,
+    shipY: 0,
+    shipEnergy: 1000,
+    shipSupplies: 100,
+    shipCredit: 1000,
+    shipEngineLv: 1,
+    shipDamaged: false,
+    shipNormalPlay: 1,
+    /*
     mapsize: 128,
     celeron: null,
     xeon: null,
@@ -29,6 +59,7 @@ window.gameData = {
     shipDamaged: false,
     shipNormalPlay: true,
     randomWormhole: false,
+    */
 };
 
 // when the window intially opens, this is what happens
@@ -76,16 +107,15 @@ function initGame () {
     // setup + save game
     gameSetSave();
 
+    // render map
+    window.gameMap.renderMap(window.oldSpice.x, window.oldSpice.y);
+    
     // update screen data
     updateHeading();
     updateLevels();
     
     PopulateMap(window.gameMap);
-
-    // render map
-    window.gameMap.renderMap(window.oldSpice.x, window.oldSpice.y);
-
-
+    
     ctrecipe.tickObjects.push(function() { HitObj(window.oldSpice.x, window.oldSpice.y); } );
     ctrecipe.tick();
 }
@@ -130,6 +160,6 @@ function populateSavedGameList () {
 }
 
 // update the player name input box when a past game has been selected
-function updatePlayerNameField ( selectedGamed ) {
-   
+function updatePlayerNameField(selected) {
+   nameInput.value = localStorage.key(selected);
 }
