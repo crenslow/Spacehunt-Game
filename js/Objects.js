@@ -279,6 +279,7 @@ function gameOfChance () {
          PlayGameofChance();
        }
      }
+	}
 }
 
 // WINNINGS 
