@@ -20,7 +20,7 @@ function PopulateMap(gameMap) {
         for(let coords of window.gameData.asteroids) {
             let objCoordx = coords[0];
             let objCoordy = coords[1];
-            generateCelestialObjects(gameMap, 4, objCoordx, objCoordy);
+            generateCelestialObjects(gameMap, 0, objCoordx, objCoordy);
         }
     }
 
@@ -149,7 +149,7 @@ function generateEniacAtLocation(gameMap, eniacCoordX, eniacCoordY) {
     mapObj = new Eniac();
     mapObj.x = eniacCoordX;
     mapObj.y = eniacCoordY;
-    updateLogs( gameMap, mapObj, eniacCoordX, eniacCoordY );
+    updateLogs( gameMap, mapObj, eniacCoordX, eniacCoordY);
 }
 
 // * XEON *
