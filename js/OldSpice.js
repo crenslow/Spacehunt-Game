@@ -26,10 +26,10 @@ class Ship {
     advanced engine. (It consumes 5 times the amount of energy if the ship is
     damaged) */
         
-        if (direction == 'N' && !window.gameMap.asteroidCheck(this, this.y+eval(distance),'Y')) this.y += eval(distance);
-        else if (direction == 'W' && !window.gameMap.asteroidCheck(this, this.x-eval(distance),'X')) this.x -= eval(distance);
-        else if (direction == 'E' && !window.gameMap.asteroidCheck(this, this.x+eval(distance),'X')) this.x += eval(distance);
-        else if (!window.gameMap.asteroidCheck(this, this.y-eval(distance),'Y')) this.y -= eval(distance);
+        if (direction == 'N' /*&& !window.gameMap.asteroidCheck(this, this.y+eval(distance),'Y')*/) this.y += eval(distance);
+        else if (direction == 'W' /*&& !window.gameMap.asteroidCheck(this, this.x-eval(distance),'X')*/) this.x -= eval(distance);
+        else if (direction == 'E' /*&& !window.gameMap.asteroidCheck(this, this.x+eval(distance),'X')*/) this.x += eval(distance);
+        else /*if (!window.gameMap.asteroidCheck(this, this.y-eval(distance),'Y'))*/ this.y -= eval(distance);
         
         this.supplies -= 2;
 
