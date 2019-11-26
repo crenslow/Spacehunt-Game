@@ -158,65 +158,65 @@ class GameMap {
     ship's damage value to damaged if it wasn't before (and will end the game if it's
     already damaged), change the ship's position to that of the first asteroid it hits, and
     removes that asteroid from the map. Returns true if an asteroid was hit and false if not*/
-    //WIP
-    bool asteroidCheck(theShip, end, xy) {
-        if (xy == 'X' && theShip.x < end) {
-            for (let i = theShip.x; ++i; i <= end && i < this.size) {
-                if (typeof(this.contents(i, theShip.y)) == "Asteroid") {
-                    if (theShip.isDamaged) {
-                        gameObj.gameOver("Your ship hit an asteroid and exploded into bits! Game Over!");
+        //WIP
+        asteroidCheck(theShip, end, xy) {
+            if (xy == 'X' && theShip.x < end) {
+                for (let i = theShip.x; ++i; i <= end && i < this.size) {
+                    if (typeof(this.contents(i, theShip.y)) == "Asteroid") {
+                        if (theShip.isDamaged) {
+                            gameObj.gameOver("Your ship hit an asteroid and exploded into bits! Game Over!");
+                            return true;
+                        }
+                        theShip.isDamaged = true;
+                        theShip.x = i;
+                        this.remove(i, theShip.y);
                         return true;
                     }
-                    theShip.isDamaged = true;
-                    theShip.x = i;
-                    this.remove(i, theShip.y);
-                    return true;
                 }
             }
-        }
-        else if (xy == 'X' && end < theShip.x) {
-            for (let i = theShip.x; --i; i >= end && i >= 0) {
-                if (typeof(this.contents(i, theShip.y)) == "Asteroid") {
-                    if (theShip.isDamaged) {
-                        gameObj.gameOver("Your ship hit an asteroid and exploded into bits! Game Over!");
+            else if (xy == 'X' && end < theShip.x) {
+                for (let i = theShip.x; --i; i >= end && i >= 0) {
+                    if (typeof(this.contents(i, theShip.y)) == "Asteroid") {
+                        if (theShip.isDamaged) {
+                            gameObj.gameOver("Your ship hit an asteroid and exploded into bits! Game Over!");
+                            return true;
+                        }
+                        theShip.isDamaged = true;
+                        theShip.x = i;
+                        this.remove(i, theShip.y);
                         return true;
                     }
-                    theShip.isDamaged = true;
-                    theShip.x = i;
-                    this.remove(i, theShip.y);
-                    return true;
                 }
             }
-        }
-        else if (xy == 'Y' && theShip.y < end) {
-            for (let i = theShip.y; ++i; i <= end && i < this.size) {
-                if (typeof(this.contents(theShip.x, i)) == "Asteroid") {
-                    if (theShip.isDamaged) {
-                        gameObj.gameOver("Your ship hit an asteroid and exploded into bits! Game Over!");
+            else if (xy == 'Y' && theShip.y < end) {
+                for (let i = theShip.y; ++i; i <= end && i < this.size) {
+                    if (typeof(this.contents(theShip.x, i)) == "Asteroid") {
+                        if (theShip.isDamaged) {
+                            gameObj.gameOver("Your ship hit an asteroid and exploded into bits! Game Over!");
+                            return true;
+                        }
+                        theShip.isDamaged = true;
+                        theShip.y = i;
+                        this.remove(theShip.x, i);
                         return true;
                     }
-                    theShip.isDamaged = true;
-                    theShip.y = i;
-                    this.remove(theShip.x, i);
-                    return true;
                 }
             }
-        }
-        else if (xy == 'Y' && end < theShip.y) {
-            for (let i = theShip.y; --i; i >= end && i >= 0) {
-                if (typeof(this.contents(theShip.x, i)) == "Asteroid") {
-                    if (theShip.isDamaged) {
-                        gameObj.gameOver("Your ship hit an asteroid and exploded into bits! Game Over!");
+            else if (xy == 'Y' && end < theShip.y) {
+                for (let i = theShip.y; --i; i >= end && i >= 0) {
+                    if (typeof(this.contents(theShip.x, i)) == "Asteroid") {
+                        if (theShip.isDamaged) {
+                            gameObj.gameOver("Your ship hit an asteroid and exploded into bits! Game Over!");
+                            return true;
+                        }
+                        theShip.isDamaged = true;
+                        theShip.y = i;
+                        this.remove(theShip.x, i);
                         return true;
                     }
-                    theShip.isDamaged = true;
-                    theShip.y = i;
-                    this.remove(theShip.x, i);
-                    return true;
                 }
             }
+
+            return false;
         }
-    
-    return false;
-    }
 }
