@@ -25,11 +25,11 @@ class Ship {
     a basic engine, 5 * distance for a medium engine, and 1 * distance for an
     advanced engine. (It consumes 5 times the amount of energy if the ship is
     damaged) */
-    
-        if (direction == 'N') this.y += eval(distance);
-        else if (direction == 'W') this.x -= eval(distance);
-        else if (direction == 'E') this.x += eval(distance);
-        else this.y -= eval(distance);
+        
+        if (direction == 'N' && !window.gameMap.asteroidCheck(this, this.y+eval(distance),'Y')) this.y += eval(distance);
+        else if (direction == 'W' && !window.gameMap.asteroidCheck(this, this.x-eval(distance),'X')) this.x -= eval(distance);
+        else if (direction == 'E' && !window.gameMap.asteroidCheck(this, this.x+eval(distance),'X')) this.x += eval(distance);
+        else if (!window.gameMap.asteroidCheck(this, this.y-eval(distance),'Y')) this.y -= eval(distance);
         
         this.supplies -= 2;
 
@@ -55,21 +55,21 @@ class Ship {
 		else { //This will be for when we integrate random wormhole behavior
 			
 		}
-	var BadMaxret = BadMax(this.supplies, this.credit);
-	this.supplies = BadMaxret[0];
-	this.credit = BadMaxret[1];
+	   var BadMaxret = BadMax(this.supplies, this.credit);
+	   this.supplies = BadMaxret[0];
+	   this.credit = BadMaxret[1];
 
         updateHeading();
         updateLevels();
-	//BadMax Encounter chance
+	   //BadMax Encounter chance
 			
 		//Check game over conditions
-	if(this.supplies < 1){
-		gameObj.GameOver("Your supplies have run dry.");	
-	}
-	if(this.energy < 1){
-		gameObj.GameOver("Your energy has run out.");
-        }
+	   if(this.supplies < 1){
+	       gameObj.GameOver("Your supplies have run dry.");	
+	   }
+	   if(this.energy < 1){
+	       gameObj.GameOver("Your energy has run out.");
+       }
 		
         window.gameMap.move(this.x, this.y);
 		
