@@ -14,7 +14,7 @@ function PopulateMap(gameMap) {
         for(let i = 0; i < 10; ++i) {
             let objCoordx = Math.ceil(Math.random() * (gameMap.size));
             let objCoordy = Math.ceil(Math.random() * (gameMap.size));
-            generateCelestialObjects(gameMap, 4, objCoordx, objCoordy);
+            generateCelestialObjects(gameMap, 0, objCoordx, objCoordy);
         }
     } else {
         for(let coords of window.gameData.asteroids) {
@@ -29,13 +29,13 @@ function PopulateMap(gameMap) {
         for(let i = 0; i < 10; ++i) {
             let objCoordx = Math.ceil(Math.random() * (gameMap.size));
             let objCoordy = Math.ceil(Math.random() * (gameMap.size));
-            generateCelestialObjects(gameMap, 6, objCoordx, objCoordy); 
+            generateCelestialObjects(gameMap, 2, objCoordx, objCoordy); 
         }
     } else {
         for(let coords of window.gameData.meteors) {
             let objCoordx = coords[0];
             let objCoordy = coords[1];
-            generateCelestialObjects(gameMap, 6, objCoordx, objCoordy);
+            generateCelestialObjects(gameMap, 2, objCoordx, objCoordy);
         }
     }
     
@@ -44,13 +44,13 @@ function PopulateMap(gameMap) {
         for(let i = 0; i < 10; ++i) {
             let objCoordx = Math.ceil(Math.random() * (gameMap.size));
             let objCoordy = Math.ceil(Math.random() * (gameMap.size));
-            generateCelestialObjects(gameMap, 5, objCoordx, objCoordy);
+            generateCelestialObjects(gameMap, 1, objCoordx, objCoordy);
         }
     } else {
         for(let coords of window.gameData.freighters) {
             let objCoordx = coords[0];
             let objCoordy = coords[1];
-            generateCelestialObjects(gameMap, 5, objCoordx, objCoordy);
+            generateCelestialObjects(gameMap, 1, objCoordx, objCoordy);
         }
     }
 
