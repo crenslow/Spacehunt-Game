@@ -1,35 +1,32 @@
-/*11/19/19 update: the following keyboard functionality is incomplete since I
-changed the movement function, so I'm putting it in comments for now. -Josh
-// template obtained from event listener tutorial
-// allows the user to use their keyboard and mouseclicks to move
+/*The following adds an event handler for keypresses to check for WASD or arrow
+keys so that the user can navigate using the keyboard. Additionally, spacebar
+activates the scan function and inputting a number will automatically highlight
+the movement magnitude form. -Josh */
 window.addEventListener("keydown", event => {
     let distance = document.getElementById("movement-magnitude").value;
-    let nextInput = document.getElementById("movement-magnitude");
-    let keyPressed = event.keyCode;
+    let magnitudeBox = document.getElementById("movement-magnitude");
 
-    // checks to make sure the ship has been created, that the game has started
-    // will only move the ship if it is within the bounds of the map
-    if (window.oldSpice != undefined && distance > 0 && distance < gameData.mapsize) {
-        if (keyPressed === 38 || event.key === 'w') {
-            submitHeading(distance, 'N');
-        } else if (keyPressed === 37 || event.key === 'a') {
-            submitHeading(distance, 'W');
-        } else if (keyPressed === 40 || event.key === 's') {
-            submitHeading(distance, 'S');
-        } else if (keyPressed === 39 || event.key === 'd') {
-            submitHeading(distance, 'E');
-        } else if (keyPressed === 32) {
+    //Checks to make sure the ship has been created before trying to move it
+    if (window.oldSpice != undefined) {
+        if (event.key === 'ArrowUp' || event.key === 'w') {
+            window.oldSpice.move('N', distance);
+        } else if (event.key === 'ArrowLeft' || event.key === 'a') {
+            window.oldSpice.move('W', distance);
+        } else if (event.key === 'ArrowDown' || event.key === 's') {
+            window.oldSpice.move('S', distance);
+        } else if (event.key === 'ArrowRight' || event.key === 'd') {
+            window.oldSpice.move('E', distance);
+        } else if (event.key === ' ') {  //The scan functionality
             oldSpice.scan();
-        } else if (keyPressed === 49 || keyPressed === 50 ||
-            keyPressed === 51 || keyPressed === 52 ||
-            keyPressed === 53 || keyPressed === 54 ||
-            keyPressed === 55 || keyPressed === 56 ||
-            keyPressed === 57 || keyPressed === 58) {
-            nextInput.focus();
+        } else if (event.key === '0' || event.key === '1' ||  //
+            event.key === '2' || event.key === '3' ||
+            event.key === '4' || event.key === '5' ||
+            event.key === '6' || event.key === '7' ||
+            event.key === '8' || event.key === '9') {
+            magnitudeBox.focus();
         }
     }
 } );
-*/
 
 function savedGameDisplay(savedGameMode) {
     
