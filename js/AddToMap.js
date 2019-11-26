@@ -1,8 +1,5 @@
 /* Add items to the map */
-
 function PopulateMap(gameMap) {
-    // to be reimplemented
-    
     generateCeleron(gameMap);
     generateXeon(gameMap);
     generateRyzen(gameMap);
@@ -17,13 +14,13 @@ function PopulateMap(gameMap) {
         for(let i = 0; i < 10; ++i) {
             let objCoordx = Math.ceil(Math.random() * (gameMap.size));
             let objCoordy = Math.ceil(Math.random() * (gameMap.size));
-            generateCelestialObjects(gameMap, 4, objCoordx, objCoordy);
+            generateCelestialObjects(gameMap, 0, objCoordx, objCoordy);
         }
     } else {
         for(let coords of window.gameData.asteroids) {
             let objCoordx = coords[0];
             let objCoordy = coords[1];
-            generateCelestialObjects(gameMap, 4, objCoordx, objCoordy);
+            generateCelestialObjects(gameMap, 0, objCoordx, objCoordy);
         }
     }
 
@@ -32,13 +29,13 @@ function PopulateMap(gameMap) {
         for(let i = 0; i < 10; ++i) {
             let objCoordx = Math.ceil(Math.random() * (gameMap.size));
             let objCoordy = Math.ceil(Math.random() * (gameMap.size));
-            generateCelestialObjects(gameMap, 4, objCoordx, objCoordy); 
+            generateCelestialObjects(gameMap, 2, objCoordx, objCoordy); 
         }
     } else {
         for(let coords of window.gameData.meteors) {
             let objCoordx = coords[0];
             let objCoordy = coords[1];
-            generateCelestialObjects(gameMap, 4, objCoordx, objCoordy);
+            generateCelestialObjects(gameMap, 2, objCoordx, objCoordy);
         }
     }
     
@@ -47,13 +44,13 @@ function PopulateMap(gameMap) {
         for(let i = 0; i < 10; ++i) {
             let objCoordx = Math.ceil(Math.random() * (gameMap.size));
             let objCoordy = Math.ceil(Math.random() * (gameMap.size));
-            generateCelestialObjects(gameMap, 4, objCoordx, objCoordy);
+            generateCelestialObjects(gameMap, 1, objCoordx, objCoordy);
         }
     } else {
         for(let coords of window.gameData.freighters) {
             let objCoordx = coords[0];
             let objCoordy = coords[1];
-            generateCelestialObjects(gameMap, 4, objCoordx, objCoordy);
+            generateCelestialObjects(gameMap, 1, objCoordx, objCoordy);
         }
     }
 
@@ -81,8 +78,31 @@ function PopulateSavedMap ( gameMap, savedMap ) {
 }
 
 /* generates celestial objects */
-function generateCelestialObjects ( gameMap, type, celestX, celestY ) {
-   
+function generateCelestialObjects (gameMap, type, celestX, celestY) {
+   switch(type) {
+       case 0:
+            mapObj = new Asteroid();
+            break;
+       case 1: 
+            mapObj = new AbFreighter();
+            break;
+       case 2: 
+            mapObj = new MeteorShower();
+            break;
+       case 3: 
+            mapObj = new SpaceStation([new MuskTesla(100, 1000), new RepairDepot, new MiniMart()]);
+            break;
+       case 4: 
+            mapObj = new SpaceStation([new MuskTesla(100, 1000), new RepairDepot()]);
+            break;
+       case 5: 
+            mapObj = new SpaceStation([new MuskTesla( 100, 1000 ), new MiniMart()]);
+            break;
+       case 6: 
+            mapObj = new SpaceStation([new MuskTesla( 100, 1000 )]);
+            break;
+   }
+   updateLogs(gameMap, mapObj, celestX, celestY);
 }
 
 /* save the current state of the game */
@@ -97,9 +117,9 @@ function updateLogs ( gameMap, mapObj, objCoordX, objCoordY ) {
 // generateCeleronAtLocation function to actually place Celeron 
 // on the map
 function generateCeleron( gameMap ) {
-    let randomCelX = Math.ceil(Math.random() * (gameMap.size));
-    let randomCelY = Math.ceil(Math.random() * (gameMap.size));
-    generateCeleronAtLocation(gameMap, randomCelX, randomCelY);
+    let randomCellX = Math.ceil(Math.random() * (gameMap.size));
+    let randomCellY = Math.ceil(Math.random() * (gameMap.size));
+    generateCeleronAtLocation(gameMap, randomCellX, randomCellY);
 }
 
 // places Celeron on the map
@@ -120,7 +140,7 @@ function generateCeleronAtLocation(gameMap, celeronCoordX, celeronCoordY) {
 // generate eniac at a random x and y position, call the
 // generateEniacAtLocation function to actually place eniac 
 // on the map
-function generateEniac ( gameMap ) {
+function generateEniac (gameMap) {
     generateEniacAtLocation(gameMap, 0, 0);
 }
 
@@ -129,7 +149,7 @@ function generateEniacAtLocation(gameMap, eniacCoordX, eniacCoordY) {
     mapObj = new Eniac();
     mapObj.x = eniacCoordX;
     mapObj.y = eniacCoordY;
-    updateLogs( gameMap, mapObj, eniacCoordX, eniacCoordY );
+    updateLogs( gameMap, mapObj, eniacCoordX, eniacCoordY);
 }
 
 // * XEON *
@@ -139,15 +159,15 @@ function generateEniacAtLocation(gameMap, eniacCoordX, eniacCoordY) {
 function generateXeon(gameMap) {
     let randomXeonX = Math.ceil(Math.random() * (gameMap.size));
     let randomXeonY = Math.ceil(Math.random() * (gameMap.size));
-    generateXeonAtLocation(gameMap, randomXeonX, randomXeonY)
+    generateXeonAtLocation(gameMap, randomXeonX, randomXeonY);
 }
 
 // places Xeon on the map
 function generateXeonAtLocation(gameMap, xeonCoordX, xeonCoordY) {
     mapObj = new Xeon();
-    if ( gameData.xeonX || gameData.xeonX === 0 )
+    if (gameData.xeonX || gameData.xeonX === 0)
         xeonCoordX = gameData.xeonX;
-    if ( gameData.xeonY || gameData.xeonY === 0 )
+    if (gameData.xeonY || gameData.xeonY === 0)
         xeonCoordY = gameData.xeonY;
     mapObj.x = xeonCoordX;
     mapObj.y = xeonCoordY;
@@ -160,9 +180,9 @@ function generateXeonAtLocation(gameMap, xeonCoordX, xeonCoordY) {
 // generateRyzenAtLocation function to actually place Ryzen 
 // on the map
 function generateRyzen ( gameMap ) {
-    let randomRyzenX = Math.ceil(Math.random() * (gameMap.size));
-    let randomRyzenY = Math.ceil(Math.random() * (gameMap.size));
-    generateRyzenAtLocation(gameMap, randomRyzenX, randomRyzenY)
+    let randRyzenX = Math.ceil(Math.random() * (gameMap.size));
+    let randRyzenY = Math.ceil(Math.random() * (gameMap.size));
+    generateRyzenAtLocation(gameMap, randRyzenX, randRyzenY)
 }
 
 // places Ryzen on the map

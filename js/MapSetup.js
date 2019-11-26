@@ -10,6 +10,32 @@ class GameMap {
 
     // adding celestial objects + other objects to the game map
     add(object, x, y) {
+        let bounds = this.map.length;
+        // if the coordinates are out of bounds, don't add the object
+        if(x >= bounds || y >= bounds || x < 0 || y < 0)
+            return false; 
+        // if the cell already has an object, don't add the new object
+        if(this.contents(x,y)) 
+            return false; 
+        this.map[x][y] = object; 
+        
+        // if the object is not hidden to the user
+        if(!object.isHidden) {
+            // more info: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+            // more info: https://www.youtube.com/watch?v=JlgLDfINXvY
+            // used to return matches for the object if the object is not hidden
+            var objDOM = document.querySelector('#c' + x + '-' + y + ' .map-obj'),
+                objName = (object.name != undefined) ? object.name : object.objType;
+            objDOM.className += 'showed-obj' + object.objType; 
+            objDOM.setAttribute('alt', objName); 
+        }
+        
+        return true;
+        
+        /*
+        // commented this section out to test a new implementation of the add function
+        // new implementation; users should be able to physically see the object on the 
+        // map using the document query selected
         if(object == null)
             return false;
         else
@@ -17,28 +43,45 @@ class GameMap {
             this.map[x][y] = object;
             return true;
         }
+        */
     }
 
     // removes celestial objects + other objects once encountered
     // on the game map
     remove(x, y) {
+        // more info: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+        // more info: https://www.youtube.com/watch?v=JlgLDfINXvY
+        
+        // if the cell has an object and it has been encounter, delete the object:
+        if(this.hasObject(x,y)) {
+            delete this.map[x][y];
+            document.querySelector('#c' + x + '-' + y + ' .map-obj').className = 'map-obj';
+            return true; 
+        }
+        return false; 
+        
+        /*
+        // comment this section out to test a new implementation of the add function
+        // new implementation; users should be able to physically see the object on the 
+        // map using the document query selected
         if(!this.hasObject(x,y))
             return false;
         this.map[x][y] = null;
         return true;
+        */
     }
 
     /* contents of cell at (x, y) */
     contents(x, y) {
-        let max = this.map.length;
-        if (x >= max || y >= max || x < 0 || y < 0) return null;
+        let bounds = this.map.length;
+        if (x >= bounds || y >= bounds || x < 0 || y < 0) return null;
         return this.map[x][y];
     }
    
-    /* does the cell have any objects check */
+    /* does the cell have any objects check; a helper function */
     hasObject(x, y) {
-        let max = this.map.length;
-        if (x >= max || y >= max || x < 0 || y < 0) return false;
+        let bounds = this.map.length;
+        if (x >= bounds || y >= bounds || x < 0 || y < 0) return false;
         return Boolean(this.map[x][y]);
     }
     
@@ -52,7 +95,7 @@ class GameMap {
 
         // creates the map elements/cells
         // format/outline found on a tutorial online
-        for (var row = (this.size - 1); row >= 0; --row) {
+        for(var row = (this.size - 1); row >= 0; --row) {
             var mapRow = document.createElement("tr");
             mapRow.className = 'map-row';
             mapRow.setAttribute('id', 'row-' + row);
@@ -62,11 +105,13 @@ class GameMap {
                 mapCell.className = 'map-cell';
                 mapCell.setAttribute('id', 'c' + col + '-' + row);
                 mapObj.className = 'map-obj';
+                
+                /*
                 if (this.contents(col, row)) {
                     mapObj.innerHTML = this.contents(col, row).name;
                 }
-                //}
-                
+                */
+
                 mapCell.appendChild(mapObj);
                 mapRow.appendChild(mapCell);            
             }
@@ -80,6 +125,8 @@ class GameMap {
    /* map moves with the ship; that way we don't have a tiny ship and a big map 
    taking up the whoel screen; tutorial also found online */
     move(x, y, callB, noAnimate) {
+        // more info: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+        // more info: https://www.youtube.com/watch?v=JlgLDfINXvY
         if (!this.mapCellSize) {
             this.mapCellSize = document.querySelector('#c0-0').offsetWidth;
         }

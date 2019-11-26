@@ -8,18 +8,16 @@ function MapObject(type, radius) {
 }
 
 MapObject.prototype.Collide = function() {
-  console.log("collision noted"); 
+  console.log("collision noted in the console log"); 
 }
 
 // ASTEROID
-function Asteroid() {
-
-}
+function Asteroid() { }
 
 Asteroid.prototype = new MapObject('Asteroid', 0); 
 
 Asteroid.prototype.DamageShip = function() {
-  alert("OldSpice bare missed an asteroid! Damage occurred!"); 
+  alert("OldSpice barely missed an asteroid! Damage occurred!"); 
   oldSpice.isDamaged = true; 
 }
 
@@ -29,7 +27,7 @@ Asteroid.prototype.DestroyShip = function() {
 }
 
 Asteroid.prototype.Collide = function() {
-  MapObejct.prototype.Collide.call(this); 
+  MapObject.prototype.Collide.call(this); 
   let eventDecider = Math.random(); 
   if(eventDecider < 0.9) {
     this.DamageShip(); 
@@ -40,9 +38,7 @@ Asteroid.prototype.Collide = function() {
 }
 
 // METEOR SHOWER
-function MeteorShower() {
-
-}
+function MeteorShower() { }
 
 MeteorShower.prototype = new MapObject("MeteorShower", 0);
 
@@ -53,32 +49,30 @@ MeteorShower.prototype.Collide = function() {
 }
 
 // ABANDONED FREIGHTER
-function AbFreighter() { 
-
-}
+function AbFreighter() { }
 
 AbFreighter.prototype = new MapObject("AbFreighter", 0);
 
 AbFreighter.prototype.Loot = function() {
     let maxEnergy = 1000;
     let maxSupply = 100;
-    let retEnergy;
-    let retSupply;
+    let retrievedEnergy;
+    let retrievedSupply;
 
-    let roll = Math.random();
-    if (roll < 0.75) {
-        retEnergy = 0.1 * maxEnergy;
-        retSupply = 0.1 * maxSupply;
+    let probability = Math.random();
+    if (probability < 0.75) {
+        retrievedEnergy = 0.1 * maxEnergy;
+        retrievedSupply = 0.1 * maxSupply;
     }
     else if (roll < 0.90) {
-        retEnergy = 0.5 * maxEnergy;
-        retSupply = 0.5 * maxSupply;
+        retrievedEnergy = 0.5 * maxEnergy;
+        retrievedSupply = 0.5 * maxSupply;
     }
     else {
-        retEnergy = maxEnergy;
-        retSupply = maxSupply;
+        retrievedEnergy = maxEnergy;
+        retrievedSupply = maxSupply;
     }
-    return [retEnergy, retSupply];
+    return [retrievedEnergy, retrievedSupply];
 }
 
 AbFreighter.prototype.Collide = function() {
@@ -87,7 +81,7 @@ AbFreighter.prototype.Collide = function() {
     lootEnergy = parseInt(loot[0]);
     lootSupply = parseInt(loot[1]);
     
-    alert("You came across an abandoned freighter and collected " + lootEnergy + " energy and " + lootSupply + " supply from the remains!" );
+    alert("You came across an abandoned freighter and collected " + lootEnergy + " energy and " + lootSupply + " supply from the freighter remains!" );
 
     oldSpice.energy += lootEnergy;
     if (oldSpice.supplies + lootSupply <= 100)
@@ -100,9 +94,7 @@ AbFreighter.prototype.Collide = function() {
 }
 
 // WORMHOLE
-function WormHole() {
-
-}
+function WormHole() { }
 
 WormHole.prototype = new MapObject("Wormhole", 0); 
 
@@ -123,7 +115,7 @@ WormHole.prototype.Collide = function() {
   }
 }
 
-// PLANET
+// PLANET; generic
 function Planet(name, x, y) {
     this.name = name;
     this.x = x;
@@ -137,30 +129,30 @@ Planet.prototype.Collide = function() {
 }
 
 Planet.prototype.EnterOrbit = function() {
-   
+   alert("You have entered the orbit of " + this.name);
 }
 
 // ENIAC
-function Eniac () { 
-
-};
+function Eniac () { };
 
 Eniac.prototype = new Planet('Eniac', -1, -1);
 
 Eniac.prototype.Collide = function() {
     MapObject.prototype.Collide.call(this);
     if(oldSpice.recipe) {
-        ctrecipe.GameWinner("You got the KokaKola Recipe!" );
+        ctrecipe.GameWinner("Congrats! You got the KokaKola Recipe!");
     }
     else {
         this.EnterOrbit();
     }
 }
 
-// CELERON
-function Celeron() { 
+Eniac.prototype.EnterOrbit = function() { 
+  alert("You've entered the orbit of Eniac! \n Find the KocaKola Recipe, come back to Eniac, and win the game!");
+}
 
-};
+// CELERON
+function Celeron() { };
 
 Celeron.prototype = new Planet('Celeron', -1, -1);
 
@@ -171,9 +163,7 @@ Celeron.prototype.Collide = function() {
 }
 
 // RYZEN
-function Ryzen() { 
-
-};
+function Ryzen() { };
 
 Ryzen.prototype = new Planet('Ryzen', -1, -1);
 
@@ -184,9 +174,7 @@ Ryzen.prototype.Collide = function() {
 }
 
 // XEON
-function Xeon() { 
-
-};
+function Xeon() { };
 
 Xeon.prototype = new Planet('Xeon', -1, -1);
 
@@ -197,6 +185,8 @@ Xeon.prototype.Collide = function() {
 }
 
 // BAD MAX
+/* this will be deleted since we already have BadMax.js; deleted after bugs in game 
+have been fixed */
 function BadMax () { }
 
 BadMax.prototype = new MapObject("BadMax", 0);
@@ -237,9 +227,7 @@ BadMax.prototype.Escape = function() {
 }
 
 // RECIPE
-function KokaKolaRecipe() { 
-
-}
+function KokaKolaRecipe() { }
 
 KokaKolaRecipe.prototype = new MapObject("Recipe", 0);
 KokaKolaRecipe.prototype.isHidden = true;
@@ -257,6 +245,7 @@ var playGameOfChance; // if the user wants to play the game of chance or not
 function SpaceStation(stationsType) {
   this.stations = stationsType; 
   // go through the list of station types
+  let i;
   for(i = 0; i < this.stations.length; ++i) {
     this.objType += this.stations[i].type; 
   }
@@ -265,10 +254,10 @@ function SpaceStation(stationsType) {
 SpaceStation.prototype = new MapObject("Station", 0);
 
 SpaceStation.prototype.Collide = function() {
-  val i; 
+  let i;
   for(i = 0; i < this.stations.length; ++i) {
-     if(this.stations[i].promptUser()) { 
-      this.stations[i].purchase();
+     if(this.stations[i].MenuPrompt()) { 
+      this.stations[i].Purchase();
      }
   }
   gameOfChance();
@@ -301,7 +290,7 @@ function PlayGameOfChance () {
 }
 
 // MUSKTESTA
-function MuskTesla ( energyQuantity, energyPrice ) {
+function MuskTesla (energyQuantity, energyPrice) {
    
 }
 

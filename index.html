@@ -9,7 +9,7 @@
 
             <div id="playerNameField" class="input-group input-group-lg mb-3 setup-btn-ls">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Save Game As: </span>
+                    <span class="input-group-text" id="basic-addon1">Player's Name: </span>
                 </div>
                 <input id="playerName" type="text" class="form-control" placeholder="" required>
             </div>
@@ -23,14 +23,12 @@
                 <button class="btn btn-primary btn-lg setup-btn btn-block" id="setupButton" onclick=developerModeInit()>Settings</button>
                 <button class="btn btn-primary btn-lg game-cont-btn btn-block" id="continueButton" onclick="">Load Existing Game</button>
             </div>
-
         </div>
 
         <div class="main-game">
             <div class="main-container">
                 <div class="data-panel">
                     <div id="gazetteer" class="gazetteer data-log-container">
-                        
                         <div id="gazetteer-list-wrapper" class="gazetteer-list-wrapper">
                             <ul class="list-group gazetteer-list">
                             </ul>
@@ -64,8 +62,7 @@
 
                 <div class="data-panel">
                     <div class="data-title">
-                        <button id="game-save" type="button" class="btn btn-success btn-game-save">SAVE
-                            GAME</button>
+                        <button id="game-save" type="button" class="btn btn-success btn-game-save">Save Game</button>
                     </div>
                     
                      <div id="controls" class="status-control-containers">
@@ -114,8 +111,8 @@
         <script src="js/OldSpice.js"></script>
         <script src="js/Operations.js"></script>
         <script src="js/Sensors.js"></script>
-	     <script src="js/BadMax.js"></script>
-		 <script src="js/SaveAndLoad.js"></script>
+	<script src="js/BadMax.js"></script>
+	<script src="js/Save.js"></script>
         
     </body>
 </html>
