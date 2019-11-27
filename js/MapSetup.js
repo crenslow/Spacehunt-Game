@@ -20,7 +20,7 @@ class GameMap {
         this.map[x][y] = object; 
         
         // if the object is not hidden to the user
-        if(!object.isHidden) {
+        /*if(!object.isHidden) {
             // more info: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
             // more info: https://www.youtube.com/watch?v=JlgLDfINXvY
             // used to return matches for the object if the object is not hidden
@@ -28,7 +28,7 @@ class GameMap {
                 objName = (object.name != undefined) ? object.name : object.objType;
             objDOM.className += 'showed-obj' + object.objType; 
             objDOM.setAttribute('alt', objName); 
-        }
+        }*/
         
         return true;
         
@@ -106,11 +106,9 @@ class GameMap {
                 mapCell.setAttribute('id', 'c' + col + '-' + row);
                 mapObj.className = 'map-obj';
                 
-                /*
                 if (this.contents(col, row)) {
                     mapObj.innerHTML = this.contents(col, row).name;
                 }
-                */
 
                 mapCell.appendChild(mapObj);
                 mapRow.appendChild(mapCell);            
