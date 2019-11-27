@@ -48,6 +48,7 @@ in the map */
 .map-table .map-row .map-cell .map-obj {
     width: 50px;
     height: 50px;
+    color: #fff
 }
 
 /* deals with adding and removing celestial artifacts from the map */
