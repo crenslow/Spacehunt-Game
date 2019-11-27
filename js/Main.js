@@ -128,14 +128,14 @@ function initGame() {
     saveButton();
     scanButton();
 
-    // render map
-    window.gameMap.renderMap(window.oldSpice.x, window.oldSpice.y);
-
     // update ship levels
     updateLevels();
 
     // add to the map
     PopulateMap(window.gameMap);
+
+    // render map
+    window.gameMap.renderMap(window.oldSpice.x, window.oldSpice.y);
 
     // saves the last move to the console
     ctrecipe.tickObjects.push(function () { Collision( window.oldSpice.x, window.oldSpice.y); });
