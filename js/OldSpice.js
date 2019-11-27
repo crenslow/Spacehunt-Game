@@ -58,7 +58,7 @@ class Ship {
 	   var BadMaxret = BadMax(this.supplies, this.credit);
 	   this.supplies = BadMaxret[0];
 	   this.credit = BadMaxret[1];
-
+		checkLocation();
         updateHeading();
         updateLevels();
 	   //BadMax Encounter chance
