@@ -45,7 +45,7 @@ class Ship {
                 break;
         }
 
-		let max = window.gameData.mapsize;
+		let max = window.gameData.mapSize;
 		if (!window.gameData.randomWormhole) {
 			if (this.y >= max) this.y = 0;
 			else if (this.y < 0) this.y = eval(max-1);

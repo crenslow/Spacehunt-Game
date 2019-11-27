@@ -27,7 +27,8 @@ window.gameData = {
     shipCredit: 1000,
     shipEngineLv: 1,
     shipDamaged: false,
-    shipNormalPlay: 1
+    shipNormalPlay: 1,
+    randomWormhole: false
 };
 
 // function to load the main start up screen
