@@ -6,7 +6,8 @@ function BadMax(supplies, credits){
 			//if encounter, choose event to happen 20% blown up, 30% Boards, 50% fight off
 		var Event = Math.floor(Math.random() * 100);
 		if(Event < 20){
-			alert("You have encounterd BadMax. He has blown up your ship and killed everyone on board!");
+			//alert("You have encounterd BadMax. He has blown up your ship and killed everyone on board!");
+			ctrecipe.GameOver("You have encounterd BadMax. He has blown up your ship and killed everyone on board!");
 			return [0, 0];
 		}
 		else if(Event > 20 && Event < 50){
