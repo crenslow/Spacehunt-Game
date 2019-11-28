@@ -3,22 +3,26 @@ const nameInput = document.querySelector('#playerName');
 
 //object to store persistent game data
 window.gameData = {
-    mapSize: 128,
+   mapSize: 128,
     celeron: null,
     xeon: null,
     ryzen: null,
     eniac: null,
     badMax: new Array(2),
     recipe: new Array(2),
+    stationTRM: [],
+    stationTR: [],
+    stationTM: [],
+    stationT: [],
     abFreighter: [],
     asteroid: [],
     meteorShower: [],
+    gaze: {length: 0},
+    msgs: [],
     asteroidRandom: true,
     meteorRandom: true,
     freighterRandom: true,
     stationRandom: true,
-    gaze: {length: 0},
-    msgs: [],
     savedGamed: false,
     shipX: 0,
     shipY: 0,
@@ -33,77 +37,28 @@ window.gameData = {
 
 // function to load the main start up screen
 window.onload = function() {
-    populateSavedGameList();
-    let setupGame = document.querySelectorAll('.setup-game')[0];
+    let gameSet = document.querySelectorAll('.setup-game')[0];
     document.querySelectorAll('.game-start-btn')[0].onclick = function() {
         initGame();
-        setupGame.attributes.class.value += ' hide';
+        gameSet.attributes.class.value += ' hide';
     };
 
-    document.querySelectorAll('.game-cont-btn')[0].onclick = function() {
-        if(contGame()) {
-            setupGame.attributes.class.value += 'hide';
+    // loads saved game data if the user is continuing a game
+    document.querySelectorAll('.game-cont-btn' )[0].onclick = function() {
+        if(continueGame()) {
+            gameSet.attributes.class.value += ' hide';
         }
     };
 };
 
-// function for storing state upon tab close; stores the game in local storage
-window.beforeunload = window.unload = window.onbeforeunload = function() {
-    if (window.gameData.savedGamed) {
-        // saves the ship and its status in the local storage
-        saveShip(window.gameData, window.oldSpice);
-        localStorage.setItem(nameInput.value, JSON.stringify(window.gameData));
-    }
-};
-
-// continue a previously played game
-// prevGame is a value used to add previously saved game data to the new map
-function contGame() {
-    let name = nameInput.value;
-    let prevGame = JSON.parse(localStorage.getItem(name));
-    if (prevGame != undefined) {
-
-        // create a new game map to hold the state of a previously 
-        // played game
-        window.gameMap = new GameMap(prevGame.mapSize);
-
-        // copy the information over
-        window.oldSpice = new Ship(
-            prevGame.shipX,
-            prevGame.shipY,
-            prevGame.shipEnergy,
-            prevGame.shipSupplies,
-            prevGame.shipCredit,
-            prevGame.shipEngineLv,
-            prevGame.shipDamaged,
-            prevGame.shipNormalPlay
-        );
-
-        // render map
-        window.gameMap.renderMap(window.oldSpice.x, window.oldSpice.y);
-
-        // place map object from local storage into the empty map
-        PopulateSavedMap(window.gameMap, prevGame);
-
-        // log the game status in the console
-        console.log(prevGame);
-        
-        // save the known planets/objects in the gazetteer
-        populateSavedGaze(prevGame.gaze);
-
-        // update screen data
-        updateLevels();  // show the ship levels
-        populateMessageBoard(prevGame.msgs);  // show the previous game alerts
-
-        return true;
-    } 
+function continueGame() {
+    
 }
 
 // initialize the game
 function initGame() {
-    // if the game is defined, then setup the game
-    if (window.gameData != undefined) {
-        window.gameMap = new GameMap(window.gameData.mapSize);
+   if (window.gameData != undefined) {
+        window.gameMap = new GameMap( window.gameData.mapSize );
         window.oldSpice = new Ship(
             window.gameData.shipX,
             window.gameData.shipY,
@@ -114,68 +69,63 @@ function initGame() {
             window.gameData.shipDamaged,
             window.gameData.shipNormalPlay
         );
-
-    } 
-    else { 
-        // default values
-        window.gameMap = new GameMap(128);
-        window.oldSpice = new Ship(0, 0, 1000, 100, 1000, 1, false, true);
+    } else { // By default
+        window.gameMap = new GameMap( 128 );
+        window.oldSpice = new Ship( 0, 0, 1000, 100, 1000, 1, false, true );
     }
 
     // setup wormhole
-    // window.boundary = new WormHole();
+    //window.boundary = new WormHole();
+
+    // set up the scan button
+    setupScanButton();
     
-    // makes the save and scan buttons work
-    saveButton();
-    scanButton();
+    // set up the save button
+    setupSaveButton(); 
+
+    // render map
+    window.gameMap.renderMap( window.oldSpice.x, window.oldSpice.y );
 
     // update ship levels
     updateLevels();
 
-    // add to the map
-    PopulateMap(window.gameMap);
+    // add objects to the map 
+    PopulateMap( window.gameMap );
 
-    // render map
-    window.gameMap.renderMap(window.oldSpice.x, window.oldSpice.y);
-
-    // saves the last move to the console
-    ctrecipe.tickObjects.push(function () { Collision( window.oldSpice.x, window.oldSpice.y); });
+    // save last move to the console
+    ctrecipe.tickObjects.push(function() {Collision(window.oldSpice.x, window.oldSpice.y);});
     ctrecipe.tick();
 }
 
-// makes the save button work according to its respective operation
-function saveButton() {
-    // what happens when you hit the save button
-    document.querySelector('#game-save').onclick = function() {
-        // ask for a name to save the game under
+// set up the scan button
+function setupScanButton() {
+    document.querySelector('#sensor-scan').onclick = function() {
+        window.oldSpice.scan();
+    };
+}
+
+// set up the save button
+function setupSaveButton() {
+    document.querySelector('#game-save').onclick = function () {
         if (nameInput.value == '') {
-            var playerName = prompt('Please enter a player name: ', 'default');
-            if (playerName) {
+            var playerName = prompt('Please enter player name: ', 'Default');
+            if(playerName) {
                 nameInput.value = playerName;
             }
         }
         if (nameInput.value !== '') {
             window.gameData.savedGamed = true;
-
+            
             // store the ship's data
             saveShip( window.gameData, window.oldSpice );
-            
+   
             // store the map data
             saveMap(window.gameData, window.gameMap )
 
-            // save the game in local storage so the user can still access it after the 
-            // browser is closed
+            // save the game to local storage
             localStorage.setItem( nameInput.value, JSON.stringify( window.gameData ) );
             alert( "Game saved!\n" );
         }
-    };
-}
-
-// makes the scan button work according to its respective operation
-function scanButton () {
-    // what happens when you hit the scan button
-    document.querySelector('#sensor-scan').onclick = function () {
-        window.oldSpice.scan();
     };
 }
 
@@ -203,22 +153,13 @@ function gazePopulate (obj, objX, objY, toSave) {
     }
 }
 
-// save the alert board
-function saveMessageBoard ( newMessage ) {
-    let msgIndex = window.gameData.msgs.length;
-    window.gameData.msgs[msgIndex] = newMessage;
-}
-
-// adds to the list of saved games
-function populateSavedGameList () {
-
-}
-
-// load to the alert board if there is already data for it from a previous game
-function populateMessageBoard ( savedMessages ) {
-    for ( const msg of savedMessages )
-        addMessage( msg );
-}
+// function for storing state upon tab close; stores the game in local storage
+window.beforeunload = window.unload = window.onbeforeunload = function() {
+    if (window.gameData.savedGamed) {
+        saveShip(window.gameData, window.oldSpice);
+        localStorage.setItem(nameInput.value, JSON.stringify(window.gameData));
+    }
+};
 
 // load to the gazetteer if there is already data for it from a previous game
 function populateSavedGaze ( gaze ) {
@@ -227,6 +168,18 @@ function populateSavedGaze ( gaze ) {
             gazePopulate(window.gameMap.contents(gaze[i].x, gaze[i].y), gaze[i].x, gaze[i].y, 1);
         }
     }
+}
+
+// load to the alert board if there is already data for it from a previous game
+function populateMessageBoard ( savedMessages ) {
+    for ( const msg of savedMessages )
+        addMessage( msg );
+}
+
+// save the alert board
+function saveMessageBoard ( newMessage ) {
+    let msgIndex = window.gameData.msgs.length;
+    window.gameData.msgs[msgIndex] = newMessage;
 }
 
 // updates the player's name and saves it to local storage
