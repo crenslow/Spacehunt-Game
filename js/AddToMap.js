@@ -1,3 +1,4 @@
+/* add celestial objects to the map */
 function PopulateMap(gameMap) {
     generateEniac(gameMap);
     generateRyzen(gameMap);
@@ -5,6 +6,9 @@ function PopulateMap(gameMap) {
     generateXeon(gameMap);
 
     // load celestial objects
+    // i < 100; this allows for more objects to be added to the map
+    
+    /* ASTEROID */
     if (window.gameData.asteroidRandom) {
         for (let i = 0; i < 100; ++i) {
             let x = Math.ceil(Math.random() * (gameMap.size));
@@ -19,6 +23,7 @@ function PopulateMap(gameMap) {
         }
     }
     
+    /* FRIEGHTER */
     if (window.gameData.freighterRandom) {
         for (let i = 0; i < 100; ++i) {
             let x = Math.ceil(Math.random() * (gameMap.size));
@@ -33,6 +38,7 @@ function PopulateMap(gameMap) {
         }
     }
 
+    /* METEOR */
     if (window.gameData.meteorRandom) {
         for (let i = 0; i < 100; ++i) {
             let x = Math.ceil(Math.random() * (gameMap.size));
@@ -47,6 +53,7 @@ function PopulateMap(gameMap) {
         }
     }
 
+    /* SPACE STATION */
     if (window.gameData.stationRandom) {
         for (let i = 0; i < 100; ++i) {
             let x = Math.ceil(Math.random() * (gameMap.size));
@@ -63,12 +70,14 @@ function PopulateMap(gameMap) {
     }
 }
 
+/* populate the save game map */
 function PopulateSavedMap (gameMap, savedMap) {
 
 }
 
-function generateCelestialObjects (gameMap, type, celestX, celestY) {
-    switch ( type ) {
+/* generate celestial objects */
+function generateCelestialObjects(gameMap, type, celestX, celestY) {
+    switch (type) {
         case 0:
             mapObj = new SpaceStation([new MuskTesla(100, 1000), new RepairDepot, new MiniMart()]);
             break;
@@ -100,7 +109,7 @@ function generateCelestialObjects (gameMap, type, celestX, celestY) {
     updateLogs(gameMap, mapObj, celestX, celestY);
 }
 
-
+/* update logs in the console */
 function updateLogs (gameMap, mapObj, objCoordX, objCoordY) {
     console.log( 'Placed ' + mapObj.objType + " at position: " + objCoordX + ' ' + objCoordY );
     gameMap.add( mapObj, objCoordX, objCoordY );
