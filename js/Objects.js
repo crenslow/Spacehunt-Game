@@ -192,40 +192,6 @@ function BadMax () { }
 BadMax.prototype = new MapObject("BadMax", 0);
 BadMax.prototype.isHidden = true;
 
-BadMax.prototype.Collide = function () {
-    MapObject.prototype.Collide.call(this);
-    let eventDecider = Math.random();
-    // you escape
-    if (eventDecider < 0.5) {
-        this.Escape();
-    }
-    // you steal
-    else if (eventDecider < 0.8) {
-        this.Steal();
-    }
-    // your ship is destroyed
-    else {
-        this.DestroyShip();
-    }
-    //reposition badmax after encounter with OldSpice and delete previous BadMax from the map
-    gameMap.remove( oldSpice.x, oldSpice.y ); // remove this BadMax from the map
-    generateBadMax( gameMap ); //add a new badmax to the map
-}
-
-BadMax.prototype.Steal = function() {
-    alert("BadMax has boarded your ship and stolen half your supplies and all your credits!");
-    oldSpice.supplies /= 2;
-    oldSpice.credit = 0;
-}
-
-BadMax.prototype.DestroyShip = function() {
-    ctrecipe.GameOver("BadMax and his henchmen blasted your ship!");
-}
-
-BadMax.prototype.Escape = function() {
-    alert("You come across BadMax but successfuly lose him and his henchmen!");
-}
-
 // RECIPE
 function KokaKolaRecipe() { }
 
