@@ -320,9 +320,16 @@ indiviual messages (alerts) */
 .data-title .btn-game-save {
     font-size: 0.8em;
     font-weight: bold;
-    color: #000;
+    color: #fff;
+	font-family: 'Quadrit'; 
 }
-
+/* the game loading button */
+.data-title .btn-game-load {
+    font-size: 0.8em;
+	font-family: 'Quadrit'; 
+    font-weight: bold;
+    color: #fff;
+}
 /* shows is the game saved or not; may not be needed */
 .data-title .btn-game-save:not(:disabled):not(.disabled):active {
     color: #000;

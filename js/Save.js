@@ -1,26 +1,26 @@
-function saveGame(saveName, gameData, gameMap, oldSpice){
-	class Save{
-		constructor(Name,Data, Map, Ship) {
-			this.name = Name;
-			this.data = Data;
-			this.map = Map;
-			this.ship = Ship;
-		}
-	}
-	save = new Save(saveName, gameData, gameMap, oldSpice);
 
-	localStorage.setItem(saveName, JSON.stringify(save));
-	
-	
-	
-}
 function loadGame(saveName){
-	var name = saveName
+	var name = saveName;
 	var save = JSON.parse(localStorage.getItem(name));
-	window.gameData = save.data;
-	window.gameMap = save.map;
-	window.oldSpice = save.ship;
+	if(save != undefined){
+		window.oldSpice.x = save.shipX;
+		window.oldSpice.y = save.shipY;
+		window.oldSpice.energy = save.shipEnergy;
+		window.oldSpice.supplies = save.shipSupplies;
+		window.oldSpice.credits = save.shipCredit;
+		window.oldSpice.engineLv = save.shipEngineLv;
+		window.oldSpice.isDamaged = save.shipDamaged;
+		window.oldSpice.normalPlay = save.shipNormalPlay;
 	
+		updateLevels();
+		updateHeading();
+		alert("Save game: " + name + " loaded!");
+	}
+	else{
+		alert("No save file of that name or no save files exist. Creating new save.");
+		
+		
+	}
 	
 	
 	
@@ -37,6 +37,7 @@ function saveShip(gameData, oldSpice) {
     gameData.shipEngineLv    = oldSpice.engineLv;
     gameData.shipDamaged     = oldSpice.isDamaged;
     gameData.shipNormalPlay  = oldSpice.normalPlay;
+	gameData.shipHasReciple = oldSpice.recipe;
 }
 	
 function saveMap(gameData, mapObj, objX, objY) {

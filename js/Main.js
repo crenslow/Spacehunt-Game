@@ -32,6 +32,7 @@ window.gameData = {
     shipEngineLv: 1,
     shipDamaged: false,
     shipNormalPlay: 1,
+	shipHasRecipe: 0,
     randomWormhole: false
 };
 
@@ -45,9 +46,12 @@ window.onload = function() {
 
     // loads saved game data if the user is continuing a game
     document.querySelectorAll('.game-cont-btn' )[0].onclick = function() {
-        if(continueGame()) {
+        //if(continueGame()) {
+			initGame();
             gameSet.attributes.class.value += ' hide';
-        }
+
+			loadGame(nameInput.value);
+        //}
     };
 };
 
@@ -82,6 +86,9 @@ function initGame() {
     
     // set up the save button
     setupSaveButton(); 
+	
+	 // set up the load button
+    setupLoadButton();
 
     // render map
     window.gameMap.renderMap( window.oldSpice.x, window.oldSpice.y );
@@ -101,6 +108,7 @@ function initGame() {
 function setupScanButton() {
     document.querySelector('#sensor-scan').onclick = function() {
         window.oldSpice.scan();
+
     };
 }
 
@@ -120,12 +128,22 @@ function setupSaveButton() {
             saveShip( window.gameData, window.oldSpice );
    
             // store the map data
-            saveMap(window.gameData, window.gameMap )
+            //saveMap(window.gameData, window.gameMap )
 
             // save the game to local storage
             localStorage.setItem( nameInput.value, JSON.stringify( window.gameData ) );
-            alert( "Game saved!\n" );
+            alert( "Game save " +nameInput.value+ " was saved" );
         }
+    };
+}
+// set up the load button
+function setupLoadButton() {
+    document.querySelector('#game-load').onclick = function () {
+		var playerName = prompt('Please enter save name to load: ', 'Default');
+            if(playerName) {
+                nameInput.value = playerName;
+            }
+		loadGame(nameInput.value);
     };
 }
 
