@@ -4,6 +4,7 @@ const nameInput = document.querySelector('#playerName');
 //object to store persistent game data
 window.gameData = {
    mapSize: 128,
+   //map: 0,
     celeron: null,
     xeon: null,
     ryzen: null,

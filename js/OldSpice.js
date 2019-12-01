@@ -61,7 +61,7 @@ class Ship {
 		checkLocation();
         updateHeading();
         updateLevels();
-	   //BadMax Encounter chance
+
 			
 		//Check game over conditions
 	   if(this.supplies < 1){

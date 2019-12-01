@@ -11,7 +11,10 @@ function loadGame(saveName){
 		window.oldSpice.engineLv = save.shipEngineLv;
 		window.oldSpice.isDamaged = save.shipDamaged;
 		window.oldSpice.normalPlay = save.shipNormalPlay;
-	
+		//window.gameMap = save.map;
+		//PopulateMap(window.gameMap);
+		//populateSavedGaze(save.gaze);
+		window.gameMap.move(window.oldSpice.x, window.oldSpice.y);
 		updateLevels();
 		updateHeading();
 		alert("Save game: " + name + " loaded!");
@@ -26,8 +29,6 @@ function loadGame(saveName){
 	
 }
 
-/* saveShip and saveMap are what I have in my version. So, I'm putting them here 
-to check to see if it fixes our bugs. they're called in other files */
 function saveShip(gameData, oldSpice) {
     gameData.shipX           = oldSpice.x;
     gameData.shipY           = oldSpice.y;
@@ -38,8 +39,10 @@ function saveShip(gameData, oldSpice) {
     gameData.shipDamaged     = oldSpice.isDamaged;
     gameData.shipNormalPlay  = oldSpice.normalPlay;
 	gameData.shipHasReciple = oldSpice.recipe;
+
 }
 	
-function saveMap(gameData, mapObj, objX, objY) {
+function saveMap(gameData, mapObj) {
+	gameData.map = mapObj;
 	
 }
