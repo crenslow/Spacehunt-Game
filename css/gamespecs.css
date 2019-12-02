@@ -24,6 +24,38 @@
     width:100%;
 }
 
+.Station1 { 
+    background-image: url("../img/ss1.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+}
+
+.Station2 { 
+    background-image: url("../img/ss2.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+}
+
+.Station3 { 
+    background-image: url("../img/ss3.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+}
+
+.Station4 { 
+    background-image: url("../img/ss4.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+}
+
 .MeteorShower {
     background-image: url("../img/meteor.png");
     background-size: contain;
