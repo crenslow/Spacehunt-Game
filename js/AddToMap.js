@@ -4,15 +4,15 @@ function PopulateMap(gameMap) {
     generateRyzen(gameMap);
     generateCeleron(gameMap);
     generateXeon(gameMap);
-	for(let i = 0; i < 7; ++i){
+	//for(let i = 0; i < 7; ++i){
 		generatePentium(gameMap);
-	}
-	generatePentiumR(gameMap);	
-	
+	//}
+	generatePentiumR(gameMap);
+
 
     // load celestial objects
     // i < 100; this allows for more objects to be added to the map
-    
+
     /* ASTEROID */
     if (window.gameData.asteroidRandom) {
         for (let i = 0; i < 100; ++i) {
@@ -27,7 +27,7 @@ function PopulateMap(gameMap) {
             generateCelestialObjects(gameMap, 4, x, y);
         }
     }
-    
+
     /* FRIEGHTER */
     if (window.gameData.freighterRandom) {
         for (let i = 0; i < 100; ++i) {
@@ -48,7 +48,7 @@ function PopulateMap(gameMap) {
         for (let i = 0; i < 100; ++i) {
             let x = Math.ceil(Math.random() * (gameMap.size));
             let y = Math.ceil(Math.random() * (gameMap.size));
-            generateCelestialObjects(gameMap, 6, x, y); 
+            generateCelestialObjects(gameMap, 6, x, y);
         }
     } else {
         for (let coords of window.gameData.meteors) {
@@ -77,10 +77,10 @@ function PopulateMap(gameMap) {
 
 /* populate the save game map */
 function PopulateSavedMap (gameMap, savedMapArr) {
-   
-    //loop through all items in savedMapArr and call apropriate generate at functions 
+
+    //loop through all items in savedMapArr and call apropriate generate at functions
     for( A in savedMapArr )
-    {   
+    {
         let artifact = savedMapArr[A];
         console.log(artifact.name + " "+ artifact.type);
         switch(artifact.type){
@@ -233,12 +233,16 @@ function generateXeonAtLocation(gameMap, xeonCoordX, xeonCoordY) {
     gazePopulate(mapObj, xeonCoordX, xeonCoordY);
 }
 function generatePentium (gameMap) {
-    let randomPentX = Math.ceil(Math.random() * (gameMap.size));
-    let randomPentY = Math.ceil(Math.random() * (gameMap.size));
-    generatePentiumAtLocation(gameMap, randomPentX, randomPentY);
+    for(let i = 1; i < 7; ++i){
+      let randomPentX = Math.ceil(Math.random() * (gameMap.size));
+      let randomPentY = Math.ceil(Math.random() * (gameMap.size));
+      var pentName = "Pentium " + i;
+      generatePentiumAtLocation(gameMap, randomPentX, randomPentY, pentName);
+    }
 }
-function generatePentiumAtLocation(gameMap, pentCoordX, pentCoordY) {
+function generatePentiumAtLocation(gameMap, pentCoordX, pentCoordY, pentName) {
     mapObj = new Pentium();
+    mapObj.name = pentName;
     if (gameData.pentX || gameData.pentX === 0)
         pentCoordX = gameData.pentX;
     if (gameData.pentY || gameData.pentY === 0)
@@ -255,6 +259,7 @@ function generatePentiumR (gameMap) {
 }
 function generatePentiumRAtLocation(gameMap, pentrCoordX, pentrCoordY) {
     mapObj = new PentiumR();
+
     if (gameData.pentrX || gameData.pentrX === 0)
         pentrCoordX = gameData.pentrX;
     if (gameData.pentrY || gameData.pentrY === 0)
