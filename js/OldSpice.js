@@ -45,7 +45,15 @@ class Ship {
         else if (direction == 'W' && !window.gameMap.asteroidCheck(this, this.x-eval(distance),'X')) this.x -= eval(distance);
         else if (direction == 'E' && !window.gameMap.asteroidCheck(this, this.x+eval(distance),'X')) this.x += eval(distance);
         else if (direction == 'S' && !window.gameMap.asteroidCheck(this, this.y-eval(distance),'Y')) this.y -= eval(distance);
-        
+	    
+	if (direction == 'N') 
+		window.gameMap.meteorCheck(this, startY,'Y');
+        else if (direction == 'W')
+		window.gameMap.meteorCheck(this, startX,'X');
+        else if (direction == 'E')
+		window.gameMap.meteorCheck(this, startX,'X'); 
+        else if (direction == 'S')
+		window.gameMap.meteorCheck(this, startY,'Y');
 
 		let max = window.gameData.mapSize;
 		if (!window.gameData.randomWormhole) {  //If wormhole behavior is set to fixed, the ship just flips to the
