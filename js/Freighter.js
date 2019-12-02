@@ -2,24 +2,25 @@
 //<!-- Storys: As a player, I want to encounter an abandoned
  //       Freighter drifting in space so I can take on additional supplies and energy  -->
 
-function Freighter(energy,supplies)
+function Freighter(energy, supplies)
 {
 	if(gameMap.contents(oldSpice.x, oldSpice.y) != undefined){
-		if(gameMap.contents(oldSpice.x, oldSpice.y).name == "AbFreighter"){			
+		if(gameMap.contents(oldSpice.x, oldSpice.y).name == "AbFreighter"){
 			alert("You encounter an abandoned freighter. You salvage it's remaining energy and supplies!");
 			energy = energy + 100;
 			supplies = supplies + 10;
+			gameMap.remove(oldSpice.x, oldSpice.y);
 			return [energy, supplies];
 
 		}
 	}
 	else{
 		return [energy, supplies];
-		
+
 	}
-	
-	
-	
+
+
+
 }
 
 //<!-- call fucntion -->

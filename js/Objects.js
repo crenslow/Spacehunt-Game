@@ -2,13 +2,13 @@
 
 // MAP OBJECT
 function MapObject(type, radius) {
-  this.objType = type; 
-  this.radius = radius; 
-  this.isHidden = false; 
+  this.objType = type;
+  this.radius = radius;
+  this.isHidden = false;
 }
 
 MapObject.prototype.Collide = function() {
-  console.log("collision noted in the console log"); 
+  console.log("collision noted in the console log");
 }
 
 // ASTEROID
@@ -16,31 +16,31 @@ function Asteroid() {
   this.name = "Asteroid";
 }
 
-Asteroid.prototype = new MapObject('Asteroid', 0); 
+Asteroid.prototype = new MapObject('Asteroid', 0);
 
 Asteroid.prototype.DamageShip = function() {
-  alert("OldSpice barely missed an asteroid! Damage occurred!"); 
-  oldSpice.isDamaged = true; 
+  alert("OldSpice barely missed an asteroid! Damage occurred!");
+  oldSpice.isDamaged = true;
 }
 
 Asteroid.prototype.DestroyShip = function() {
-  oldSpice.energy = 0; 
+  oldSpice.energy = 0;
   ctrecipe.GameOver("OldSpice hit an asteroid! You blew up!");
 }
 
 Asteroid.prototype.Collide = function() {
-  MapObject.prototype.Collide.call(this); 
-  let eventDecider = Math.random(); 
+  MapObject.prototype.Collide.call(this);
+  let eventDecider = Math.random();
   if(eventDecider < 0.9) {
-    this.DamageShip(); 
+    this.DamageShip();
   }
   else {
-    this.DestroyShip(); 
+    this.DestroyShip();
   }
 }
 
 // METEOR SHOWER
-function MeteorShower() { }
+function MeteorShower() {this.name = "MeteorShower" }
 
 MeteorShower.prototype = new MapObject("MeteorShower", 0);
 
@@ -51,7 +51,7 @@ MeteorShower.prototype.Collide = function() {
 }
 
 // ABANDONED FREIGHTER
-function AbFreighter() { }
+function AbFreighter() { this.name = "AbFreighter"}
 
 AbFreighter.prototype = new MapObject("AbFreighter", 0);
 
@@ -82,7 +82,7 @@ AbFreighter.prototype.Collide = function() {
     let loot = this.Loot();
     lootEnergy = parseInt(loot[0]);
     lootSupply = parseInt(loot[1]);
-    
+
     alert("You came across an abandoned freighter and collected " + lootEnergy + " energy and " + lootSupply + " supply from the freighter remains!" );
 
     oldSpice.energy += lootEnergy;
@@ -98,22 +98,22 @@ AbFreighter.prototype.Collide = function() {
 // WORMHOLE
 function WormHole() { }
 
-WormHole.prototype = new MapObject("Wormhole", 0); 
+WormHole.prototype = new MapObject("Wormhole", 0);
 
 WormHole.prototype.Collide = function() {
-  MapObject.prototype.Collide.call(this); 
-  alert("You hit a wormhole!"); 
-  
+  MapObject.prototype.Collide.call(this);
+  alert("You hit a wormhole!");
+
   if(ctrecipe.WormholeFixed) {
     oldSpice.x = ctrecipe.WormholeX;
     oldSpice.y = ctrecipe.WormholeY;
   }
   // relocate after falling into a wormhole
   else {
-    xrand = Math.ceil(Math.random() * (gameMap.size - 2)); 
-    yrand = Math.ceil(Math.random() * (gameMap.size - 2)); 
-    oldSpice.x = xrand; 
-    oldSpice.y = yrand; 
+    xrand = Math.ceil(Math.random() * (gameMap.size - 2));
+    yrand = Math.ceil(Math.random() * (gameMap.size - 2));
+    oldSpice.x = xrand;
+    oldSpice.y = yrand;
   }
 }
 
@@ -149,7 +149,7 @@ Eniac.prototype.Collide = function() {
     }
 }
 
-Eniac.prototype.EnterOrbit = function() { 
+Eniac.prototype.EnterOrbit = function() {
   alert("You've entered the orbit of Eniac! \n The Koca Kola Recipe is hidden on a Pentium planet! Explore the map and find it!");
 }
 
@@ -176,7 +176,7 @@ Pentium.prototype.Collide = function() {
 //Pentium Recipe
 function PentiumR() { };
 
-PentiumR.prototype = new Planet('Pentium 5', -1, -1);
+PentiumR.prototype = new Planet('Pentium 7', -1, -1);
 
 PentiumR.prototype.Collide = function() {
     alert("Collided with PentiumR!");
@@ -224,11 +224,11 @@ var playGameOfChance; // if the user wants to play the game of chance or not
 
 // stationsType variable because there are multiple stations
 function SpaceStation(stationsType) {
-  this.stations = stationsType; 
+  this.stations = stationsType;
   // go through the list of station types
   let i;
   for(i = 0; i < this.stations.length; ++i) {
-    this.objType += this.stations[i].type; 
+    this.objType += this.stations[i].type;
   }
 }
 
@@ -237,13 +237,13 @@ SpaceStation.prototype = new MapObject("Station", 0);
 SpaceStation.prototype.Collide = function() {
   let i;
   for(i = 0; i < this.stations.length; ++i) {
-     if(this.stations[i].MenuPrompt()) { 
+     if(this.stations[i].MenuPrompt()) {
       this.stations[i].Purchase();
      }
   }
   gameOfChance();
 }
-  
+
 // make sure the user has enough to buy the item
 function CheckBalance(price) {
    if(price > oldSpice.credit)
@@ -263,7 +263,7 @@ function gameOfChance () {
 	}
 }
 
-// WINNINGS 
+// WINNINGS
 function PlayGameOfChance () {
    var winnings = Math.floor(Math.random() * Math.floor(100));
    oldSpice.credit += winnings;
@@ -273,49 +273,49 @@ function PlayGameOfChance () {
 
 // MUSKTESTA
 function MuskTesla (energyQuantity, energyPrice) {
-   this.energyQuantity = energyQuantity; 
-   this.energyPrice = energyPrice; 
+   this.energyQuantity = energyQuantity;
+   this.energyPrice = energyPrice;
 }
 
 MuskTesla.prototype.MenuPrompt = function () {
-  if(CheckBalance(this.energyPrice)) { 
+  if(CheckBalance(this.energyPrice)) {
      return confirm("Do you want to buy " + this.energyQuantity + " energy for " + this.energyPrice + " credits?\"" );
    }
-   else { 
-     alert("You don't have enough credits for this.\n"); 
-     return false; 
+   else {
+     alert("You don't have enough credits for this.\n");
+     return false;
    }
 }
 
 MuskTesla.prototype.Purchase = function () {
-   oldSpice.energy += this.energyQuantity; 
-   oldSpice.credit -= this.energyPrice; 
-   updatelevels(); 
+   oldSpice.energy += this.energyQuantity;
+   oldSpice.credit -= this.energyPrice;
+   updatelevels();
    alert("Thank you for purchasing!\n");
 }
-  
+
 // REPAIR DEPOT
 function RepairDepot () {
-   
+
 }
 
 RepairDepot.prototype.MenuPrompt = function () {
-  
+
 }
 
 RepairDepot.prototype.Purchase = function () {
-  
-} 
+
+}
 
 // MINI MART
 function MiniMart () {
-   
+
 }
 
 MiniMart.prototype.MenuPrompt = function () {
-   
+
 }
 
 MiniMart.prototype.Purchase = function () {
-   
+
 }
