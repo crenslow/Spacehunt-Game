@@ -12,7 +12,9 @@ MapObject.prototype.Collide = function() {
 }
 
 // ASTEROID
-function Asteroid() { }
+function Asteroid() {
+  this.name = "Asteroid";
+}
 
 Asteroid.prototype = new MapObject('Asteroid', 0); 
 
