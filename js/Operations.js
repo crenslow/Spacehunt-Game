@@ -26,6 +26,8 @@ window.addEventListener("keydown", event => {
             magnitudeBox.focus();
         }
     }
+    if (window.gameMap != undefined && event.key === 'g' && event.ctrlKey)
+        fillGazetteer();
 } );
 
 function savedGameDisplay(savedGameMode) {
@@ -54,5 +56,19 @@ function addMessage(message) {
 }
 
 function addMessageForm (message, message_res_ok, message_res_cancel) {
+
+}
+
+function fillGazetteer() { /*This function combs through every single space on the game map and adds the location and type
+of each celestial object it finds to the celestial gazetteer. It is activated by pushing ctrl+g after the map loads.*/
+    
+    max = window.gameMap.size;
+    for (i = 0; i <= max; ++i) {
+        for (n = 0; n <= max; ++n) {
+            if (window.gameMap.contents(i, n) != undefined) {
+                gazePopulate (window.gameMap.contents(i, n), i, n, true);
+            }
+        }
+    }
 
 }
