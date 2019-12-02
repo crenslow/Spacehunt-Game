@@ -42,8 +42,7 @@ credits, energy, and supplies to ship's current value.*/
 	 document.getElementById("creditValue").innerHTML = window.oldSpice.credit;
 	 document.getElementById("energyValue").innerHTML = window.oldSpice.energy;
 	 document.getElementById("supplyValue").innerHTML = window.oldSpice.supplies;
-     if (window.oldSpice.isDamaged) document.getElementById("damageValue").innerHTML = "Systems Critical";
-     else document.getElementById("damageValue").innerHTML = "Undamaged";
+     document.getElementById("damageValue").innerHTML = window.oldSpice.isDamaged ? "Systems Critical" : "Undamaged";
 }
 
 function createNewLog() {
