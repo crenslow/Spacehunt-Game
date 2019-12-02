@@ -34,7 +34,8 @@ window.gameData = {
     shipDamaged: false,
     shipNormalPlay: 1,
 	shipHasRecipe: 0,
-    randomWormhole: false
+    randomWormhole: false,
+    artifactArr : []
 };
 
 // function to load the main start up screen
@@ -48,17 +49,58 @@ window.onload = function() {
     // loads saved game data if the user is continuing a game
     document.querySelectorAll('.game-cont-btn' )[0].onclick = function() {
         //if(continueGame()) {
-			initGame();
+			continueGame();
             gameSet.attributes.class.value += ' hide';
 
-			loadGame(nameInput.value);
+			//loadGame(nameInput.value);
         //}
     };
 };
 
-function continueGame() {
+function continueGame() {//reimplementation of init for continuing from save
+   if (window.gameData != undefined) {
+        window.gameMap = new GameMap( window.gameData.mapSize );
+        window.oldSpice = new Ship(
+            window.gameData.shipX,
+            window.gameData.shipY,
+            window.gameData.shipEnergy,
+            window.gameData.shipSupplies,
+            window.gameData.shipCredit,
+            window.gameData.shipEngineLv,
+            window.gameData.shipDamaged,
+            window.gameData.shipNormalPlay
+        );
+    } else { // By default
+        window.gameMap = new GameMap( 128 );
+        window.oldSpice = new Ship( 0, 0, 1000, 100, 1000, 1, false, true );
+    }
+
+    // setup wormhole
+    //window.boundary = new WormHole();
+
+    // set up the scan button
+    setupScanButton();
     
+    // set up the save button
+    setupSaveButton(); 
+	
+	 // set up the load button
+    setupLoadButton();
+    // render map
+    window.gameMap.renderMap( window.oldSpice.x, window.oldSpice.y );
+
+    // update ship levels
+    updateLevels();
+
+    // add objects to the map 
+    //PopulateSavedMap( window.gameMap );
+
+    loadGame( nameInput.value);
+    // save last move to the console
+    ctrecipe.tickObjects.push(function() {Collision(window.oldSpice.x, window.oldSpice.y);});
+    ctrecipe.tick();
 }
+
 
 // initialize the game
 function initGame() {
