@@ -273,15 +273,25 @@ function PlayGameOfChance () {
 
 // MUSKTESTA
 function MuskTesla (energyQuantity, energyPrice) {
-   
+   this.energyQuantity = energyQuantity; 
+   this.energyPrice = energyPrice; 
 }
 
 MuskTesla.prototype.MenuPrompt = function () {
-  
+  if(CheckBalance(this.energyPrice)) { 
+     return confirm("Do you want to buy " + this.energyQuantity + " energy for " + this.energyPrice + " credits?\"" );
+   }
+   else { 
+     alert("You don't have enough credits for this.\n"); 
+     return false; 
+   }
 }
 
 MuskTesla.prototype.Purchase = function () {
-   
+   oldSpice.energy += this.energyQuantity; 
+   oldSpice.credit -= this.energyPrice; 
+   updatelevels(); 
+   alert("Thank you for purchasing!\n");
 }
   
 // REPAIR DEPOT
