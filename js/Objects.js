@@ -55,7 +55,7 @@ function AbFreighter() { this.name = "AbFreighter"}
 
 AbFreighter.prototype = new MapObject("AbFreighter", 0);
 
-AbFreighter.prototype.Loot = function() {
+/*AbFreighter.prototype.Loot = function() {
     let maxEnergy = 1000;
     let maxSupply = 100;
     let retrievedEnergy;
@@ -93,7 +93,7 @@ AbFreighter.prototype.Collide = function() {
 
     updateLevels(); // display new supply and energy gained from the freighter
     gameMap.remove(oldSpice.x, oldSpice.y); // remove the freighter from the map since it was already used
-}
+}*/
 
 // WORMHOLE
 function WormHole() { }
