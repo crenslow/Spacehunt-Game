@@ -15,6 +15,9 @@ function loadGame(saveName){
 		//PopulateMap(window.gameMap);
 		//populateSavedGaze(save.gaze);
 		window.gameMap.move(window.oldSpice.x, window.oldSpice.y);
+        PopulateSavedMap( window.gameMap, save.artifactArr);
+        window.gameMap.artifactArr = save.artifactArr.slice(0);
+        gameData.artifactArr = save.artifactArr.slice(0);
 		updateLevels();
 		updateHeading();
 		alert("Save game: " + name + " loaded!");
@@ -39,10 +42,10 @@ function saveShip(gameData, oldSpice) {
     gameData.shipDamaged     = oldSpice.isDamaged;
     gameData.shipNormalPlay  = oldSpice.normalPlay;
 	gameData.shipHasReciple = oldSpice.recipe;
+    gameData.artifactArr = gameMap.artifactArr.slice(0);
 
 }
 	
 function saveMap(gameData, mapObj) {
-	gameData.map = mapObj;
 	
 }
