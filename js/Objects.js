@@ -40,7 +40,7 @@ Asteroid.prototype.Collide = function() {
 }
 
 // METEOR SHOWER
-function MeteorShower() { }
+function MeteorShower() {this.name = "MeteorShower" }
 
 MeteorShower.prototype = new MapObject("MeteorShower", 0);
 
@@ -51,7 +51,7 @@ MeteorShower.prototype.Collide = function() {
 }
 
 // ABANDONED FREIGHTER
-function AbFreighter() { }
+function AbFreighter() { this.name = "AbFreighter"}
 
 AbFreighter.prototype = new MapObject("AbFreighter", 0);
 

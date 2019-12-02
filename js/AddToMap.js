@@ -98,8 +98,29 @@ function PopulateSavedMap (gameMap, savedMapArr) {
                    case "Eniac":
                        generateEniacAtLocation( gameMap, artifact.x, artifact.y);
                        break;
-                   default:
-                       generatePentiumAtLocation(gameMap, artifact.x, artifact.y);
+                   case "Pentium 1":
+                       generatePentiumAtLocation( gameMap, artifact.x, artifact.y, artifact.name);
+                       break;
+                    case "Pentium 2":
+                       generatePentiumAtLocation( gameMap, artifact.x, artifact.y, artifact.name);
+                       break;
+                    case "Pentium 3":
+                       generatePentiumAtLocation( gameMap, artifact.x, artifact.y, artifact.name);
+                       break;
+                    case "Pentium 4":
+                       generatePentiumAtLocation( gameMap, artifact.x, artifact.y, artifact.name);
+                       break;
+                    case "Pentium 5":
+                       generatePentiumAtLocation( gameMap, artifact.x, artifact.y, artifact.name);
+                       break;
+                    case "Pentium 6":
+                       generatePentiumAtLocation( gameMap, artifact.x, artifact.y, artifact.name);
+                       break;
+                    case "Pentium 7":
+                        generatePentiumRAtLocation( gameMap, artifact.x, artifact.y);
+                        break;
+                   //default:
+                    //   generatePentiumAtLocation(gameMap, artifact.x, artifact.y);
                 }
                 break;
             case "Asteroid":

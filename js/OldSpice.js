@@ -5,7 +5,7 @@ class Ship {
         this.energy = energy;
         this.supplies = supplies;
         this.credit = credit;
-        this.engineLv = engineLv;         
+        this.engineLv = engineLv;
         this.isDamaged = isDamaged;
         this.normalPlay = normalPlay;
         this.recipe = false;
@@ -15,7 +15,7 @@ class Ship {
         this.shipWrapper = document.querySelector( '#ship-wrapper' );
         this.messageBoard = document.querySelectorAll( "#message-board" )[0];
     }
-    
+
     move(direction, distance) {	/*This function moves the ship in one of the four
     cardinal directions (by inputting N, S, E, or W in the direction argument) a
     number of units equal to distance, and decreases the ship's energy and supply
@@ -25,7 +25,7 @@ class Ship {
     a basic engine, 5 * distance for a medium engine, and 1 * distance for an
     advanced engine. (It consumes 5 times the amount of energy if the ship is
     damaged.) If distance is 0 or less, the function returns without doing anything*/
-        
+
         if (distance <= 0) return;
         this.supplies -= 2;
 
@@ -40,12 +40,12 @@ class Ship {
                 this.energy -= ( this.isDamaged ) ? 5 * distance : distance;
                 break;
         }
-        
+
         if (direction == 'N' && !window.gameMap.asteroidCheck(this, this.y+eval(distance),'Y')) this.y += eval(distance);
         else if (direction == 'W' && !window.gameMap.asteroidCheck(this, this.x-eval(distance),'X')) this.x -= eval(distance);
         else if (direction == 'E' && !window.gameMap.asteroidCheck(this, this.x+eval(distance),'X')) this.x += eval(distance);
         else if (direction == 'S' && !window.gameMap.asteroidCheck(this, this.y-eval(distance),'Y')) this.y -= eval(distance);
-        
+
 
 		let max = window.gameData.mapSize;
 		if (!window.gameData.randomWormhole) {  //If wormhole behavior is set to fixed, the ship just flips to the
@@ -64,20 +64,23 @@ class Ship {
 	   this.supplies = BadMaxret[0];
 	   this.credit = BadMaxret[1];
 		checkLocation();
+    var Fret = Freighter(this.energy, this.supplies);
+    this.energy = Fret[0];
+    this.supplies = Fret[1];
         updateHeading();
         updateLevels();
 
-			
+
 		//Check game over conditions
 	   if(this.supplies < 1){
-	       gameObj.GameOver("Your supplies have run dry.");	
+	       gameObj.GameOver("Your supplies have run dry.");
 	   }
 	   if(this.energy < 1){
 	       gameObj.GameOver("Your energy has run out.");
        }
-		
+
         window.gameMap.move(this.x, this.y);
-		
+
 		/*I (Josh) am temporarily putting this block of code in comments to
 		discuss it during tomorrow's meeting (11/19/19)
         setTimeout(function () {
@@ -96,18 +99,18 @@ class Ship {
             }
         }, 1000 ); */
     }
-	
+
     hide() {
-    
+
     }
 
     show() {
-     
+
     }
 
 
     scan() {
-      
+
     }
 
     getEngineInfo() {
@@ -123,13 +126,13 @@ class Ship {
         }
     }
 
-	
+
 
     logLevels () {
-       
+
     }
-    
+
     fixEngine() {
-       
+
     }
 }
