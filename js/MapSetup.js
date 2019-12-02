@@ -5,6 +5,7 @@ class GameMap {
         for(var i = 0; i < size; ++i) {      
             this.map[i] = new Array(size);
         }
+        this.artifactArr = [];
     }
 
     add(object, x, y) {
@@ -23,6 +24,15 @@ class GameMap {
             return false; 
         this.map[x][y] = object; 
         
+        //adds to array of artifacts on the map
+        let arrObj = { 
+            name : object.name,
+            type : object.objType,
+            x : x,
+            y : y
+        }
+
+        this.artifactArr.push(arrObj);
         if(!object.isHidden) {
             var objDOM = document.querySelector('#c' + x + '-' + y + ' .map-obj'),
                 objName = (object.name != undefined ) ? object.name : object.objType;
