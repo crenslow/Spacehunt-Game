@@ -71,8 +71,52 @@ function PopulateMap(gameMap) {
 }
 
 /* populate the save game map */
-function PopulateSavedMap (gameMap, savedMap) {
-
+function PopulateSavedMap (gameMap, savedMapArr) {
+   
+    //loop through all items in savedMapArr and call apropriate generate at functions 
+    for( A in savedMapArr )
+    {   
+        let artifact = savedMapArr[A];
+        console.log(artifact.name + " "+ artifact.type);
+        switch(artifact.type){
+            case "Planet":
+               switch(artifact.name){
+                   case "Celeron":
+                       generateCeleronAtLocation( gameMap, artifact.x, artifact.y);
+                       break;
+                   case "Xeon":
+                       generateXeonAtLocation( gameMap, artifact.x, artifact.y);
+                       break;
+                   case "Ryzen":
+                       generateRyzenAtLocation( gameMap, artifact.x, artifact.y);
+                       break;
+                   case "Eniac":
+                       generateEniacAtLocation( gameMap, artifact.x, artifact.y);
+                }
+                break;
+            case "Asteroid":
+               generateCelestialObjects(gameMap, 4, artifact.x, artifact.y);
+                break;
+            case "AbFreighter":
+                generateCelestialObjects(gameMap, 5, artifact.x, artifact.y);
+                break;
+            case "MeteorShower":
+                generateCelestialObjects(gameMap, 6, artifact.x, artifact.y);
+                break;
+            case "Stationundefinedundefinedundefined":
+                generateCelestialObjects(gameMap, 0, artifact.x, artifact.y);
+                break;
+            case "Stationundefinedundefined":
+                generateCelestialObjects(gameMap, 1, artifact.x, artifact.y);
+                break;
+            case "Stationundefined":
+                generateCelestialObjects(gameMap, 2, artifact.x, artifact.y);
+                break;
+            default:
+                console.log("error generating " + artifact.type );
+                break;
+        }
+    }
 }
 
 /* generate celestial objects */
