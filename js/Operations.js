@@ -9,14 +9,19 @@ window.addEventListener("keydown", event => {
     //Checks to make sure the ship has been created before trying to move it
     if (window.oldSpice != undefined) {
         if (event.key === 'ArrowUp' || event.key === 'w') {
+            event.preventDefault();
             window.oldSpice.move('N', distance);
         } else if (event.key === 'ArrowLeft' || event.key === 'a') {
+            event.preventDefault();
             window.oldSpice.move('W', distance);
         } else if (event.key === 'ArrowDown' || event.key === 's') {
+            event.preventDefault();
             window.oldSpice.move('S', distance);
         } else if (event.key === 'ArrowRight' || event.key === 'd') {
+            event.preventDefault();
             window.oldSpice.move('E', distance);
         } else if (event.key === ' ') {  //The scan functionality
+            event.preventDefault();
             oldSpice.scan();
         } else if (event.key === '0' || event.key === '1' ||  //
             event.key === '2' || event.key === '3' ||
@@ -26,8 +31,10 @@ window.addEventListener("keydown", event => {
             magnitudeBox.focus();
         }
     }
-    if (window.gameMap != undefined && event.key === 'g' && event.ctrlKey)
+    if (window.gameMap != undefined && event.key === 'g' && event.ctrlKey) {
+        event.preventDefault();
         fillGazetteer();
+    }
 } );
 
 function savedGameDisplay(savedGameMode) {
