@@ -97,6 +97,9 @@ function PopulateSavedMap (gameMap, savedMapArr) {
                        break;
                    case "Eniac":
                        generateEniacAtLocation( gameMap, artifact.x, artifact.y);
+                       break;
+                   default:
+                       generatePentiumAtLocation(gameMap, artifact.x, artifact.y);
                 }
                 break;
             case "Asteroid":
