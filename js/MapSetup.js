@@ -121,9 +121,9 @@ class GameMap {
         asteroidCheck(theShip, end, xy) {
             if (xy == 'X' && theShip.x < end) {
                 for (let i = theShip.x; i <= end && i < this.size; ++i) {
-                    if (this.contents(i, theShip.y) != undefined && this.contents(i, theShip.y).name == "Asteroid") {
+                    if (this.contents(i, theShip.y) != undefined && this.contents(i, theShip.y).objType == "Asteroid") {
                         if (theShip.isDamaged) {
-                            gameObj.gameOver("Your ship hit an asteroid and exploded into bits! Game Over!");
+                            gameObj.GameOver("Your ship hit an asteroid and exploded into bits!");
                             return true;
                         }
                         alert("Your ship hit an asteroid and took damage!");
@@ -136,9 +136,9 @@ class GameMap {
             }
             else if (xy == 'X' && end < theShip.x) {
                 for (let i = theShip.x; i >= end && i >= 0; --i) {
-                    if (this.contents(i, theShip.y) != undefined && this.contents(i, theShip.y).name == "Asteroid") {
+                    if (this.contents(i, theShip.y) != undefined && this.contents(i, theShip.y).objType == "Asteroid") {
                         if (theShip.isDamaged) {
-                            gameObj.gameOver("Your ship hit an asteroid and exploded into bits! Game Over!");
+                            gameObj.GameOver("Your ship hit an asteroid and exploded into bits!");
                             return true;
                         }
                         alert("Your ship hit an asteroid and took damage!");
@@ -151,9 +151,9 @@ class GameMap {
             }
             else if (xy == 'Y' && theShip.y < end) {
                 for (let i = theShip.y; i <= end && i < this.size; ++i) {
-                    if (this.contents(theShip.x, i) != undefined && this.contents(theShip.x, i).name == "Asteroid") {
+                    if (this.contents(theShip.x, i) != undefined && this.contents(theShip.x, i).objType == "Asteroid") {
                         if (theShip.isDamaged) {
-                            gameObj.gameOver("Your ship hit an asteroid and exploded into bits! Game Over!");
+                            gameObj.GameOver("Your ship hit an asteroid and exploded into bits!");
                             return true;
                         }
                         alert("Your ship hit an asteroid and took damage!");
@@ -166,9 +166,9 @@ class GameMap {
             }
             else if (xy == 'Y' && end < theShip.y) {
                 for (let i = theShip.y; i >= end && i >= 0; --i) {
-                    if (this.contents(theShip.x, i) != undefined && this.contents(theShip.x, i).name == "Asteroid") {
+                    if (this.contents(theShip.x, i) != undefined && this.contents(theShip.x, i).objType == "Asteroid") {
                         if (theShip.isDamaged) {
-                            gameObj.gameOver("Your ship hit an asteroid and exploded into bits! Game Over!");
+                            gameObj.GameOver("Your ship hit an asteroid and exploded into bits!");
                             return true;
                         }
                         alert("Your ship hit an asteroid and took damage!");

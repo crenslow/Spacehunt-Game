@@ -24,13 +24,9 @@ class Ship {
     a different amount of energy depending on the ship's engine: 10 * distance for
     a basic engine, 5 * distance for a medium engine, and 1 * distance for an
     advanced engine. (It consumes 5 times the amount of energy if the ship is
-    damaged) */
+    damaged.) If distance is 0 or less, the function returns without doing anything*/
         
-        if (direction == 'N' && !window.gameMap.asteroidCheck(this, this.y+eval(distance),'Y')) this.y += eval(distance);
-        else if (direction == 'W' && !window.gameMap.asteroidCheck(this, this.x-eval(distance),'X')) this.x -= eval(distance);
-        else if (direction == 'E' && !window.gameMap.asteroidCheck(this, this.x+eval(distance),'X')) this.x += eval(distance);
-        else if (direction == 'S' && !window.gameMap.asteroidCheck(this, this.y-eval(distance),'Y')) this.y -= eval(distance);
-        
+        if (distance <= 0) return;
         this.supplies -= 2;
 
         switch ( this.engineLv ) {
@@ -44,16 +40,25 @@ class Ship {
                 this.energy -= ( this.isDamaged ) ? 5 * distance : distance;
                 break;
         }
+        
+        if (direction == 'N' && !window.gameMap.asteroidCheck(this, this.y+eval(distance),'Y')) this.y += eval(distance);
+        else if (direction == 'W' && !window.gameMap.asteroidCheck(this, this.x-eval(distance),'X')) this.x -= eval(distance);
+        else if (direction == 'E' && !window.gameMap.asteroidCheck(this, this.x+eval(distance),'X')) this.x += eval(distance);
+        else if (direction == 'S' && !window.gameMap.asteroidCheck(this, this.y-eval(distance),'Y')) this.y -= eval(distance);
+        
 
 		let max = window.gameData.mapSize;
-		if (!window.gameData.randomWormhole) {
-			if (this.y >= max) this.y = 0;
+		if (!window.gameData.randomWormhole) {  //If wormhole behavior is set to fixed, the ship just flips to the
+			if (this.y >= max) this.y = 0;      //opposite border
 			else if (this.y < 0) this.y = eval(max-1);
 			else if (this.x >= max) this.x = 0;
 			else if (this.x < 0) this.x = (max - 1);
 		}
-		else { //This will be for when we integrate random wormhole behavior
-			
+		else {    //If wormhole behavior is set to random, the ship's x and y coordinates are set randomly
+            if (this.y >= max || this.y < 0 || this.x >= max || this.x < 0) {
+                this.y = Math.ceil(Math.random() * max);
+                this.x = Math.ceil(Math.random() * max);
+            }
 		}
 	   var BadMaxret = BadMax(this.supplies, this.credit);
 	   this.supplies = BadMaxret[0];
