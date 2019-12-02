@@ -25,14 +25,10 @@ class Ship {
     a basic engine, 5 * distance for a medium engine, and 1 * distance for an
     advanced engine. (It consumes 5 times the amount of energy if the ship is
     damaged.) If distance is 0 or less, the function returns without doing anything*/
-//<<<<<<< HEAD
-
-//=======
 
 	let startX = this.x;
 	let startY = this.y;
 
-//>>>>>>> f764ce68760a805dadfa9d59d94846dba3d757a2
         if (distance <= 0) return;
         this.supplies -= 2;
 
@@ -52,9 +48,6 @@ class Ship {
         else if (direction == 'W' && !window.gameMap.asteroidCheck(this, this.x-eval(distance),'X')) this.x -= eval(distance);
         else if (direction == 'E' && !window.gameMap.asteroidCheck(this, this.x+eval(distance),'X')) this.x += eval(distance);
         else if (direction == 'S' && !window.gameMap.asteroidCheck(this, this.y-eval(distance),'Y')) this.y -= eval(distance);
-//<<<<<<< H/EAD
-
-//=======
 
 	if (direction == 'N')
 		window.gameMap.meteorCheck(this, startY,'Y');
@@ -64,7 +57,6 @@ class Ship {
 		window.gameMap.meteorCheck(this, startX,'X');
         else if (direction == 'S')
 		window.gameMap.meteorCheck(this, startY,'Y');
-//>>>>>>> f764ce68760a805dadfa9d59d94846dba3d757a2
 
 		let max = window.gameData.mapSize;
 		if (!window.gameData.randomWormhole) {  //If wormhole behavior is set to fixed, the ship just flips to the
@@ -77,6 +69,7 @@ class Ship {
             if (this.y >= max || this.y < 0 || this.x >= max || this.x < 0) {
                 this.y = Math.ceil(Math.random() * max);
                 this.x = Math.ceil(Math.random() * max);
+                alert("You've been caught in a wormhole and ended up somewhere random!");
             }
 		}
 	   var BadMaxret = BadMax(this.supplies, this.credit);
@@ -99,24 +92,6 @@ class Ship {
        }
 
         window.gameMap.move(this.x, this.y);
-
-		/*I (Josh) am temporarily putting this block of code in comments to
-		discuss it during tomorrow's meeting (11/19/19)
-        setTimeout(function () {
-           if ((this.energy <= 0 && this.normalPlay)) {
-                gameObj.GameOver("Your ship has run out of energy and is now adrift in space!");
-            }
-            else if (this.supplies <= 0 && this.normalPlay) {
-                gameObj.GameOver("Your crew has run out of supplies and have died!" );
-            }
-
-            // check out any objects events
-            if(!gameObj.isGameover) {
-                ctrecipe.tick();
-                updateHeading();
-                updateLevels();
-            }
-        }, 1000 ); */
     }
 
     hide() {
