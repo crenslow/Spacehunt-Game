@@ -25,7 +25,14 @@ class Ship {
     a basic engine, 5 * distance for a medium engine, and 1 * distance for an
     advanced engine. (It consumes 5 times the amount of energy if the ship is
     damaged.) If distance is 0 or less, the function returns without doing anything*/
+<<<<<<< HEAD
 
+=======
+        
+	let startX = this.x; 
+	let startY = this.y;    
+	    
+>>>>>>> f764ce68760a805dadfa9d59d94846dba3d757a2
         if (distance <= 0) return;
         this.supplies -= 2;
 
@@ -45,7 +52,19 @@ class Ship {
         else if (direction == 'W' && !window.gameMap.asteroidCheck(this, this.x-eval(distance),'X')) this.x -= eval(distance);
         else if (direction == 'E' && !window.gameMap.asteroidCheck(this, this.x+eval(distance),'X')) this.x += eval(distance);
         else if (direction == 'S' && !window.gameMap.asteroidCheck(this, this.y-eval(distance),'Y')) this.y -= eval(distance);
+<<<<<<< HEAD
 
+=======
+	    
+	if (direction == 'N') 
+		window.gameMap.meteorCheck(this, startY,'Y');
+        else if (direction == 'W')
+		window.gameMap.meteorCheck(this, startX,'X');
+        else if (direction == 'E')
+		window.gameMap.meteorCheck(this, startX,'X'); 
+        else if (direction == 'S')
+		window.gameMap.meteorCheck(this, startY,'Y');
+>>>>>>> f764ce68760a805dadfa9d59d94846dba3d757a2
 
 		let max = window.gameData.mapSize;
 		if (!window.gameData.randomWormhole) {  //If wormhole behavior is set to fixed, the ship just flips to the
