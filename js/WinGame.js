@@ -6,7 +6,7 @@ function checkLocation(){
 	//alert(oldSpice.x);
 	//alert(oldSpice.y);
 	if(gameMap.contents(oldSpice.x, oldSpice.y) != undefined){
-		if(gameMap.contents(oldSpice.x, oldSpice.y).name == "Ryzen"){			
+		if(gameMap.contents(oldSpice.x, oldSpice.y).name == "Pentium 5"){			
 			oldSpice.recipe = true;
 			alert("You got the recipe! Now return to Eniac");
 		}
