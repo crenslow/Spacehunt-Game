@@ -26,6 +26,9 @@ class Ship {
     advanced engine. (It consumes 5 times the amount of energy if the ship is
     damaged.) If distance is 0 or less, the function returns without doing anything*/
         
+	let startX = this.x; 
+	let startY = this.y;    
+	    
         if (distance <= 0) return;
         this.supplies -= 2;
 
