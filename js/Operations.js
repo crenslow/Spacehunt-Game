@@ -9,14 +9,19 @@ window.addEventListener("keydown", event => {
     //Checks to make sure the ship has been created before trying to move it
     if (window.oldSpice != undefined) {
         if (event.key === 'ArrowUp' || event.key === 'w') {
+            event.preventDefault();
             window.oldSpice.move('N', distance);
         } else if (event.key === 'ArrowLeft' || event.key === 'a') {
+            event.preventDefault();
             window.oldSpice.move('W', distance);
         } else if (event.key === 'ArrowDown' || event.key === 's') {
+            event.preventDefault();
             window.oldSpice.move('S', distance);
         } else if (event.key === 'ArrowRight' || event.key === 'd') {
+            event.preventDefault();
             window.oldSpice.move('E', distance);
         } else if (event.key === ' ') {  //The scan functionality
+            event.preventDefault();
             oldSpice.scan();
         } else if (event.key === '0' || event.key === '1' ||  //
             event.key === '2' || event.key === '3' ||
@@ -25,6 +30,10 @@ window.addEventListener("keydown", event => {
             event.key === '8' || event.key === '9') {
             magnitudeBox.focus();
         }
+    }
+    if (window.gameMap != undefined && event.key === 'g' && event.ctrlKey) {
+        event.preventDefault();
+        fillGazetteer();
     }
 } );
 
@@ -54,5 +63,19 @@ function addMessage(message) {
 }
 
 function addMessageForm (message, message_res_ok, message_res_cancel) {
+
+}
+
+function fillGazetteer() { /*This function combs through every single space on the game map and adds the location and type
+of each celestial object it finds to the celestial gazetteer. It is activated by pushing ctrl+g after the map loads.*/
+    
+    max = window.gameMap.size;
+    for (i = 0; i <= max; ++i) {
+        for (n = 0; n <= max; ++n) {
+            if (window.gameMap.contents(i, n) != undefined) {
+                gazePopulate (window.gameMap.contents(i, n), i, n, true);
+            }
+        }
+    }
 
 }

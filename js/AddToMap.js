@@ -4,6 +4,11 @@ function PopulateMap(gameMap) {
     generateRyzen(gameMap);
     generateCeleron(gameMap);
     generateXeon(gameMap);
+	for(let i = 0; i < 7; ++i){
+		generatePentium(gameMap);
+	}
+	generatePentiumR(gameMap);	
+	
 
     // load celestial objects
     // i < 100; this allows for more objects to be added to the map
@@ -223,4 +228,36 @@ function generateXeonAtLocation(gameMap, xeonCoordX, xeonCoordY) {
     mapObj.y = xeonCoordY;
     updateLogs(gameMap, mapObj, xeonCoordX, xeonCoordY);
     gazePopulate(mapObj, xeonCoordX, xeonCoordY);
+}
+function generatePentium (gameMap) {
+    let randomPentX = Math.ceil(Math.random() * (gameMap.size));
+    let randomPentY = Math.ceil(Math.random() * (gameMap.size));
+    generatePentiumAtLocation(gameMap, randomPentX, randomPentY);
+}
+function generatePentiumAtLocation(gameMap, pentCoordX, pentCoordY) {
+    mapObj = new Pentium();
+    if (gameData.pentX || gameData.pentX === 0)
+        pentCoordX = gameData.pentX;
+    if (gameData.pentY || gameData.pentY === 0)
+        pentCoordY = gameData.pentY;
+    mapObj.x = pentCoordX;
+    mapObj.y = pentCoordY;
+    updateLogs(gameMap, mapObj, pentCoordX, pentCoordY);
+    //gazePopulate(mapObj, pentCoordX, pentCoordY);
+}
+function generatePentiumR (gameMap) {
+    let randomPentrX = Math.ceil(Math.random() * (gameMap.size));
+    let randomPentrY = Math.ceil(Math.random() * (gameMap.size));
+    generatePentiumRAtLocation(gameMap, randomPentrX, randomPentrY);
+}
+function generatePentiumRAtLocation(gameMap, pentrCoordX, pentrCoordY) {
+    mapObj = new PentiumR();
+    if (gameData.pentrX || gameData.pentrX === 0)
+        pentrCoordX = gameData.pentrX;
+    if (gameData.pentrY || gameData.pentrY === 0)
+        pentrCoordY = gameData.pentrY;
+    mapObj.x = pentrCoordX;
+    mapObj.y = pentrCoordY;
+    updateLogs(gameMap, mapObj, pentrCoordX, pentrCoordY);
+    //gazePopulate(mapObj, pentrCoordX, pentrCoordY);
 }

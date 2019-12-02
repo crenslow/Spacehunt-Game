@@ -150,7 +150,7 @@ Eniac.prototype.Collide = function() {
 }
 
 Eniac.prototype.EnterOrbit = function() { 
-  alert("You've entered the orbit of Eniac! \n Find the KocaKola Recipe, come back to Eniac, and win the game!");
+  alert("You've entered the orbit of Eniac! \n The Koca Kola Recipe is hidden on a Pentium planet! Explore the map and find it!");
 }
 
 // CELERON
@@ -163,7 +163,26 @@ Celeron.prototype.Collide = function() {
     MapObject.prototype.Collide.call(this);
     this.EnterOrbit();
 }
+//Pentium
+function Pentium() { };
 
+Pentium.prototype = new Planet('Pentium', -1, -1);
+
+Pentium.prototype.Collide = function() {
+    alert("Collided with Pentium!");
+    MapObject.prototype.Collide.call(this);
+    this.EnterOrbit();
+}
+//Pentium Recipe
+function PentiumR() { };
+
+PentiumR.prototype = new Planet('Pentium 5', -1, -1);
+
+PentiumR.prototype.Collide = function() {
+    alert("Collided with PentiumR!");
+    MapObject.prototype.Collide.call(this);
+    this.EnterOrbit();
+}
 // RYZEN
 function Ryzen() { };
 
@@ -186,13 +205,7 @@ Xeon.prototype.Collide = function() {
     this.EnterOrbit();
 }
 
-// BAD MAX
-/* this will be deleted since we already have BadMax.js; deleted after bugs in game 
-have been fixed */
-function BadMax () { }
 
-BadMax.prototype = new MapObject("BadMax", 0);
-BadMax.prototype.isHidden = true;
 
 // RECIPE
 function KokaKolaRecipe() { }
@@ -260,15 +273,25 @@ function PlayGameOfChance () {
 
 // MUSKTESTA
 function MuskTesla (energyQuantity, energyPrice) {
-   
+   this.energyQuantity = energyQuantity; 
+   this.energyPrice = energyPrice; 
 }
 
 MuskTesla.prototype.MenuPrompt = function () {
-  
+  if(CheckBalance(this.energyPrice)) { 
+     return confirm("Do you want to buy " + this.energyQuantity + " energy for " + this.energyPrice + " credits?\"" );
+   }
+   else { 
+     alert("You don't have enough credits for this.\n"); 
+     return false; 
+   }
 }
 
 MuskTesla.prototype.Purchase = function () {
-   
+   oldSpice.energy += this.energyQuantity; 
+   oldSpice.credit -= this.energyPrice; 
+   updatelevels(); 
+   alert("Thank you for purchasing!\n");
 }
   
 // REPAIR DEPOT
