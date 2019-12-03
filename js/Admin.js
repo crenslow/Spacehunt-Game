@@ -8,8 +8,8 @@ var MIN_X = 1;
 var MIN_Y = 1;
 var MAX_X = 128;
 var MAX_Y = 128;
-var OldSpice = { x : 64, y : 64 };
-
+//var OldSpice = { x : 64, y : 64 };
+/*
 var artifacts = { 
     //artifacts here are "bodies on the board that the OldSpice can collide with"
     //including planets, asteroids, etc.
@@ -32,19 +32,41 @@ var artifacts = {
     //method to add asteroids
     //t
 
-};
+};*/
 //functions
-
-function writeArtifactsToFile( filename )
+//redefine gamedata since main functions can't be used
+window.gameData = {
+   mapSize: 128,
+   //map: 0,
+    asteroidRandom: true,
+    meteorRandom: true,
+    freighterRandom: true,
+    stationRandom: true,
+    savedGamed: false,
+    shipX: 0,
+    shipY: 0,
+    shipEnergy: 1000,
+    shipSupplies: 100,
+    shipCredit: 1000,
+    shipEngineLv: 1,
+    shipDamaged: false,
+    shipNormalPlay: 1,
+	shipHasRecipe: 0,
+    randomWormhole: false,
+    artifactArr : []
+};
+function writeDataToFile( filename )
 {
-    var artifactsJSON = JSON.stringify(artifacts);
-    localStorage.setItem(filename, artifactsJSON);
+    var gameDataJSON = JSON.stringify(window.gameData);
+    console.log(gameDataJSON);
+    localStorage.setItem(filename, gameDataJSON);
 }
 
-function readArtifactsFromFile( filename )
+function readDataFromFile( filename )
 {
     var art_JSON = localStorage.getItem(filename);
-    return JSON.parse(art_JSON);
+    window.gameData = JSON.parse(art_JSON);
+    console.log(window.gameData);
 }
 function collision( spaceObj )
 {
@@ -65,12 +87,12 @@ function setSelectArtifactOptions()
     var to_select = document.getElementById("selectArtifact");
 
 
-    for(var A in artifacts)
+    for(var A in window.gameData.artifactArr)
     {
-        var art = artifacts[A];
+        var art = window.gameData.artifactArr[A];
         var el = document.createElement("option");
         el.textContent = art.name;
-        el.value = art.name;
+        el.value = A;
         to_select.appendChild(el);
     }
 }
@@ -87,9 +109,8 @@ function sanitizeIntValues( someInt )
 function changeArtifactProperties()
 {
     var to_update = document.getElementById("selectArtifact").value;
-    artifacts[to_update].x = sanitizeIntValues(document.getElementById("selectX").value);
-    artifacts[to_update].y = sanitizeIntValues(document.getElementById("selectY").value);
-    console.log(artifacts[to_update]);
+    window.gameData.artifactArr[to_update].x = sanitizeIntValues(document.getElementById("artifactX").value);
+    window.gameData.artifactArr[to_update].y = sanitizeIntValues(document.getElementById("artifactY").value);
 
 }
 
@@ -97,21 +118,13 @@ function loadArtifactValuesOnChange()
 {
     var to_update = document.getElementById("selectArtifact").value;
     console.log(to_update);
-    console.log(artifacts[to_update]);
-    var x = document.getElementById("selectX");
-    x.value = artifacts[to_update].x;
-    var y = document.getElementById("selectY");
-    y.value = artifacts[to_update].y;
+    console.log(window.gameData.artifactArr[to_update]);
+    var x = document.getElementById("artifactX");
+    x.value = window.gameData.artifactArr[to_update].x;
+    var y = document.getElementById("artifactY");
+    y.value = window.gameData.artifactArr[to_update].y;
  
 }
 
 //tests
 
-for(A in artifacts)
-{
-    console.log( artifacts[A].name + ": (" + artifacts[A].x + "," + artifacts[A].y + ")");
-}
-
-colided_obj = collision(OldSpice);
-
-console.log("Oldspice collides with " + colided_obj);
