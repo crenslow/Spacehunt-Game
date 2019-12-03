@@ -33,16 +33,16 @@ function loadGame(saveName){
 }
 
 function saveShip(gameData, oldSpice) {
-    gameData.shipX           = oldSpice.x;
-    gameData.shipY           = oldSpice.y;
-    gameData.shipEnergy      = oldSpice.energy;
-    gameData.shipSupplies    = oldSpice.supplies;
-    gameData.shipCredit      = oldSpice.credit;
-    gameData.shipEngineLv    = oldSpice.engineLv;
-    gameData.shipDamaged     = oldSpice.isDamaged;
-    gameData.shipNormalPlay  = oldSpice.normalPlay;
-	gameData.shipHasReciple = oldSpice.recipe;
-    gameData.artifactArr = gameMap.artifactArr.slice(0);
+    window.gameData.shipX           = window.oldSpice.x;
+    window.gameData.shipY           = window.oldSpice.y;
+    window.gameData.shipEnergy      = window.oldSpice.energy;
+    window.gameData.shipSupplies    = window.oldSpice.supplies;
+    window.gameData.shipCredit      = window.oldSpice.credit;
+    window.gameData.shipEngineLv    = window.oldSpice.engineLv;
+    window.gameData.shipDamaged     = window.oldSpice.isDamaged;
+    window.gameData.shipNormalPlay  = window.oldSpice.normalPlay;
+	window.gameData.shipHasReciple = window.oldSpice.recipe;
+    window.gameData.artifactArr = window.gameMap.artifactArr.slice(0);
 
 }
 	
