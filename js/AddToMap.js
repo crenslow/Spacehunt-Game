@@ -43,6 +43,8 @@ function PopulateMap(gameMap) {
         }
     }
 	
+    // game of chance is on each station
+	
     /* STATION 1 */
     if (window.gameData.station1Random) {
         for (let i = 0; i < 100; ++i) {
