@@ -76,12 +76,29 @@ class Ship {
 	   this.supplies = BadMaxret[0];
 	   this.credit = BadMaxret[1];
 		checkLocation();
+	    
     var Fret = Freighter(this.energy, this.supplies);
 	if(Fret != undefined){
 		this.energy = Fret[0];
 		this.supplies = Fret[1];
 	}
+	  
+	/*
         updateHeading();
+        updateLevels();
+	*/
+	    
+    // check for space stations
+    var Stat1 = Station1(this.credit); 
+    this.credit = Stat1[0]; 
+	    
+    var Stat2 = Station2(this.credit); 
+    this.credit = Stat2[0]; 
+	    
+    var Stat3 = Station3(this.credit);
+    this.credit = Stat3[0];
+	    
+	updateHeading();
         updateLevels();
 
 
