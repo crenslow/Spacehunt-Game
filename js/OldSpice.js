@@ -77,8 +77,10 @@ class Ship {
 	   this.credit = BadMaxret[1];
 		checkLocation();
     var Fret = Freighter(this.energy, this.supplies);
-    this.energy = Fret[0];
-    this.supplies = Fret[1];
+	if(Fret != undefined){
+		this.energy = Fret[0];
+		this.supplies = Fret[1];
+	}
         updateHeading();
         updateLevels();
 
