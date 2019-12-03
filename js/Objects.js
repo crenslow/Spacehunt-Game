@@ -55,6 +55,8 @@ function AbFreighter() { this.name = "AbFreighter"}
 
 AbFreighter.prototype = new MapObject("AbFreighter", 0);
 
+/* STATIONS */
+
 // SPACE STATION 1
 function SpaceStation1() { this.name = "SpaceStation1"}
 
