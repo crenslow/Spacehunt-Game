@@ -183,15 +183,15 @@ function PopulateSavedMap (gameMap, savedMapArr) {
 function generateCelestialObjects(gameMap, type, celestX, celestY) {
     switch (type) {
         case 0:
-            mapObj = new SpaceStation([new MuskTesla(100, 1000), new RepairDepot, new MiniMart()]);
+            mapObj = new SpaceStation1([new MuskTesla(100, 1000), new RepairDepot, new MiniMart()]);
             break;
 
         case 1:
-            mapObj = new SpaceStation([new MuskTesla(100, 1000), new RepairDepot()]);
+            mapObj = new SpaceStation2([new MuskTesla(100, 1000), new RepairDepot()]);
             break;
 
         case 2:
-            mapObj = new SpaceStation([new MuskTesla(100, 1000), new MiniMart()]);
+            mapObj = new SpaceStation3([new MuskTesla(100, 1000), new MiniMart()]);
             break;
 
         case 3:
