@@ -8,31 +8,7 @@ var MIN_X = 1;
 var MIN_Y = 1;
 var MAX_X = 128;
 var MAX_Y = 128;
-//var OldSpice = { x : 64, y : 64 };
-/*
-var artifacts = { 
-    //artifacts here are "bodies on the board that the OldSpice can collide with"
-    //including planets, asteroids, etc.
-    //parameters with default coordinates
-    
-    "Pentium 1" : { name : "Pentium 1", x : 4, y : 64 },
-    "Pentium 2" : { name : "Pentium 2", x : 11, y : 11 },
-    "Pentium 3" : { name : "Pentium 3", x : 11, y : 11 },
-    "Pentium 4" : { name : "Pentium 4", x : 11, y : 11 }, 
-    "Pentium 5" : { name : "Pentium 5", x : 11, y : 11 },
-    "Pentium 6" : { name : "Pentium 6", x : 11, y : 11 },
-    "Pentium 7" : { name : "Pentium 7", x : 11, y : 11 },
 
-    "Ryzen" :     { name : "Ryzen", x : 64, y : 64 },
-    "Xeon" :      { name : "Zeon",  x : 82, y : 82 },
-    "Celeron" :   { name : "Celeron", x : 12, y : 12 },
-    
-    
-
-    //method to add asteroids
-    //t
-
-};*/
 //functions
 //redefine gamedata since main functions can't be used
 window.gameData = {
