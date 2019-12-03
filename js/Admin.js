@@ -120,6 +120,33 @@ function loadArtifactValuesOnChange()
     y.value = window.gameData.artifactArr[to_update].y;
  
 }
+function gazePopulate (obj, objX, objY, toSave) {}
+
+function initGame() {
+    if (window.gameData != undefined) {
+        window.gameMap = new GameMap( window.gameData.mapSize );
+        window.oldSpice = new Ship(
+            window.gameData.shipX,
+            window.gameData.shipY,
+            window.gameData.shipEnergy,
+            window.gameData.shipSupplies,
+            window.gameData.shipCredit,
+            window.gameData.shipEngineLv,
+            window.gameData.shipDamaged,
+            window.gameData.shipNormalPlay
+        );
+    } else { // By default
+        window.gameMap = new GameMap( 128 );
+        window.oldSpice = new Ship( 0, 0, 1000, 100, 1000, 1, false, true );
+    }
+
+    // setup wormhole
+    //window.boundary = new WormHole();
+
+    // add objects to the map 
+    PopulateMap( window.gameMap );
+
+}
 
 //tests
 
