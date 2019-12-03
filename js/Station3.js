@@ -15,6 +15,7 @@ function Station3(credit)
                    alert("You have won " + winnings + " credit(s)!"); 
                    return [credit];
                 //}
+                
             }
         }
     }
