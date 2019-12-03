@@ -62,22 +62,8 @@ class Sensor {
 						
 						CelestialMap(found); //add to map
 											}
-					duplicate = true;
 					
 				}
-/*
-
-        			if(!duplicate){
-                           	if ( found.objType === 'Planet' ){
-            		       		alert( "Planet " + found.name + " found at (" + searchX + ", " + searchY + ")" );
-                           	}
-                       		else
-                               		alert( found.objType + " found at (" + searchX + ", " + searchY + ")" );
-         
-                            			// add location of celestial obj found to Celestial Gazetteer
-                            			//gazePopulate( found, searchX, searchY, true );
-                       	}//end of duplicate
-*/
 
 		 	}//end of for loop
 
