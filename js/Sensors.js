@@ -43,13 +43,13 @@ class Sensor {
 
 			}
 
-       		for(k =0;k<nearCP.length;++k){  //display if nearcp have celestial objects
+       		for(k = 0;k<nearCP.length;++k){  //display if nearcp have celestial objects
          			var searchX = nearCP[k].x;
           			var searchY = nearCP[k].y;
 				//alert("x = "+searchX +"y= "+ searchY);//just try
           			var duplicate = false;  //cheack if already found
         	        	found = this.map.map[searchX][searchY];
-				//just try
+				
 				if(found){
 					anyFound =1; //found one
 
@@ -61,7 +61,7 @@ class Sensor {
 						alert( found.objType + " at (" + searchX + ", " + searchY + ") ");
 					}
 					duplicate = true;
-					break;
+					
 				}
 /*
 
@@ -132,16 +132,21 @@ class Sensor {
           			var searchY = nearCP[k].y;
           			var duplicate = false;
         	        	var found = this.map.map[searchX][searchY];
-        			if(found !== undefined){
-          		    		anyFound =1;
-         		    		if(found.objType === "Planet"){
-                                		alert( "Planet " + found.name + " at (" + searchX + ", " + searchY + ") " + " already in gazetteer" );
-                            		}
-                        		else
-                                		alert( found.objType + " at (" + searchX + ", " + searchY + ") " + "already in gazetteer" );
-                                		duplicate = true;
-                                		break;
-                        	}
+        			if(found){
+					anyFound =1; //found one
+
+					alert("found "+found.objType);
+					if(found.objType === 'Planet'){
+						alert("planet "+ found.name + " at (" + searchX + ", " + searchY + ") " );
+					}
+					else{
+						alert( found.objType + " at (" + searchX + ", " + searchY + ") ");
+					}
+					duplicate = true;
+					
+				}
+
+
                        		if(!duplicate){
                            		if ( found.objType === "Planet" ){
             		       			alert( "Planet " + found.name + " found at (" + searchX + ", " + searchY + ")" );
@@ -153,6 +158,7 @@ class Sensor {
                             			//gazePopulate( found, searchX, searchY, true );
                        		}
 		 	}
+
                  	if(!anyFound){
                       		alert("There is nothing found in the current CP!");
                  	}
