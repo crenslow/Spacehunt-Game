@@ -83,7 +83,7 @@ function continueGame() {//reimplementation of init for continuing from save
 
     loadGame( nameInput.value);
     // save last move to the console
-    ctrecipe.tickObjects.push(function() {Collision(window.oldSpice.x, window.oldSpice.y);});
+    //ctrecipe.tickObjects.push(function() {Collision(window.oldSpice.x, window.oldSpice.y);});
     ctrecipe.tick();
 }
 
