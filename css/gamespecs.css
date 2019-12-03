@@ -24,30 +24,6 @@
     width:100%;
 }
 
-.Station1 { 
-    background-image: url("../img/ss1.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    height:100%;
-    width:100%;
-}
-
-.Station2 { 
-    background-image: url("../img/ss2.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    height:100%;
-    width:100%;
-}
-
-.Station3 { 
-    background-image: url("../img/ss3.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    height:100%;
-    width:100%;
-}
-
 .MeteorShower {
     background-image: url("../img/meteor.png");
     background-size: contain;
@@ -66,6 +42,36 @@
 
 .AbFreighter {
     background-image: url("../img/freighter.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+    position: relative;
+    z-index: 10;
+}
+
+.SpaceStation1 {
+    background-image: url("../img/ss1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+    position: relative;
+    z-index: 10;
+}
+
+.SpaceStation2 {
+    background-image: url("../img/ss2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+    position: relative;
+    z-index: 10;
+}
+
+.SpaceStation3 {
+    background-image: url("../img/ss3.png");
     background-size: contain;
     background-repeat: no-repeat;
     height:100%;
