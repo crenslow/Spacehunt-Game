@@ -216,7 +216,7 @@ class GameMap {
                         if (theShip.isDamaged) {
                             gameObj.GameOver("Your ship went through a meteor shower and exploded into bits!");
                         }
-                        alert("Your ship hit an asteroid and took damage!");
+                        alert("Your ship hit an meteor shower and took damage!");
                         theShip.isDamaged = true;
                     }
                 }
