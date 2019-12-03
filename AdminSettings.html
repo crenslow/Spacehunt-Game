@@ -6,7 +6,7 @@
     Celestial Artifacts should be placed before the game is played
     TODO:
     -ensure page can only be accessed by administrator
-    -save settings to json and load coordinates in MapDefinition.html
+    -save settings to json and load coordinates in index.html
     -some way of handling/sanitizing data (coords must be int values within 1-128)
 
     *** Move into core html ***
@@ -45,6 +45,14 @@
             x : <input type=number id=artifactX min=MIN_X max=MAX_X onchange="changeArtifactProperties()">
             y : <input type=number id=artifactY min=MIN_Y max=MAX_y onchange="changeArtifactProperties()">
             </p>
+            <p> OldSpice</p>
+            <p> 
+            x : <input type=number id=OldSpiceX min=MIN_X max=MAX_X onchange="changeOldSpiceProperties()">
+            y : <input type=number id=OldSpiceY min=MIN_Y max=MAX_Y onchange="changeOldSpiceProperties()">
+            </p>
+            <p> energy : <input type=number id=ENERGY min=0 onchange="changeOldSpiceProperties()"> </p>
+            <p> supplies : <input type=number id=SUPPLIES min=0 onchange="changeOldSpiceProperties()"> </p>
+            <p> credits : <input type=number id=CREDITS min=0 onchange="changeOldSpiceProperties()"> </p>
             <p><input type=button Value="Save Map Changes" onclick="writeDataToFile(getElementById('saveFileName').value)"></p>
         </form>
     </body>
