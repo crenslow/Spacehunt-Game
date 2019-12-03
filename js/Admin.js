@@ -96,6 +96,17 @@ function changeArtifactProperties()
 
 function changeOldSpiceProperties()
 {
+   let osX = document.getElementById("OldSpiceX").value;
+   let osY = document.getElementById("OldSpiceY").value;
+   let osSupplies = document.getElementById("SUPPLIES").value;
+   let osEnergy = document.getElementById("ENERGY").value;
+   let osCredits = document.getElementById("CREDITS").value;
+   window.gameData.shipX = osX;
+   window.gameData.shipY = osY;
+   window.gameData.shipEnergy = osEnergy;
+   window.gameData.shipSupplies = osSupplies;
+   window.gameData.shipCredit = osCredits;
+   
 }
 
 function loadArtifactValuesOnChange()
