@@ -8,7 +8,9 @@ window.gameData = {
     asteroidRandom: true,
     meteorRandom: true,
     freighterRandom: true,
-    stationRandom: true,
+    station1Random: true,
+    station2Random: true, 
+    station3Random: true,
     savedGamed: false,
     shipX: 0,
     shipY: 0,
@@ -19,7 +21,7 @@ window.gameData = {
     shipEngineLv: 1,
     shipDamaged: false,
     shipNormalPlay: 1,
-	shipHasRecipe: 0,
+    shipHasRecipe: 0,
     randomWormhole: false,
     artifactArr : []
 };
