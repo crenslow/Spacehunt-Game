@@ -12,6 +12,7 @@ window.gameData = {
     savedGamed: false,
     shipX: 0,
     shipY: 0,
+    gaze: {length: 0},
     shipEnergy: 1000,
     shipSupplies: 100,
     shipCredit: 1000,
