@@ -1,39 +1,9 @@
 class Sensor {
-    constructor( ship, map ) {
-        this.map = map;
-        this.ship = ship;
-        this.level = 1;            
-        this.ScanCP = 2;
-    }
-    
-    use () {
-        this.ship.supplies -= 2;        // consume 2% of supplies
-        
-    }
-
-    getInfo () {
-     
-    }
-    
-    upgrade () {
-        if ( this.level == 1 && this.ship.credit > 100 ) {
-            this.ship.credit -= 100;
-            this.level = 2;
-            this.ScanCP = 5;
-        }
-    }
-}
-
-
-
-
-/*
-class Sensor {
 	constructor( ship, map ) {
         	this.ship = ship;           //ship
         	this.map = map;             //gameMap 
 		this.level = 1;             // sensor level
-        	this.ScanCP = 2;
+        	
     	}
     	getInfo () {
         	if ( this.level == 1 ) {
@@ -45,66 +15,85 @@ class Sensor {
     	}
     	upgrade () {
     		if ( this.level == 1 && this.ship.credit > 100 ) {
-       			this.ship.credit -= 100;
+       		this.ship.credit -= 100;
             		this.level = 2;
-            		this.ScanCP = 5;
-        	}
+            	}
         	else
-            		alert("you cannot update")  //I change addMessage to alert
-    		}
+            		alert("you cannot update");  
+    	}
     	use(){
-    		this.ship.supplies = this.ship.supplies-2;
+    		this.ship.supplies -= 2; //every time use 2 supplies
     		if(this.level == 1){
-       			var i,j,k;
-        		var nearCP[];
-        		var count;
-       			var anyFound;
+       		var i,j,k;
+
+        		var nearCP = []; //put all the cp will scan
+        		var count = 0;
+       		var anyFound = 0;
+			var found = this.map.map[this.ship.x][this.ship.y]; //object
+
         		for(i=this.ship.x-2;i<this.ship.x+2;i++){
 		  		for(j=this.ship.y-2;j<this.ship.y+2;j++){
-          		  		nearCP[count++] = {
-           			   		x: i,
-           			   		y: j
-           		 		}     
-       		  		}
+					if(i>=0 && j>=0 &&i<=127 &&i<=127){
+          		  			nearCP[count++] = {
+           			   			x: i,
+           			   			y: j
+           		 			}     
+					}
+       		  	}
+
 			}
-       			for(k =0;k<nearCP.length;k++){
+
+       		for(k =0;k<nearCP.length;++k){  //display if nearcp have celestial objects
          			var searchX = nearCP[k].x;
           			var searchY = nearCP[k].y;
-          			var duplicate = false;
-        	        	var found = this.map.map[searchX][searchY];
-        			if(found != undefined){
-          		    		anyFound =1;
-         		    		if(found.objType === "Planet"){
-                                		alert( "Planet " + found.name + " at (" + searchX + ", " + searchY + ") " + " already in gazetteer" );
-                            		}
-                        		else
-                                		alert( found.objType + " at (" + searchX + ", " + searchY + ") " + "already in gazetteer" );
-                                		duplicate = true;
-                                		break;
-                        	}
-                       		if(!duplicate){
-                           		if ( found.objType === "Planet" ){
-            		       			alert( "Planet " + found.name + " found at (" + searchX + ", " + searchY + ")" );
-                           		}
-                       			else
-                               			alert( found.objType + " found at (" + searchX + ", " + searchY + ")" );
+				//alert("x = "+searchX +"y= "+ searchY);//just try
+          			var duplicate = false;  //cheack if already found
+        	        	found = this.map.map[searchX][searchY];
+				//just try
+				if(found){
+					anyFound =1; //found one
+
+					alert("found "+found.objType);
+					if(found.objType === 'Planet'){
+						alert("planet "+ found.name + " at (" + searchX + ", " + searchY + ") " );
+					}
+					else{
+						alert( found.objType + " at (" + searchX + ", " + searchY + ") ");
+					}
+					duplicate = true;
+					break;
+				}
+/*
+
+        			if(!duplicate){
+                           	if ( found.objType === 'Planet' ){
+            		       		alert( "Planet " + found.name + " found at (" + searchX + ", " + searchY + ")" );
+                           	}
+                       		else
+                               		alert( found.objType + " found at (" + searchX + ", " + searchY + ")" );
          
                             			// add location of celestial obj found to Celestial Gazetteer
                             			//gazePopulate( found, searchX, searchY, true );
-                       		}
-		 	}
+                       	}//end of duplicate
+*/
+
+		 	}//end of for loop
+
                  	if(!anyFound){
-                      		alert("There is nothing found in the current CP!");
+                      	alert("There is nothing found in the current CP!");
                  	}
                  	return nearCP;
+
+
       		}//end of if level==1
+
       		if(this.level == 2){
-       			var i,j,k;
-        		var nearCP[];
-        		var count;
-       			var anyFound;
+       		var i,j,k;
+        		var nearCP = [];
+        		var count= 0;
+       		var anyFound = 0;
      			for(i=ship.x-5;i<ship.x+5;i++){
-                    		for(j=ship.y-5;j<ship.y+5;j++){
+                    	for(j=ship.y-5;j<ship.y+5;j++){
              		  		if(i==ship.x-5 && j==ship.y+4)
 						continue;
 			  		if(i==ship.x-5 &&j==ship.y+5)
@@ -129,10 +118,13 @@ class Sensor {
 						continue;
 			  		if(i==ship.x+4 &&j==ship.y-5)
 						continue;
-             	          		nearCP[count++] = {
-           		  			x: i,
-          					y: j
-          		 		}      
+					if(i>=0 && j>=0 &&i<=127 &&i<=127){
+
+             	          			nearCP[count++] = {
+           		  				x: i,
+          						y: j
+          		 			}      
+					}
 		  		}
               		}
               		for(k =0;k<nearCP.length;k++){
@@ -140,7 +132,7 @@ class Sensor {
           			var searchY = nearCP[k].y;
           			var duplicate = false;
         	        	var found = this.map.map[searchX][searchY];
-        			if(found != undefined){
+        			if(found !== undefined){
           		    		anyFound =1;
          		    		if(found.objType === "Planet"){
                                 		alert( "Planet " + found.name + " at (" + searchX + ", " + searchY + ") " + " already in gazetteer" );
@@ -166,7 +158,8 @@ class Sensor {
                  	}
                  	return nearCP;
 	  	}//end of level==2
+
+
  	}//end of use() function
  }//end of class
 
-*/
