@@ -41,13 +41,6 @@ function writeDataToFile( filename )
     console.log(gameDataJSON);
     localStorage.setItem(filename, gameDataJSON);
 }
-
-function readDataFromFile( filename )
-{
-    var art_JSON = localStorage.getItem(filename);
-    window.gameData = JSON.parse(art_JSON);
-    console.log(window.gameData);
-}
 function collision( spaceObj )
 {
     //checks through list of artifacts to see if spaceObj collides (shares x,y values)
@@ -122,7 +115,7 @@ function loadArtifactValuesOnChange()
 }
 function gazePopulate (obj, objX, objY, toSave) {}
 
-function initGame() {
+function initPage() {
     if (window.gameData != undefined) {
         window.gameMap = new GameMap( window.gameData.mapSize );
         window.oldSpice = new Ship(
@@ -142,10 +135,35 @@ function initGame() {
 
     // setup wormhole
     //window.boundary = new WormHole();
-
+    
     // add objects to the map 
-    PopulateMap( window.gameMap );
+    //PopulateMap( window.gameMap );
 
+    let filename = document.getElementById("saveFileName").value;
+    let save = JSON.parse(localStorage.getItem(filename));
+    if(save != undefined){
+        window.oldSpice.x = save.shipX;
+        window.oldSpice.y = save.shipY;
+        window.oldSpice.energy = save.shipEnergy;
+        window.oldSpice.supplies = save.shipSupplies;
+        window.oldSpice.credits = save.shipCredit;
+        window.oldSpice.engineLv = save.shipEngineLv;
+        window.oldSpice.isDamaged = save.shipDamaged;
+        window.oldSpice.normalPlay = save.shipNormalPlay;
+        //window.gameMap = save.map;
+        //PopulateMap(window.gameMap);
+        //populateSavedGaze(save.gaze);
+        PopulateSavedMap( window.gameMap, save.artifactArr);
+        window.gameMap.artifactArr = save.artifactArr.slice(0);
+        gameData.artifactArr = save.artifactArr.slice(0);
+        //alert("Save game: " + name + " loaded!");
+    }
+    else{
+        alert("No save file of that name or no save files exist. Creating new save.");
+
+        PopulateMap( window.gameMap );
+
+    }
 }
 
 //tests
