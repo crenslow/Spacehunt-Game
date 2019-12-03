@@ -194,4 +194,58 @@ class GameMap {
 
             return false;
         }
+    
+        meteorCheck(theShip, startingPt, xy) {
+            // moving right on x-axis
+            if (xy == 'X' && startingPt < theShip.x) {
+                for (let i = startingPt; i <= theShip.x && i < this.size; ++i) {
+                    if (this.contents(i, theShip.y) != undefined && this.contents(i, theShip.y).objType == "MeteorShower") {
+                        if (theShip.isDamaged) {
+                            gameObj.GameOver("Your ship went through a meteor shower and exploded into bits!");
+                        }
+                        alert("Your ship hit an meteor shower and took damage!");
+                        theShip.isDamaged = true;
+                    }
+                }
+            }
+            
+            // moving left on x-axis
+            else if (xy == 'X' && startingPt > theShip.x) {
+                for (let i = startingPt; i >= theShip.x && i < this.size; --i) {
+                    if (this.contents(i, theShip.y) != undefined && this.contents(i, theShip.y).objType == "MeteorShower") {
+                        if (theShip.isDamaged) {
+                            gameObj.GameOver("Your ship went through a meteor shower and exploded into bits!");
+                        }
+                        alert("Your ship hit an asteroid and took damage!");
+                        theShip.isDamaged = true;
+                    }
+                }
+            }
+            
+            // moving up on y-axis
+            else if (xy == 'Y' && startingPt < theShip.y) {
+                for (let i = startingPt; i <= theShip.y && i < this.size; ++i) {
+                    if (this.contents(theShip.x, i) != undefined && this.contents(theShip.x, i).objType == "MeteorShower") {
+                        if (theShip.isDamaged) {
+                            gameObj.GameOver("Your went through a meteor shower and exploded into bits!");
+                        }
+                        alert("Your ship went through a meteor shower and took damage!");
+                        theShip.isDamaged = true;
+                    }
+                }
+            }
+            
+            // moving down on y-axis
+            else if (xy == 'Y' && theShip.y < startingPt) {
+                for (let i = theShip.y; i <= startingPt && i < this.size; ++i) {
+                    if (this.contents(theShip.x, i) != undefined && this.contents(theShip.x, i).objType == "MeteorShower") {
+                        if (theShip.isDamaged) {
+                            gameObj.GameOver("Your ship went through a meteor shower and exploded into bits!");
+                        }
+                        alert("Your ship went through a meteor shower and took damage!");
+                        theShip.isDamaged = true;
+                    }
+                }
+            }
+        }
 }
