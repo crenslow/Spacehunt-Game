@@ -165,7 +165,7 @@ function generateCelestialObjects(gameMap, type, celestX, celestY) {
 function updateLogs (gameMap, mapObj, objCoordX, objCoordY) {
     console.log( 'Placed ' + mapObj.objType + " at position: " + objCoordX + ' ' + objCoordY );
     gameMap.add( mapObj, objCoordX, objCoordY );
-    saveMap( gameData, mapObj, objCoordX, objCoordY );
+    saveMap( window.gameData, mapObj, objCoordX, objCoordY );
 }
 
 function generateEniac (gameMap) {
@@ -187,10 +187,10 @@ function generateRyzen (gameMap) {
 
 function generateRyzenAtLocation(gameMap, ryzenCoordX, ryzenCoordY) {
     mapObj = new Ryzen();
-    if ( gameData.ryzenX || gameData.ryzenX === 0 )
-        ryzenCoordX = gameData.ryzenX;
-    if ( gameData.ryzenY || gameData.ryzenY === 0 )
-        ryzenCoordY = gameData.ryzenY;
+    if ( window.gameData.ryzenX || window.gameData.ryzenX === 0 )
+        ryzenCoordX = window.gameData.ryzenX;
+    if ( window.gameData.ryzenY || window.gameData.ryzenY === 0 )
+        ryzenCoordY = window.gameData.ryzenY;
     mapObj.x = ryzenCoordX;
     mapObj.y = ryzenCoordY;
     updateLogs(gameMap, mapObj, ryzenCoordX, ryzenCoordY );
@@ -205,10 +205,10 @@ function generateCeleron(gameMap) {
 
 function generateCeleronAtLocation(gameMap, celeronCoordX, celeronCoordY) {
     mapObj = new Celeron();
-    if ( gameData.celeronX || gameData.celeronX === 0 )
-        celeronCoordX = gameData.celeronX;
-    if ( gameData.celeronY || gameData.celeronY === 0 )
-        celeronCoordY = gameData.celeronY;
+    if ( window.gameData.celeronX || window.gameData.celeronX === 0 )
+        celeronCoordX = window.gameData.celeronX;
+    if ( window.gameData.celeronY || window.gameData.celeronY === 0 )
+        celeronCoordY = window.gameData.celeronY;
     mapObj.x = celeronCoordX;
     mapObj.y = celeronCoordY;
     updateLogs(gameMap, mapObj, celeronCoordX, celeronCoordY);
@@ -223,10 +223,10 @@ function generateXeon (gameMap) {
 
 function generateXeonAtLocation(gameMap, xeonCoordX, xeonCoordY) {
     mapObj = new Xeon();
-    if (gameData.xeonX || gameData.xeonX === 0)
-        xeonCoordX = gameData.xeonX;
-    if (gameData.xeonY || gameData.xeonY === 0)
-        xeonCoordY = gameData.xeonY;
+    if (window.gameData.xeonX || window.gameData.xeonX === 0)
+        xeonCoordX = window.gameData.xeonX;
+    if (window.gameData.xeonY || window.gameData.xeonY === 0)
+        xeonCoordY = window.gameData.xeonY;
     mapObj.x = xeonCoordX;
     mapObj.y = xeonCoordY;
     updateLogs(gameMap, mapObj, xeonCoordX, xeonCoordY);
@@ -239,10 +239,10 @@ function generatePentium (gameMap) {
 }
 function generatePentiumAtLocation(gameMap, pentCoordX, pentCoordY) {
     mapObj = new Pentium();
-    if (gameData.pentX || gameData.pentX === 0)
-        pentCoordX = gameData.pentX;
-    if (gameData.pentY || gameData.pentY === 0)
-        pentCoordY = gameData.pentY;
+    if (window.gameData.pentX || window.gameData.pentX === 0)
+        pentCoordX = window.gameData.pentX;
+    if (window.gameData.pentY || window.gameData.pentY === 0)
+        pentCoordY = window.gameData.pentY;
     mapObj.x = pentCoordX;
     mapObj.y = pentCoordY;
     updateLogs(gameMap, mapObj, pentCoordX, pentCoordY);
@@ -255,10 +255,10 @@ function generatePentiumR (gameMap) {
 }
 function generatePentiumRAtLocation(gameMap, pentrCoordX, pentrCoordY) {
     mapObj = new PentiumR();
-    if (gameData.pentrX || gameData.pentrX === 0)
-        pentrCoordX = gameData.pentrX;
-    if (gameData.pentrY || gameData.pentrY === 0)
-        pentrCoordY = gameData.pentrY;
+    if (window.gameData.pentrX || window.gameData.pentrX === 0)
+        pentrCoordX = window.gameData.pentrX;
+    if (window.gameData.pentrY || window.gameData.pentrY === 0)
+        pentrCoordY = window.gameData.pentrY;
     mapObj.x = pentrCoordX;
     mapObj.y = pentrCoordY;
     updateLogs(gameMap, mapObj, pentrCoordX, pentrCoordY);
