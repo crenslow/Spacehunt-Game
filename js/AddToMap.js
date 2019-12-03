@@ -13,7 +13,7 @@ function PopulateMap(gameMap) {
     // load celestial objects
     // i < 100; this allows for more objects to be added to the map
 
-    /* ASTEROID */
+     /* ASTEROID */
     if (window.gameData.asteroidRandom) {
         for (let i = 0; i < 100; ++i) {
             let x = Math.ceil(Math.random() * (gameMap.size));
@@ -42,6 +42,51 @@ function PopulateMap(gameMap) {
             generateCelestialObjects(gameMap, 5, x, y);
         }
     }
+	
+    /* STATION 1 */
+    if (window.gameData.station1Random) {
+        for (let i = 0; i < 100; ++i) {
+            let x = Math.ceil(Math.random() * (gameMap.size));
+            let y = Math.ceil(Math.random() * (gameMap.size));
+            generateCelestialObjects(gameMap, 0, x, y);
+        }
+    } else {
+        for (let coords of window.gameData.stations) {
+            let x = coords[0];
+            let y = coords[1];
+            generateCelestialObjects(gameMap, 0, x, y);
+        }
+    }
+	
+    /* STATION 2 */
+    if (window.gameData.station2Random) {
+        for (let i = 0; i < 100; ++i) {
+            let x = Math.ceil(Math.random() * (gameMap.size));
+            let y = Math.ceil(Math.random() * (gameMap.size));
+            generateCelestialObjects(gameMap, 1, x, y);
+        }
+    } else {
+        for (let coords of window.gameData.stations) {
+            let x = coords[0];
+            let y = coords[1];
+            generateCelestialObjects(gameMap, 1, x, y);
+        }
+    }
+	
+    /* STATION 3 */
+    if (window.gameData.station3Random) {
+        for (let i = 0; i < 100; ++i) {
+            let x = Math.ceil(Math.random() * (gameMap.size));
+            let y = Math.ceil(Math.random() * (gameMap.size));
+            generateCelestialObjects(gameMap, 2, x, y);
+        }
+    } else {
+        for (let coords of window.gameData.stations) {
+            let x = coords[0];
+            let y = coords[1];
+            generateCelestialObjects(gameMap, 2, x, y);
+        }
+    }
 
     /* METEOR */
     if (window.gameData.meteorRandom) {
@@ -55,22 +100,6 @@ function PopulateMap(gameMap) {
             let x = coords[0];
             let y = coords[1];
             generateCelestialObjects(gameMap, 6, x, y);
-        }
-    }
-
-    /* SPACE STATION */
-    if (window.gameData.stationRandom) {
-        for (let i = 0; i < 100; ++i) {
-            let x = Math.ceil(Math.random() * (gameMap.size));
-            let y = Math.ceil(Math.random() * (gameMap.size));
-            generateCelestialObjects(gameMap, (i % 4), x, y);
-        }
-    } else {
-        for (let coords of window.gameData.stations) {
-            let x = coords[0];
-            let y = coords[1];
-            let stationType = Math.floor(Math.random() * 4);
-            generateCelestialObjects(gameMap, stationType, x, y);
         }
     }
 }
@@ -132,13 +161,13 @@ function PopulateSavedMap (gameMap, savedMapArr) {
             case "MeteorShower":
                 generateCelestialObjects(gameMap, 6, artifact.x, artifact.y);
                 break;
-            case "Stationundefinedundefinedundefined":
+            case "SpaceStation1":
                 generateCelestialObjects(gameMap, 0, artifact.x, artifact.y);
                 break;
-            case "Stationundefinedundefined":
+            case "SpaceStation2":
                 generateCelestialObjects(gameMap, 1, artifact.x, artifact.y);
                 break;
-            case "Stationundefined":
+            case "SpaceStation3":
                 generateCelestialObjects(gameMap, 2, artifact.x, artifact.y);
                 break;
             default:
@@ -164,9 +193,8 @@ function generateCelestialObjects(gameMap, type, celestX, celestY) {
             break;
 
         case 3:
-            mapObj = new SpaceStation([new MuskTesla(100, 1000)]);
-            break;
-
+            // 12/2/19 9:08PM Angie: if there's time I'll add the Musk Tesla in here
+		    
         case 4:
             mapObj = new Asteroid();
             break;
