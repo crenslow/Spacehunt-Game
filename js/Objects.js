@@ -55,45 +55,20 @@ function AbFreighter() { this.name = "AbFreighter"}
 
 AbFreighter.prototype = new MapObject("AbFreighter", 0);
 
-/*AbFreighter.prototype.Loot = function() {
-    let maxEnergy = 1000;
-    let maxSupply = 100;
-    let retrievedEnergy;
-    let retrievedSupply;
+// SPACE STATION 1
+function SpaceStation1() { this.name = "SpaceStation1"}
 
-    let probability = Math.random();
-    if (probability < 0.75) {
-        retrievedEnergy = 0.1 * maxEnergy;
-        retrievedSupply = 0.1 * maxSupply;
-    }
-    else if (roll < 0.90) {
-        retrievedEnergy = 0.5 * maxEnergy;
-        retrievedSupply = 0.5 * maxSupply;
-    }
-    else {
-        retrievedEnergy = maxEnergy;
-        retrievedSupply = maxSupply;
-    }
-    return [retrievedEnergy, retrievedSupply];
-}
+SpaceStation1.prototype = new MapObject("SpaceStation1", 0);
 
-AbFreighter.prototype.Collide = function() {
-    MapObject.prototype.Collide.call(this);
-    let loot = this.Loot();
-    lootEnergy = parseInt(loot[0]);
-    lootSupply = parseInt(loot[1]);
+// SPACE STATION 2
+function SpaceStation2() { this.name = "SpaceStation2"}
 
-    alert("You came across an abandoned freighter and collected " + lootEnergy + " energy and " + lootSupply + " supply from the freighter remains!" );
+SpaceStation2.prototype = new MapObject("SpaceStation2", 0);
 
-    oldSpice.energy += lootEnergy;
-    if (oldSpice.supplies + lootSupply <= 100)
-        oldSpice.supplies += lootSupply;
-    else
-        oldSpice.supplies = 100;
+// SPACE STATION 3
+function SpaceStation3() { this.name = "SpaceStation3"}
 
-    updateLevels(); // display new supply and energy gained from the freighter
-    gameMap.remove(oldSpice.x, oldSpice.y); // remove the freighter from the map since it was already used
-}*/
+SpaceStation3.prototype = new MapObject("SpaceStation3", 0);
 
 // WORMHOLE
 function WormHole() { }
