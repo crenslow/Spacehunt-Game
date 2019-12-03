@@ -41,20 +41,24 @@ window.gameData = {
     asteroidRandom: true,
     meteorRandom: true,
     freighterRandom: true,
-    stationRandom: true,
+    station1Random: true,
+    station2Random: true, 
+    station3Random: true,
     savedGamed: false,
     shipX: 0,
     shipY: 0,
+    gaze: {length: 0},
     shipEnergy: 1000,
     shipSupplies: 100,
     shipCredit: 1000,
     shipEngineLv: 1,
     shipDamaged: false,
     shipNormalPlay: 1,
-	shipHasRecipe: 0,
+    shipHasRecipe: 0,
     randomWormhole: false,
     artifactArr : []
 };
+
 function writeDataToFile( filename )
 {
     var gameDataJSON = JSON.stringify(window.gameData);
@@ -112,6 +116,10 @@ function changeArtifactProperties()
     window.gameData.artifactArr[to_update].x = sanitizeIntValues(document.getElementById("artifactX").value);
     window.gameData.artifactArr[to_update].y = sanitizeIntValues(document.getElementById("artifactY").value);
 
+}
+
+function changeOldSpiceProperties()
+{
 }
 
 function loadArtifactValuesOnChange()
