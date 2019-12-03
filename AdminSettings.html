@@ -13,29 +13,74 @@
 -->
     <head>
 
-        <script src="js/Admin.js"></script>
-
+        <script src="js/Mode.js"></script>
+        <script>var ctrecipe = GameMode( null );</script>
+        <script src="js/AddToMap.js"></script> 
+        <script src="js/HitObject.js"></script>
+       <!-- 
+       <script src="js/Main.js"></script> -->
+        <script src="js/MapSetup.js"></script>
+        <script src="js/Objects.js"></script>
+        <script src="js/OldSpice.js"></script>
+        <!-- <script src="js/Operations.js"></script> -->
+        <script src="js/Sensors.js"></script>
+        <script src="js/BadMax.js"></script>
+        <script src="js/Save.js"></script>
+        <script src="js/WinGame.js"></script>
+        <script src="js/Freighter.js"></script>     
+        <script src="js/Admin.js"></script> 
+        <script>
+        </script>
     </head>
 
     <body>
         <h1>Admin Settings</h1>
-
-    <form onsubmit="writeArtifactsToFile()" id=settings>
-    <p> 
-    Celestial Artifact: 
-    <select id="selectArtifact" onchange="loadArtifactValuesOnChange()">
-        <!--<option value="test">option</option>-->
-    </select>
-    x : <input type=number id=selectX min=MIN_X max=MAX_X onchange="changeArtifactProperties()">
-    y : <input type=number id=selectY min=MIN_Y max=MAX_y onchange="changeArtifactProperties()">
-    </p>
-    <p><input type=submit Value="Save Map Changes"></p>
+    
+        <form>
+            <p> Save Name:<input type=text id=saveFileName value="Default"></p>
+            <p><input type=button value="load" onclick="readDataFromFile(getElementById('saveFileName').value)"></p>
+            <p> Artifact: 
+            <select id="selectArtifact" onchange="loadArtifactValuesOnChange()">
+            </select>
+            x : <input type=number id=artifactX min=MIN_X max=MAX_X onchange="changeArtifactProperties()">
+            y : <input type=number id=artifactY min=MIN_Y max=MAX_y onchange="changeArtifactProperties()">
+            </p>
+            <p><input type=button Value="Save Map Changes" onclick="writeDataToFile(getElementById('saveFileName').value)"></p>
+        </form>
     </body>
     <script>
-        if(localStorage.getItem("testJSON") === null)
-    artifacts = writeArtifactsToFile();
-        artifacts = readArtifactsFromFile();
-        setSelectArtifactOptions();
-        loadArtifactValuesOnChange();
+    function gazePopulate (obj, objX, objY, toSave) {}
+        function initGame() {
+            if (window.gameData != undefined) {
+                window.gameMap = new GameMap( window.gameData.mapSize );
+                window.oldSpice = new Ship(
+                    window.gameData.shipX,
+                    window.gameData.shipY,
+                    window.gameData.shipEnergy,
+                    window.gameData.shipSupplies,
+                    window.gameData.shipCredit,
+                    window.gameData.shipEngineLv,
+                    window.gameData.shipDamaged,
+                    window.gameData.shipNormalPlay
+                );
+            } else { // By default
+                window.gameMap = new GameMap( 128 );
+                window.oldSpice = new Ship( 0, 0, 1000, 100, 1000, 1, false, true );
+            }
+
+            // setup wormhole
+            //window.boundary = new WormHole();
+
+            // add objects to the map 
+            PopulateMap( window.gameMap );
+
+            // save last move to the console
+            ctrecipe.tickObjects.push(function() {Collision(window.oldSpice.x, window.oldSpice.y);});
+            ctrecipe.tick();
+        }
+initGame();
+saveShip();
+setSelectArtifactOptions();
+loadArtifactValuesOnChange();
     </script>         
 </html>
