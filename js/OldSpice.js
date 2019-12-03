@@ -129,7 +129,6 @@ class Ship {
             };
         } )( this ), 500 );
 
-
     }
 
     getEngineInfo() {
