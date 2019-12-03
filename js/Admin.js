@@ -164,6 +164,11 @@ function initPage() {
         PopulateMap( window.gameMap );
 
     }
+    document.getElementById("OldSpiceX").value = window.oldSpice.x;
+    document.getElementById("OldSpiceY").value = window.oldSpice.y;
+    document.getElementById("SUPPLIES").value = window.oldSpice.supplies;
+    document.getElementById("ENERGY").value = window.oldSpice.energy;
+    document.getElementById("CREDITS").value = window.oldSpice.credits;
 }
 
 //tests
