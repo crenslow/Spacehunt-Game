@@ -31,8 +31,8 @@ class Sensor {
        		var anyFound = 0;
 			var found = this.map.map[this.ship.x][this.ship.y]; //object
 
-        		for(i=this.ship.x-2;i<this.ship.x+2;i++){
-		  		for(j=this.ship.y-2;j<this.ship.y+2;j++){
+        		for(i=this.ship.x-2;i<=this.ship.x+2;i++){
+		  		for(j=this.ship.y-2;j<=this.ship.y+2;j++){
 					if(i>=0 && j>=0 &&i<=127 &&i<=127){
           		  			nearCP[count++] = {
            			   			x: i,
@@ -59,7 +59,9 @@ class Sensor {
 					}
 					else{
 						alert( found.objType + " at (" + searchX + ", " + searchY + ") ");
-					}
+						
+						CelestialMap(found); //add to map
+											}
 					duplicate = true;
 					
 				}
