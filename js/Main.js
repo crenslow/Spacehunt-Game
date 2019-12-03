@@ -143,7 +143,7 @@ function initGame() {
     PopulateMap( window.gameMap );
 
     // save last move to the console
-    ctrecipe.tickObjects.push(function() {Collision(window.oldSpice.x, window.oldSpice.y);});
+    //ctrecipe.tickObjects.push(function() {Collision(window.oldSpice.x, window.oldSpice.y);});
     ctrecipe.tick();
 }
 
