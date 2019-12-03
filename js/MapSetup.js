@@ -36,6 +36,8 @@ class GameMap {
         if(!object.isHidden) {
             var objDOM = document.querySelector('#c' + x + '-' + y + ' .map-obj'),
                 objName = (object.name != undefined ) ? object.name : object.objType;
+            if(!objDOM)
+                return true;
             objDOM.className += ' showed-obj ' + object.objType;
             objDOM.setAttribute( 'alt', objName );
         }
