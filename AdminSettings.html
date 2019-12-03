@@ -38,7 +38,7 @@
     
         <form>
             <p> Save Name:<input type=text id=saveFileName value="Default"></p>
-            <p><input type=button value="load" onclick="readDataFromFile(getElementById('saveFileName').value)"></p>
+            <p><input type=button value="load" onclick="initPage()"></p>
             <p> Artifact: 
             <select id="selectArtifact" onchange="loadArtifactValuesOnChange()">
             </select>
@@ -57,7 +57,7 @@
         </form>
     </body>
     <script>
-initGame();
+initPage();
 saveShip();
 setSelectArtifactOptions();
 loadArtifactValuesOnChange();
