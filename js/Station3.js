@@ -1,24 +1,21 @@
 /* SPACE STATION 3 */
 
-// each station has a different chance for winning credits
+/* MUSK TESLA STATION; buying energy with credits */
 
-function Station3(credit)
+function Station3(energy, credit)
 { 
-    if(gameMap.contents(oldSpice.x, oldSpice.y) != undefined){
-        if(gameMap.contents(oldSpice.x, oldSpice.y).name == "SpaceStation3"){
-            var playGameOfChance = Math.floor(Math.random() * Math.floor(9)); 
-            if(playGameOfChance < 7) { 
-                //if(confirm("You have been asked to play a game of chance. Would you like to play?")) { 
-                   var winnings = Math.floor(Math.random() * Math.floor(200));
-                   credit = credit + winnings; 
-                   gameMap.remove(oldSpice.x, oldSpice.y);
-                   alert("You've been asked to play a game of chance!"); 
-                   alert("You have won " + winnings + " credit(s)!"); 
-                   return [credit];
-                //}
-                
-            }
-        }
-    }
-    return [credit];
+    if(gameMap.contents(oldSpice.x, oldSpice.y) != undefined) {
+          if(gameMap.contents(oldSpice.x, oldSpice.y).name == "MuskTeslaStation") {
+	       if(confirm("Do you want to buy 100 energy for 100 credits?")) {
+	            energy = energy + 100;
+		    credit = credit - 100;
+		    alert("Thanks for your purchase!");
+	            gameMap.remove(oldSpice.x, oldSpice.y);
+               }
+	       return [energy, credit];
+	   }
+      }
+      else {
+           return [energy, credit];
+      }
 }
