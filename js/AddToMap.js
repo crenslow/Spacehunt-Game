@@ -195,7 +195,7 @@ function generateCelestialObjects(gameMap, type, celestX, celestY) {
             break;
 
         case 3:
-           break;
+          
 		    
         case 4:
             mapObj = new Asteroid();
