@@ -6,7 +6,7 @@ function Freighter(energy, supplies)
 {
 	if(gameMap.contents(oldSpice.x, oldSpice.y) != undefined){
 		if(gameMap.contents(oldSpice.x, oldSpice.y).name == "AbFreighter"){
-			alert("You encounter an abandoned freighter. You salvage it's remaining energy and supplies!");
+			alert("You encounter an abandoned freighter. You salvage its remaining energy and supplies!");
 			energy = energy + 100;
 			supplies = supplies + 10;
 			gameMap.remove(oldSpice.x, oldSpice.y);
