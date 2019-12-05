@@ -95,8 +95,9 @@ class Ship {
     var Stat2 = Station2(this.credit); 
     this.credit = Stat2[0]; 
 	    
-    var Stat3 = Station3(this.credit);
-    this.credit = Stat3[0];
+    var Stat3 = Station3(this.energy, this.credit);
+    this.energy = Stat3[0];
+    this.credit = Stat3[1];
 	    
 	updateHeading();
         updateLevels();
@@ -123,11 +124,8 @@ class Ship {
 
 
     scan() {
-		setTimeout( ( ( s ) => {
-            return () => {
-                s.sensor.use();
-            };
-        } )( this ), 500 );
+		this.sensor.use();
+		updateLevels();
 
     }
 

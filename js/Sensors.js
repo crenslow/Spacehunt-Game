@@ -52,6 +52,7 @@ class Sensor {
 				
 				if(found){
 					anyFound =1; //found one
+                                                          					                         gazePopulate(found,searchX,searchY,true); //add location to Celestial Gazetteer
 
 					alert("found "+found.objType);
 					if(found.objType === 'Planet'){
@@ -60,8 +61,7 @@ class Sensor {
 					else{
 						alert( found.objType + " at (" + searchX + ", " + searchY + ") ");
 						
-						CelestialMap(found); //add to map
-											}
+					}
 					
 				}
 
@@ -70,7 +70,7 @@ class Sensor {
                  	if(!anyFound){
                       	alert("There is nothing found in the current CP!");
                  	}
-                 	return nearCP;
+                 	return this.map;
 
 
       		}//end of if level==1
@@ -115,13 +115,15 @@ class Sensor {
 					}
 		  		}
               		}
-              		for(k =0;k<nearCP.length;k++){
+              	for(k =0;k<nearCP.length;k++){
          			var searchX = nearCP[k].x;
           			var searchY = nearCP[k].y;
           			var duplicate = false;
         	        	var found = this.map.map[searchX][searchY];
-        			if(found){
+        							
+				if(found){
 					anyFound =1; //found one
+					gazePopulate(found,searchX,searchY,true); //add location to Celestial Gazetteer
 
 					alert("found "+found.objType);
 					if(found.objType === 'Planet'){
@@ -129,23 +131,14 @@ class Sensor {
 					}
 					else{
 						alert( found.objType + " at (" + searchX + ", " + searchY + ") ");
+												
 					}
-					duplicate = true;
-					
+
 				}
+				
+				
+		 	}//end of for loop
 
-
-                       		if(!duplicate){
-                           		if ( found.objType === "Planet" ){
-            		       			alert( "Planet " + found.name + " found at (" + searchX + ", " + searchY + ")" );
-                           		}
-                       			else
-                             			alert( found.objType + " found at (" + searchX + ", " + searchY + ")" );
-         
-                            			// add location of celestial obj found to Celestial Gazetteer
-                            			//gazePopulate( found, searchX, searchY, true );
-                       		}
-		 	}
 
                  	if(!anyFound){
                       		alert("There is nothing found in the current CP!");

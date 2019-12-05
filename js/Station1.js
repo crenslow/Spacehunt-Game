@@ -11,6 +11,7 @@ function Station1(credit)
                 //if(confirm("You have been asked to play a game of chance. Would you like to play?")) { 
                    var winnings = Math.floor(Math.random() * Math.floor(200));
                    credit = credit + winnings; 
+                   gameMap.remove(oldSpice.x, oldSpice.y);
                    alert("You've been asked to play a game of chance!"); 
                    alert("You have won " + winnings + " credit(s)!"); 
                    return [credit];
