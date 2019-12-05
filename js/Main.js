@@ -194,7 +194,7 @@ function gazePopulate (obj, objX, objY, toSave) {
             '</li>';
 
         // scroll
-        // gazeWrapper.scrollTo( 0, gazeList.offsetHeight );
+        //gazeWrapper.scrollTo( 0, gazeList.offsetHeight );
 
         if (toSave == 1 || toSave == true) {
             window.gameData.gaze[objIndex] = {x: objX, y: objY};

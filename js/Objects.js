@@ -11,6 +11,8 @@ MapObject.prototype.Collide = function() {
   console.log("collision noted in the console log");
 }
 
+
+
 // ASTEROID
 function Asteroid() {
   this.name = "Asteroid";
@@ -59,7 +61,7 @@ MeteorShower.prototype.Collide = function() {
 function AbFreighter() { this.name = "AbFreighter"}
 
 AbFreighter.prototype = new MapObject("AbFreighter", 0);
-//AbFreighter.prototype.isHidden = true;
+AbFreighter.prototype.isHidden = true;   //try for celestialMap
 
 /* STATIONS */
 

@@ -52,6 +52,7 @@ class Sensor {
 				
 				if(found){
 					anyFound =1; //found one
+                                                          gazePopulate(found,searchX,searchY,true); //add location to Celestial Gazetteer
 
 					alert("found "+found.objType);
 					if(found.objType === 'Planet'){
@@ -60,7 +61,7 @@ class Sensor {
 					else{
 						alert( found.objType + " at (" + searchX + ", " + searchY + ") ");
 						
-						CelestialMap(found); //add to map
+						CelestialMap(this.map,found,searchX,searchY); //add to map
 											}
 					
 				}
@@ -70,7 +71,7 @@ class Sensor {
                  	if(!anyFound){
                       	alert("There is nothing found in the current CP!");
                  	}
-                 	return nearCP;
+                 	return this.map;
 
 
       		}//end of if level==1
@@ -123,6 +124,7 @@ class Sensor {
         							
 				if(found){
 					anyFound =1; //found one
+					gazePopulate(found,searchX,searchY,true); //add location to Celestial Gazetteer
 
 					alert("found "+found.objType);
 					if(found.objType === 'Planet'){
@@ -132,10 +134,12 @@ class Sensor {
 						alert( found.objType + " at (" + searchX + ", " + searchY + ") ");
 						
 						CelestialMap(found); //add to map
+						
 					}
-					
-				}
 
+				}
+				
+				
 		 	}//end of for loop
 
 
