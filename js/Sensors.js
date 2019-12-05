@@ -52,7 +52,7 @@ class Sensor {
 				
 				if(found){
 					anyFound =1; //found one
-                                                          gazePopulate(found,searchX,searchY,true); //add location to Celestial Gazetteer
+                                                          					                         gazePopulate(found,searchX,searchY,true); //add location to Celestial Gazetteer
 
 					alert("found "+found.objType);
 					if(found.objType === 'Planet'){
@@ -61,7 +61,7 @@ class Sensor {
 					else{
 						alert( found.objType + " at (" + searchX + ", " + searchY + ") ");
 						
-						CelestialMap(this.map,found,searchX,searchY); //add to map
+						CelestialVisility(this.map,found,searchX,searchY); //make HIdden celestial become vistity
 											}
 					
 				}
