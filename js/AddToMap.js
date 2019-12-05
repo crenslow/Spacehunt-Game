@@ -75,7 +75,7 @@ function PopulateMap(gameMap) {
         }
     }
 	
-    /* STATION 3 */
+    /* STATION 3: MUSK TESLA STATION */
     if (window.gameData.station3Random) {
         for (let i = 0; i < 100; ++i) {
             let x = Math.ceil(Math.random() * (gameMap.size));
@@ -169,7 +169,7 @@ function PopulateSavedMap (gameMap, savedMapArr) {
             case "SpaceStation2":
                 generateCelestialObjects(gameMap, 1, artifact.x, artifact.y);
                 break;
-            case "SpaceStation3":
+            case "MuskTeslaStation":
                 generateCelestialObjects(gameMap, 2, artifact.x, artifact.y);
                 break;
             default:
@@ -195,7 +195,7 @@ function generateCelestialObjects(gameMap, type, celestX, celestY) {
             break;
 
         case 3:
-            // 12/2/19 9:08PM Angie: if there's time I'll add the Musk Tesla in here
+           break;
 		    
         case 4:
             mapObj = new Asteroid();

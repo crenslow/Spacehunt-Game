@@ -69,20 +69,16 @@ AbFreighter.prototype.isHidden = true;   //try for celestialMap
 function SpaceStation1() { this.name = "SpaceStation1"}
 
 SpaceStation1.prototype = new MapObject("SpaceStation1", 0);
-//SpaceStation1.prototype.isHidden = true;
-
 
 // SPACE STATION 2
 function SpaceStation2() { this.name = "SpaceStation2"}
 
 SpaceStation2.prototype = new MapObject("SpaceStation2", 0);
-//SpaceStation2.prototype.isHidden = true;
 
 // SPACE STATION 3
-function SpaceStation3() { this.name = "SpaceStation3"}
+function SpaceStation3() { this.name = "MuskTeslaStation"}
 
-SpaceStation3.prototype = new MapObject("SpaceStation3", 0);
-//SpaceStation3.prototype.isHidden = true;
+SpaceStation3.prototype = new MapObject("MuskTeslaStation", 0);
 
 // WORMHOLE
 function WormHole() { }
@@ -259,53 +255,4 @@ function PlayGameOfChance () {
    oldSpice.credit += winnings;
    alert("You've won " + winnings + " credits!");
    updateLevels();  // update the ship level details to the user
-}
-
-// MUSKTESTA
-function MuskTesla (energyQuantity, energyPrice) {
-   this.energyQuantity = energyQuantity;
-   this.energyPrice = energyPrice;
-}
-
-MuskTesla.prototype.MenuPrompt = function () {
-  if(CheckBalance(this.energyPrice)) {
-     return confirm("Do you want to buy " + this.energyQuantity + " energy for " + this.energyPrice + " credits?\"" );
-   }
-   else {
-     alert("You don't have enough credits for this.\n");
-     return false;
-   }
-}
-
-MuskTesla.prototype.Purchase = function () {
-   oldSpice.energy += this.energyQuantity;
-   oldSpice.credit -= this.energyPrice;
-   updatelevels();
-   alert("Thank you for purchasing!\n");
-}
-
-// REPAIR DEPOT
-function RepairDepot () {
-
-}
-
-RepairDepot.prototype.MenuPrompt = function () {
-
-}
-
-RepairDepot.prototype.Purchase = function () {
-
-}
-
-// MINI MART
-function MiniMart () {
-
-}
-
-MiniMart.prototype.MenuPrompt = function () {
-
-}
-
-MiniMart.prototype.Purchase = function () {
-
 }

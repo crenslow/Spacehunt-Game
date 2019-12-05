@@ -16,14 +16,6 @@
     z-index: 10;
 }
 
-.MuskTeslaStation{
-    background-image: url("../img/musktesla.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    height:100%;
-    width:100%;
-}
-
 .MeteorShower {
     background-image: url("../img/meteor.png");
     background-size: contain;
@@ -71,7 +63,7 @@
 }
 
 .SpaceStation3 {
-    background-image: url("../img/ss3.png");
+    background-image: url("../img/musktesla.png");
     background-size: contain;
     background-repeat: no-repeat;
     height:100%;
