@@ -67,20 +67,16 @@ AbFreighter.prototype = new MapObject("AbFreighter", 0);
 function SpaceStation1() { this.name = "SpaceStation1"}
 
 SpaceStation1.prototype = new MapObject("SpaceStation1", 0);
-//SpaceStation1.prototype.isHidden = true;
-
 
 // SPACE STATION 2
 function SpaceStation2() { this.name = "SpaceStation2"}
 
 SpaceStation2.prototype = new MapObject("SpaceStation2", 0);
-//SpaceStation2.prototype.isHidden = true;
 
 // SPACE STATION 3
-function SpaceStation3() { this.name = "SpaceStation3"}
+function SpaceStation3() { this.name = "MuskTeslaStation"}
 
-SpaceStation3.prototype = new MapObject("SpaceStation3", 0);
-//SpaceStation3.prototype.isHidden = true;
+SpaceStation3.prototype = new MapObject("MuskTeslaStation", 0);
 
 // WORMHOLE
 function WormHole() { }
