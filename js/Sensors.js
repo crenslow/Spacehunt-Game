@@ -61,8 +61,7 @@ class Sensor {
 					else{
 						alert( found.objType + " at (" + searchX + ", " + searchY + ") ");
 						
-						CelestialVisility(this.map,found,searchX,searchY); //make HIdden celestial become vistity
-											}
+					}
 					
 				}
 
@@ -132,9 +131,7 @@ class Sensor {
 					}
 					else{
 						alert( found.objType + " at (" + searchX + ", " + searchY + ") ");
-						
-						CelestialMap(found); //add to map
-						
+												
 					}
 
 				}

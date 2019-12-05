@@ -61,7 +61,7 @@ MeteorShower.prototype.Collide = function() {
 function AbFreighter() { this.name = "AbFreighter"}
 
 AbFreighter.prototype = new MapObject("AbFreighter", 0);
-AbFreighter.prototype.isHidden = true;   //try for celestialMap
+//AbFreighter.prototype.isHidden = true;   
 
 /* STATIONS */
 
