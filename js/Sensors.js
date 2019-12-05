@@ -115,12 +115,13 @@ class Sensor {
 					}
 		  		}
               		}
-              		for(k =0;k<nearCP.length;k++){
+              	for(k =0;k<nearCP.length;k++){
          			var searchX = nearCP[k].x;
           			var searchY = nearCP[k].y;
           			var duplicate = false;
         	        	var found = this.map.map[searchX][searchY];
-        			if(found){
+        							
+				if(found){
 					anyFound =1; //found one
 
 					alert("found "+found.objType);
@@ -129,23 +130,14 @@ class Sensor {
 					}
 					else{
 						alert( found.objType + " at (" + searchX + ", " + searchY + ") ");
+						
+						CelestialMap(found); //add to map
 					}
-					duplicate = true;
 					
 				}
 
+		 	}//end of for loop
 
-                       		if(!duplicate){
-                           		if ( found.objType === "Planet" ){
-            		       			alert( "Planet " + found.name + " found at (" + searchX + ", " + searchY + ")" );
-                           		}
-                       			else
-                             			alert( found.objType + " found at (" + searchX + ", " + searchY + ")" );
-         
-                            			// add location of celestial obj found to Celestial Gazetteer
-                            			//gazePopulate( found, searchX, searchY, true );
-                       		}
-		 	}
 
                  	if(!anyFound){
                       		alert("There is nothing found in the current CP!");

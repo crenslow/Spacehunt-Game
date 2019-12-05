@@ -123,11 +123,8 @@ class Ship {
 
 
     scan() {
-		setTimeout( ( ( s ) => {
-            return () => {
-                s.sensor.use();
-            };
-        } )( this ), 500 );
+		this.sensor.use();
+		updateLevels();
 
     }
 
